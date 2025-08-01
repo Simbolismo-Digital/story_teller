@@ -5,7 +5,7 @@ defmodule StoryTeller.Llm.Gemini do
   Cheque a documentação oficial
   https://ai.google.dev/gemini-api/docs/get-started/tutorial?lang=rest&hl=pt-br
   """
-  @url "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent"
+  @url "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite:generateContent"
 
   require Logger
 

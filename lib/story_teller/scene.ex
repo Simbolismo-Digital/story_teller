@@ -1,4 +1,5 @@
 defmodule StoryTeller.Scene do
+  @derive [Jason.Encoder]
   defstruct [
     :description,
     :location,
