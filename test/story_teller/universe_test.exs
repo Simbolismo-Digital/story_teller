@@ -8,7 +8,7 @@ defmodule StoryTeller.UniverseTest do
 
     opening_scene =
       scene
-      |> StoryTeller.Universe.extract_json_block()
+      |> StoryTeller.Json.extract_json_block()
       |> Jason.decode!()
       |> StoryTeller.Scene.parse()
 
@@ -18,18 +18,19 @@ defmodule StoryTeller.UniverseTest do
   test "universe make actions" do
     acted_scene =
       built_opening_scene()
-      |> StoryTeller.Universe.make_actions()
+      |> StoryTeller.Action.make_actions(opening_story())
 
     assert acted_scene.actions == [
              %{character: "Lysandra", action: "Diz a Torvin: olá, meu amigo."}
            ]
   end
 
-  # warning: this calls API - avoid testing if not intended
+  # TODO: mock for expected behavior
+  # warning: this test calls the API - avoid testing if not intended
   # test "universe next scene" do
   #   acted_scene =
   #     built_opening_scene()
-  #     |> StoryTeller.Universe.make_actions()
+  #     |> StoryTeller.Action.make_actions()
 
   #   {:ok, %StoryTeller.Scene{} = next_scene, _model_story} =
   #     results =
