@@ -1,0 +1,1250 @@
+Done in 402ms.
+iex(1)> StoryTeller.Universe.play_n_turns(10) |> StoryTeller.Scene.Export.print_story_to_file("output.md")
+[info] ▶️ Turn 1 of 10
+[info] 🌀 Starting new story with opening scene...
+[info] 🌅 Generating opening scene...
+[lib/story_teller/llm/gemini.ex:15: StoryTeller.Llm.Gemini.chat/3]
+prompt #=> "Generate the opening scene of a mythic RPG world."
+
+[lib/story_teller/llm/gemini_limiter.ex:81: StoryTeller.Llm.GeminiLimiter.handle_call/3]
+clean_state #=> %{queue: {[], []}, tpm: %{}, rpm: %{}, rpd: %{}, drain_pending: false}
+
+[debug] 📦 Headers recebidos:
+content-type: application/json; charset=UTF-8
+vary: X-Origin
+vary: Referer
+date: Sun, 03 Aug 2025 08:09:22 GMT
+server: scaffolding on HTTPServer2
+x-xss-protection: 0
+x-frame-options: SAMEORIGIN
+x-content-type-options: nosniff
+server-timing: gfet4t7; dur=2168
+alt-svc: h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+accept-ranges: none
+vary: Origin,Accept-Encoding
+transfer-encoding: chunked
+[debug] 🔍 Attempting to extract JSON block...
+[info] ✅ JSON block extracted successfully.
+[info] 🎭 Gerando ações para a cena em Vale do Crepúsculo Eterno...
+[lib/story_teller/llm/gemini.ex:15: StoryTeller.Llm.Gemini.chat/3]
+prompt #=> "Você é um mestre de RPG. Com base na seguinte cena em JSON, uma string `action` para os personagens que forem agir nessa cena.\n\n✅ O resultado deve ser estritamente neste formato JSON:\n{\n  \"actions\": [\n    {\n      \"character\": \"Nome do personagem\",\n      \"action\": \"Ação que ele toma, como fala ou movimentação.\"\n    }\n  ]\n}\n\n🎯 Use o campo `scene.players`, `scene.npc` ou outro interagível para identificar os sujeitos de ação.\n\n🎯 Se existir um campo `actions`, use o conteúdo de cada `action` associado ao `player` ou `npc` ou `item`.]\n\n🎯 Os `scene.players` ou `scene.npc` não precisam agir necessariamente, tornando a narrativa mais dinâmica e menos massante.\n\n🎯 Quando algum personagem não agir, basta não adicionar em `actions` fazendo cenas mais direcionadas e fáceis de digerir.\n\nCena:\n{\"description\":\"O ar crepita com a energia latente de uma magia ancestral. Uma névoa prateada paira sobre um vale enevoado, onde antigas ruínas de pedra, cobertas de musgo, emergem do chão. O sol, ainda baixo no horizonte, lança raios dourados que filtram através das árvores retorcidas, iluminando padrões complexos gravados nas pedras. O silêncio é quebrado apenas pelo murmúrio distante de um rio e pelo canto de pássaros desconhecidos.\",\"items\":null,\"location\":\"Vale do Crepúsculo Eterno\",\"story\":[],\"players\":[{\"name\":\"Lyra\",\"action\":null,\"race\":\"Elfa da Floresta\",\"class\":\"Druida\",\"equipment\":null,\"backstory\":\"Uma guardiã da floresta ancestral, enviada para investigar a perturbação na tranquilidade do vale.\",\"actions\":null},{\"name\":\"Borin\",\"action\":null,\"race\":\"Anão da Montanha\",\"class\":\"Guerreiro\",\"equipment\":null,\"backstory\":\"Um exilado em busca de uma relíquia perdida de seu clã, acreditando que ela se encontra nas ruínas.\",\"actions\":null},{\"name\":\"Seraphina\",\"action\":null,\"race\":\"Humana\",\"class\":\"Feiticeira\",\"equipment\":null,\"backstory\":\"Uma estudiosa de magia arcana, atraída pelas lendas de poder oculto neste lugar.\",\"actions\":null}],\"npcs\":null,\"actions\":[]}\n"
+
+[lib/story_teller/llm/gemini_limiter.ex:81: StoryTeller.Llm.GeminiLimiter.handle_call/3]
+clean_state #=> %{
+  queue: {[], []},
+  tpm: %{1754208560 => 391},
+  rpm: %{1754208560 => 1},
+  rpd: %{"2025-08-03" => 1},
+  drain_pending: false
+}
+
+[debug] 📦 Headers recebidos:
+content-type: application/json; charset=UTF-8
+vary: X-Origin
+vary: Referer
+date: Sun, 03 Aug 2025 08:09:23 GMT
+server: scaffolding on HTTPServer2
+x-xss-protection: 0
+x-frame-options: SAMEORIGIN
+x-content-type-options: nosniff
+server-timing: gfet4t7; dur=1156
+alt-svc: h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+accept-ranges: none
+vary: Origin,Accept-Encoding
+transfer-encoding: chunked
+[debug] 📝 Ações geradas: ```json
+{
+  "actions": [
+    {
+      "character": "Lyra",
+      "action": "Ajoelha-se e toca a terra com a palma da mão, sentindo a pulsação do vale e a perturbação sutil que emana das ruínas."
+    },
+    {
+      "character": "Borin",
+      "action": "Avança cautelosamente em direção às ruínas mais próximas, o machado de batalha firmemente seguro em sua mão, os olhos perscrutando cada sombra."
+    },
+    {
+      "character": "Seraphina",
+      "action": "Saca um pequeno tomo de sua bolsa, as páginas amareladas cheias de runas antigas, e começa a murmurar um encantamento de detecção enquanto observa as inscrições nas pedras."
+    }
+  ]
+}
+```
+[debug] 🔍 Attempting to extract JSON block...
+[info] ✅ JSON block extracted successfully.
+[info] ✅ Ações geradas com sucesso para 3 personagem(ns).
+[lib/story_teller/llm/gemini.ex:15: StoryTeller.Llm.Gemini.chat/3]
+prompt #=> "{\"description\":\"O ar crepita com a energia latente de uma magia ancestral. Uma névoa prateada paira sobre um vale enevoado, onde antigas ruínas de pedra, cobertas de musgo, emergem do chão. O sol, ainda baixo no horizonte, lança raios dourados que filtram através das árvores retorcidas, iluminando padrões complexos gravados nas pedras. O silêncio é quebrado apenas pelo murmúrio distante de um rio e pelo canto de pássaros desconhecidos.\",\"items\":null,\"location\":\"Vale do Crepúsculo Eterno\",\"story\":[],\"players\":[{\"name\":\"Lyra\",\"action\":null,\"race\":\"Elfa da Floresta\",\"class\":\"Druida\",\"equipment\":null,\"backstory\":\"Uma guardiã da floresta ancestral, enviada para investigar a perturbação na tranquilidade do vale.\",\"actions\":null},{\"name\":\"Borin\",\"action\":null,\"race\":\"Anão da Montanha\",\"class\":\"Guerreiro\",\"equipment\":null,\"backstory\":\"Um exilado em busca de uma relíquia perdida de seu clã, acreditando que ela se encontra nas ruínas.\",\"actions\":null},{\"name\":\"Seraphina\",\"action\":null,\"race\":\"Humana\",\"class\":\"Feiticeira\",\"equipment\":null,\"backstory\":\"Uma estudiosa de magia arcana, atraída pelas lendas de poder oculto neste lugar.\",\"actions\":null}],\"npcs\":null,\"actions\":[{\"action\":\"Ajoelha-se e toca a terra com a palma da mão, sentindo a pulsação do vale e a perturbação sutil que emana das ruínas.\",\"character\":\"Lyra\"},{\"action\":\"Avança cautelosamente em direção às ruínas mais próximas, o machado de batalha firmemente seguro em sua mão, os olhos perscrutando cada sombra.\",\"character\":\"Borin\"},{\"action\":\"Saca um pequeno tomo de sua bolsa, as páginas amareladas cheias de runas antigas, e começa a murmurar um encantamento de detecção enquanto observa as inscrições nas pedras.\",\"character\":\"Seraphina\"}]}"
+
+[info] ✅ Opening scene parsed and actions made.
+[info] ▶️ Turn 2 of 10
+[info] 🔁 Advancing story with new turn.
+[info] ➡️ Generating next scene from current scene at Vale do Crepúsculo Eterno...
+[lib/story_teller/llm/gemini_limiter.ex:81: StoryTeller.Llm.GeminiLimiter.handle_call/3]
+clean_state #=> %{
+  queue: {[], []},
+  tpm: %{1754208560 => 391, 1754208562 => 983},
+  rpm: %{1754208560 => 1, 1754208562 => 1},
+  rpd: %{"2025-08-03" => 2},
+  drain_pending: false
+}
+
+[debug] 📦 Headers recebidos:
+content-type: application/json; charset=UTF-8
+vary: X-Origin
+vary: Referer
+date: Sun, 03 Aug 2025 08:09:25 GMT
+server: scaffolding on HTTPServer2
+x-xss-protection: 0
+x-frame-options: SAMEORIGIN
+x-content-type-options: nosniff
+server-timing: gfet4t7; dur=1660
+alt-svc: h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+accept-ranges: none
+vary: Origin,Accept-Encoding
+transfer-encoding: chunked
+[debug] 🔍 Attempting to extract JSON block...
+[info] ✅ JSON block extracted successfully.
+[info] ✅ Next scene generated at Ruínas Centrais do Vale do Crepúsculo Eterno
+[info] 🎭 Gerando ações para a cena em Ruínas Centrais do Vale do Crepúsculo Eterno...
+[lib/story_teller/llm/gemini.ex:15: StoryTeller.Llm.Gemini.chat/3]
+prompt #=> "Você é um mestre de RPG. Com base na seguinte cena em JSON, uma string `action` para os personagens que forem agir nessa cena.\n\n✅ O resultado deve ser estritamente neste formato JSON:\n{\n  \"actions\": [\n    {\n      \"character\": \"Nome do personagem\",\n      \"action\": \"Ação que ele toma, como fala ou movimentação.\"\n    }\n  ]\n}\n\n🎯 Use o campo `scene.players`, `scene.npc` ou outro interagível para identificar os sujeitos de ação.\n\n🎯 Se existir um campo `actions`, use o conteúdo de cada `action` associado ao `player` ou `npc` ou `item`.]\n\n🎯 Os `scene.players` ou `scene.npc` não precisam agir necessariamente, tornando a narrativa mais dinâmica e menos massante.\n\n🎯 Quando algum personagem não agir, basta não adicionar em `actions` fazendo cenas mais direcionadas e fáceis de digerir.\n\nCena:\n{\"description\":\"As ações dos aventureiros ecoam suavemente no silêncio do vale. Lyra sente uma corrente de energia estranha emanando de uma grande pedra erguida no centro das ruínas, uma pedra que pulsa com uma luz fraca e intermitente. Borin nota que os padrões gravados nas pedras parecem se mover sutilmente sob a luz do amanhecer, formando símbolos que ele não reconhece imediatamente. Seraphina, ao terminar seu encantamento, percebe uma aura residual de magia elementar ao redor da pedra central, acompanhada por vestígios de uma magia de ligação antiga.\",\"items\":null,\"location\":\"Ruínas Centrais do Vale do Crepúsculo Eterno\",\"story\":[{\"description\":\"O ar crepita com a energia latente de uma magia ancestral. Uma névoa prateada paira sobre um vale enevoado, onde antigas ruínas de pedra, cobertas de musgo, emergem do chão. O sol, ainda baixo no horizonte, lança raios dourados que filtram através das árvores retorcidas, iluminando padrões complexos gravados nas pedras. O silêncio é quebrado apenas pelo murmúrio distante de um rio e pelo canto de pássaros desconhecidos.\",\"items\":null,\"location\":\"Vale do Crepúsculo Eterno\",\"story\":[],\"players\":[{\"name\":\"Lyra\",\"action\":null,\"race\":\"Elfa da Floresta\",\"class\":\"Druida\",\"equipment\":null,\"backstory\":\"Uma guardiã da floresta ancestral, enviada para investigar a perturbação na tranquilidade do vale.\",\"actions\":null},{\"name\":\"Borin\",\"action\":null,\"race\":\"Anão da Montanha\",\"class\":\"Guerreiro\",\"equipment\":null,\"backstory\":\"Um exilado em busca de uma relíquia perdida de seu clã, acreditando que ela se encontra nas ruínas.\",\"actions\":null},{\"name\":\"Seraphina\",\"action\":null,\"race\":\"Humana\",\"class\":\"Feiticeira\",\"equipment\":null,\"backstory\":\"Uma estudiosa de magia arcana, atraída pelas lendas de poder oculto neste lugar.\",\"actions\":null}],\"npcs\":null,\"actions\":[{\"action\":\"Ajoelha-se e toca a terra com a palma da mão, sentindo a pulsação do vale e a perturbação sutil que emana das ruínas.\",\"character\":\"Lyra\"},{\"action\":\"Avança cautelosamente em direção às ruínas mais próximas, o machado de batalha firmemente seguro em sua mão, os olhos perscrutando cada sombra.\",\"character\":\"Borin\"},{\"action\":\"Saca um pequeno tomo de sua bolsa, as páginas amareladas cheias de runas antigas, e começa a murmurar um encantamento de detecção enquanto observa as inscrições nas pedras.\",\"character\":\"Seraphina\"}]}],\"players\":[{\"name\":\"Lyra\",\"action\":null,\"race\":\"Elfa da Floresta\",\"class\":\"Druida\",\"equipment\":null,\"backstory\":\"Uma guardiã da floresta ancestral, enviada para investigar a perturbação na tranquilidade do vale.\",\"actions\":[\"Sentiu uma energia estranha emanando da pedra central.\",\"Percebeu que a pedra pulsa com uma luz fraca e intermitente.\"]},{\"name\":\"Borin\",\"action\":null,\"race\":\"Anão da Montanha\",\"class\":\"Guerreiro\",\"equipment\":null,\"backstory\":\"Um exilado em busca de uma relíquia perdida de seu clã, acreditando que ela se encontra nas ruínas.\",\"actions\":[\"Notou que os padrões gravados nas pedras pareciam se mover sutilmente.\",\"Identificou os símbolos como desconhecidos.\"]},{\"name\":\"Seraphina\",\"action\":null,\"race\":\"Humana\",\"class\":\"Feiticeira\",\"equipment\":null,\"backstory\":\"Uma estudiosa de magia arcana, atraída pelas lendas de poder oculto neste lugar.\",\"actions\":[\"Percebeu uma aura residual de magia elementar ao redor da pedra " <> ...
+
+[lib/story_teller/llm/gemini_limiter.ex:81: StoryTeller.Llm.GeminiLimiter.handle_call/3]
+clean_state #=> %{
+  queue: {[], []},
+  tpm: %{1754208560 => 391, 1754208562 => 983, 1754208563 => 1117},
+  rpm: %{1754208560 => 1, 1754208562 => 1, 1754208563 => 1},
+  rpd: %{"2025-08-03" => 3},
+  drain_pending: false
+}
+
+[debug] 📦 Headers recebidos:
+content-type: application/json; charset=UTF-8
+vary: X-Origin
+vary: Referer
+date: Sun, 03 Aug 2025 08:09:26 GMT
+server: scaffolding on HTTPServer2
+x-xss-protection: 0
+x-frame-options: SAMEORIGIN
+x-content-type-options: nosniff
+server-timing: gfet4t7; dur=1185
+alt-svc: h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+accept-ranges: none
+vary: Origin,Accept-Encoding
+transfer-encoding: chunked
+[debug] 📝 Ações geradas: ```json
+{
+  "actions": [
+    {
+      "character": "Lyra",
+      "action": "Aproxima-se da pedra central, estendendo uma mão para tocá-la com cautela, buscando entender a natureza da energia que emana dela."
+    },
+    {
+      "character": "Borin",
+      "action": "Engancha seu machado nas costas e se aproxima da pedra central, com os olhos fixos nos símbolos mutáveis, tentando encontrar alguma familiaridade com a heráldica anã."
+    },
+    {
+      "character": "Seraphina",
+      "action": "Anota suas observações em um pergaminho com uma pena de corvo, murmurando para si mesma sobre a complexidade da magia de ligação e a possível origem elemental do poder da pedra."
+    }
+  ]
+}
+```
+[debug] 🔍 Attempting to extract JSON block...
+[info] ✅ JSON block extracted successfully.
+[lib/story_teller/llm/gemini.ex:15: StoryTeller.Llm.Gemini.chat/3]
+prompt #=> "{\"description\":\"As ações dos aventureiros ecoam suavemente no silêncio do vale. Lyra sente uma corrente de energia estranha emanando de uma grande pedra erguida no centro das ruínas, uma pedra que pulsa com uma luz fraca e intermitente. Borin nota que os padrões gravados nas pedras parecem se mover sutilmente sob a luz do amanhecer, formando símbolos que ele não reconhece imediatamente. Seraphina, ao terminar seu encantamento, percebe uma aura residual de magia elementar ao redor da pedra central, acompanhada por vestígios de uma magia de ligação antiga.\",\"items\":null,\"location\":\"Ruínas Centrais do Vale do Crepúsculo Eterno\",\"story\":[{\"description\":\"O ar crepita com a energia latente de uma magia ancestral. Uma névoa prateada paira sobre um vale enevoado, onde antigas ruínas de pedra, cobertas de musgo, emergem do chão. O sol, ainda baixo no horizonte, lança raios dourados que filtram através das árvores retorcidas, iluminando padrões complexos gravados nas pedras. O silêncio é quebrado apenas pelo murmúrio distante de um rio e pelo canto de pássaros desconhecidos.\",\"items\":null,\"location\":\"Vale do Crepúsculo Eterno\",\"story\":[],\"players\":[{\"name\":\"Lyra\",\"action\":null,\"race\":\"Elfa da Floresta\",\"class\":\"Druida\",\"equipment\":null,\"backstory\":\"Uma guardiã da floresta ancestral, enviada para investigar a perturbação na tranquilidade do vale.\",\"actions\":null},{\"name\":\"Borin\",\"action\":null,\"race\":\"Anão da Montanha\",\"class\":\"Guerreiro\",\"equipment\":null,\"backstory\":\"Um exilado em busca de uma relíquia perdida de seu clã, acreditando que ela se encontra nas ruínas.\",\"actions\":null},{\"name\":\"Seraphina\",\"action\":null,\"race\":\"Humana\",\"class\":\"Feiticeira\",\"equipment\":null,\"backstory\":\"Uma estudiosa de magia arcana, atraída pelas lendas de poder oculto neste lugar.\",\"actions\":null}],\"npcs\":null,\"actions\":[{\"action\":\"Ajoelha-se e toca a terra com a palma da mão, sentindo a pulsação do vale e a perturbação sutil que emana das ruínas.\",\"character\":\"Lyra\"},{\"action\":\"Avança cautelosamente em direção às ruínas mais próximas, o machado de batalha firmemente seguro em sua mão, os olhos perscrutando cada sombra.\",\"character\":\"Borin\"},{\"action\":\"Saca um pequeno tomo de sua bolsa, as páginas amareladas cheias de runas antigas, e começa a murmurar um encantamento de detecção enquanto observa as inscrições nas pedras.\",\"character\":\"Seraphina\"}]}],\"players\":[{\"name\":\"Lyra\",\"action\":null,\"race\":\"Elfa da Floresta\",\"class\":\"Druida\",\"equipment\":null,\"backstory\":\"Uma guardiã da floresta ancestral, enviada para investigar a perturbação na tranquilidade do vale.\",\"actions\":[\"Sentiu uma energia estranha emanando da pedra central.\",\"Percebeu que a pedra pulsa com uma luz fraca e intermitente.\"]},{\"name\":\"Borin\",\"action\":null,\"race\":\"Anão da Montanha\",\"class\":\"Guerreiro\",\"equipment\":null,\"backstory\":\"Um exilado em busca de uma relíquia perdida de seu clã, acreditando que ela se encontra nas ruínas.\",\"actions\":[\"Notou que os padrões gravados nas pedras pareciam se mover sutilmente.\",\"Identificou os símbolos como desconhecidos.\"]},{\"name\":\"Seraphina\",\"action\":null,\"race\":\"Humana\",\"class\":\"Feiticeira\",\"equipment\":null,\"backstory\":\"Uma estudiosa de magia arcana, atraída pelas lendas de poder oculto neste lugar.\",\"actions\":[\"Percebeu uma aura residual de magia elementar ao redor da pedra central.\",\"Identificou vestígios de uma magia de ligação antiga.\"]}],\"npcs\":null,\"actions\":[{\"action\":\"Aproxima-se da pedra central, estendendo uma mão para tocá-la com cautela, buscando entender a natureza da energia que emana dela.\",\"character\":\"Lyra\"},{\"action\":\"Engancha seu machado nas costas e se aproxima da pedra central, com os olhos fixos nos símbolos mutáveis, tentando encontrar alguma familiaridade com a heráldica anã.\",\"character\":\"Borin\"},{\"action\":\"Anota suas observações em um pergaminho com uma pena de corvo, murmurando para si mesma sobre a complexidade da magia de ligação e a possível origem elemental do poder da pedra.\",\"character\":\"Seraphina\"}]}"
+
+[info] ✅ Ações geradas com sucesso para 3 personagem(ns).
+[info] 🎭 Actions taken in scene at Ruínas Centrais do Vale do Crepúsculo Eterno
+[info] ▶️ Turn 3 of 10
+[info] 🔁 Advancing story with new turn.
+[info] ➡️ Generating next scene from current scene at Ruínas Centrais do Vale do Crepúsculo Eterno...
+[lib/story_teller/llm/gemini_limiter.ex:81: StoryTeller.Llm.GeminiLimiter.handle_call/3]
+clean_state #=> %{
+  queue: {[], []},
+  tpm: %{
+    1754208560 => 391,
+    1754208562 => 983,
+    1754208563 => 1117,
+    1754208565 => 2031
+  },
+  rpm: %{1754208560 => 1, 1754208562 => 1, 1754208563 => 1, 1754208565 => 1},
+  rpd: %{"2025-08-03" => 4},
+  drain_pending: false
+}
+
+[debug] 📦 Headers recebidos:
+content-type: application/json; charset=UTF-8
+vary: X-Origin
+vary: Referer
+date: Sun, 03 Aug 2025 08:09:28 GMT
+server: scaffolding on HTTPServer2
+x-xss-protection: 0
+x-frame-options: SAMEORIGIN
+x-content-type-options: nosniff
+server-timing: gfet4t7; dur=1895
+alt-svc: h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+accept-ranges: none
+vary: Origin,Accept-Encoding
+transfer-encoding: chunked
+[debug] 🔍 Attempting to extract JSON block...
+[info] ✅ JSON block extracted successfully.
+[info] ✅ Next scene generated at Ruínas Centrais do Vale do Crepúsculo Eterno
+[info] 🎭 Gerando ações para a cena em Ruínas Centrais do Vale do Crepúsculo Eterno...
+[lib/story_teller/llm/gemini.ex:15: StoryTeller.Llm.Gemini.chat/3]
+prompt #=> "Você é um mestre de RPG. Com base na seguinte cena em JSON, uma string `action` para os personagens que forem agir nessa cena.\n\n✅ O resultado deve ser estritamente neste formato JSON:\n{\n  \"actions\": [\n    {\n      \"character\": \"Nome do personagem\",\n      \"action\": \"Ação que ele toma, como fala ou movimentação.\"\n    }\n  ]\n}\n\n🎯 Use o campo `scene.players`, `scene.npc` ou outro interagível para identificar os sujeitos de ação.\n\n🎯 Se existir um campo `actions`, use o conteúdo de cada `action` associado ao `player` ou `npc` ou `item`.]\n\n🎯 Os `scene.players` ou `scene.npc` não precisam agir necessariamente, tornando a narrativa mais dinâmica e menos massante.\n\n🎯 Quando algum personagem não agir, basta não adicionar em `actions` fazendo cenas mais direcionadas e fáceis de digerir.\n\nCena:\n{\"description\":\"Ao toque de Lyra na pedra central, um arrepio percorre o vale. As runas gravadas brilham com uma intensidade repentina, e a luz intermitente da pedra se intensifica, formando um padrão em espiral. Borin, ao se aproximar, nota que um dos símbolos nas pedras próximas se assemelhava vagamente a um selo de proteção de sua antiga casa, mas corrompido. Seraphina, com o pergaminho em mãos, vê os vestígios de magia de ligação se intensificarem, conectando a pedra central a outros pontos nas ruínas, como se um circuito estivesse se completando.\",\"items\":null,\"location\":\"Ruínas Centrais do Vale do Crepúsculo Eterno\",\"story\":[{\"description\":\"As ações dos aventureiros ecoam suavemente no silêncio do vale. Lyra sente uma corrente de energia estranha emanando de uma grande pedra erguida no centro das ruínas, uma pedra que pulsa com uma luz fraca e intermitente. Borin nota que os padrões gravados nas pedras parecem se mover sutilmente sob a luz do amanhecer, formando símbolos que ele não reconhece imediatamente. Seraphina, ao terminar seu encantamento, percebe uma aura residual de magia elementar ao redor da pedra central, acompanhada por vestígios de uma magia de ligação antiga.\",\"items\":null,\"location\":\"Ruínas Centrais do Vale do Crepúsculo Eterno\",\"story\":[],\"players\":[{\"name\":\"Lyra\",\"action\":null,\"race\":\"Elfa da Floresta\",\"class\":\"Druida\",\"equipment\":null,\"backstory\":\"Uma guardiã da floresta ancestral, enviada para investigar a perturbação na tranquilidade do vale.\",\"actions\":[\"Sentiu uma energia estranha emanando da pedra central.\",\"Percebeu que a pedra pulsa com uma luz fraca e intermitente.\"]},{\"name\":\"Borin\",\"action\":null,\"race\":\"Anão da Montanha\",\"class\":\"Guerreiro\",\"equipment\":null,\"backstory\":\"Um exilado em busca de uma relíquia perdida de seu clã, acreditando que ela se encontra nas ruínas.\",\"actions\":[\"Notou que os padrões gravados nas pedras pareciam se mover sutilmente.\",\"Identificou os símbolos como desconhecidos.\"]},{\"name\":\"Seraphina\",\"action\":null,\"race\":\"Humana\",\"class\":\"Feiticeira\",\"equipment\":null,\"backstory\":\"Uma estudiosa de magia arcana, atraída pelas lendas de poder oculto neste lugar.\",\"actions\":[\"Percebeu uma aura residual de magia elementar ao redor da pedra central.\",\"Identificou vestígios de uma magia de ligação antiga.\"]}],\"npcs\":null,\"actions\":[{\"action\":\"Aproxima-se da pedra central, estendendo uma mão para tocá-la com cautela, buscando entender a natureza da energia que emana dela.\",\"character\":\"Lyra\"},{\"action\":\"Engancha seu machado nas costas e se aproxima da pedra central, com os olhos fixos nos símbolos mutáveis, tentando encontrar alguma familiaridade com a heráldica anã.\",\"character\":\"Borin\"},{\"action\":\"Anota suas observações em um pergaminho com uma pena de corvo, murmurando para si mesma sobre a complexidade da magia de ligação e a possível origem elemental do poder da pedra.\",\"character\":\"Seraphina\"}]},{\"description\":\"O ar crepita com a energia latente de uma magia ancestral. Uma névoa prateada paira sobre um vale enevoado, onde antigas ruínas de pedra, cobertas de musgo, emergem do chão. O sol, ainda baixo no horizonte, lança raios dourados que filtram através das árvores retorcidas, iluminando padrões complexos gravados nas pedras. O silêncio é quebrado apenas pelo murmúrio distante de um rio e pelo" <> ...
+
+[lib/story_teller/llm/gemini_limiter.ex:81: StoryTeller.Llm.GeminiLimiter.handle_call/3]
+clean_state #=> %{
+  queue: {[], []},
+  tpm: %{
+    1754208560 => 391,
+    1754208562 => 983,
+    1754208563 => 1117,
+    1754208565 => 2031,
+    1754208566 => 2182
+  },
+  rpm: %{
+    1754208560 => 1,
+    1754208562 => 1,
+    1754208563 => 1,
+    1754208565 => 1,
+    1754208566 => 1
+  },
+  rpd: %{"2025-08-03" => 5},
+  drain_pending: false
+}
+
+[debug] 📦 Headers recebidos:
+content-type: application/json; charset=UTF-8
+vary: X-Origin
+vary: Referer
+date: Sun, 03 Aug 2025 08:09:30 GMT
+server: scaffolding on HTTPServer2
+x-xss-protection: 0
+x-frame-options: SAMEORIGIN
+x-content-type-options: nosniff
+server-timing: gfet4t7; dur=2117
+alt-svc: h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+accept-ranges: none
+vary: Origin,Accept-Encoding
+transfer-encoding: chunked
+[debug] 📝 Ações geradas: ```json
+{
+  "actions": [
+    {
+      "character": "Lyra",
+      "action": "Afastando a mão da pedra, ela murmura: 'A terra geme sob este poder. Algo antigo foi despertado, ou talvez... corrompido.'"
+    },
+    {
+      "character": "Borin",
+      "action": "Com um grunhido, ele puxa o machado das costas e aponta para um dos símbolos nas pedras. 'Esse selo... ele é uma distorção de algo que conheço. Isso não é obra dos ancestrais que eu conhecia.'"
+    },
+    {
+      "character": "Seraphina",
+      "action": "Ela levanta o olhar do pergaminho para a pedra central, com uma expressão de fascínio e preocupação. 'Esta rede de energia... é como se as próprias ruínas estivessem se tornando um canal. Mas para quê? E quem a ativou?'"
+    }
+  ]
+}
+```
+[debug] 🔍 Attempting to extract JSON block...
+[info] ✅ JSON block extracted successfully.
+[info] ✅ Ações geradas com sucesso para 3 personagem(ns).
+[info] 🎭 Actions taken in scene at Ruínas Centrais do Vale do Crepúsculo Eterno
+[info] ▶️ Turn 4 of 10
+[info] 🔁 Advancing story with new turn.
+[info] ➡️ Generating next scene from current scene at Ruínas Centrais do Vale do Crepúsculo Eterno...
+[lib/story_teller/llm/gemini.ex:15: StoryTeller.Llm.Gemini.chat/3]
+prompt #=> "{\"description\":\"Ao toque de Lyra na pedra central, um arrepio percorre o vale. As runas gravadas brilham com uma intensidade repentina, e a luz intermitente da pedra se intensifica, formando um padrão em espiral. Borin, ao se aproximar, nota que um dos símbolos nas pedras próximas se assemelhava vagamente a um selo de proteção de sua antiga casa, mas corrompido. Seraphina, com o pergaminho em mãos, vê os vestígios de magia de ligação se intensificarem, conectando a pedra central a outros pontos nas ruínas, como se um circuito estivesse se completando.\",\"items\":null,\"location\":\"Ruínas Centrais do Vale do Crepúsculo Eterno\",\"story\":[{\"description\":\"As ações dos aventureiros ecoam suavemente no silêncio do vale. Lyra sente uma corrente de energia estranha emanando de uma grande pedra erguida no centro das ruínas, uma pedra que pulsa com uma luz fraca e intermitente. Borin nota que os padrões gravados nas pedras parecem se mover sutilmente sob a luz do amanhecer, formando símbolos que ele não reconhece imediatamente. Seraphina, ao terminar seu encantamento, percebe uma aura residual de magia elementar ao redor da pedra central, acompanhada por vestígios de uma magia de ligação antiga.\",\"items\":null,\"location\":\"Ruínas Centrais do Vale do Crepúsculo Eterno\",\"story\":[],\"players\":[{\"name\":\"Lyra\",\"action\":null,\"race\":\"Elfa da Floresta\",\"class\":\"Druida\",\"equipment\":null,\"backstory\":\"Uma guardiã da floresta ancestral, enviada para investigar a perturbação na tranquilidade do vale.\",\"actions\":[\"Sentiu uma energia estranha emanando da pedra central.\",\"Percebeu que a pedra pulsa com uma luz fraca e intermitente.\"]},{\"name\":\"Borin\",\"action\":null,\"race\":\"Anão da Montanha\",\"class\":\"Guerreiro\",\"equipment\":null,\"backstory\":\"Um exilado em busca de uma relíquia perdida de seu clã, acreditando que ela se encontra nas ruínas.\",\"actions\":[\"Notou que os padrões gravados nas pedras pareciam se mover sutilmente.\",\"Identificou os símbolos como desconhecidos.\"]},{\"name\":\"Seraphina\",\"action\":null,\"race\":\"Humana\",\"class\":\"Feiticeira\",\"equipment\":null,\"backstory\":\"Uma estudiosa de magia arcana, atraída pelas lendas de poder oculto neste lugar.\",\"actions\":[\"Percebeu uma aura residual de magia elementar ao redor da pedra central.\",\"Identificou vestígios de uma magia de ligação antiga.\"]}],\"npcs\":null,\"actions\":[{\"action\":\"Aproxima-se da pedra central, estendendo uma mão para tocá-la com cautela, buscando entender a natureza da energia que emana dela.\",\"character\":\"Lyra\"},{\"action\":\"Engancha seu machado nas costas e se aproxima da pedra central, com os olhos fixos nos símbolos mutáveis, tentando encontrar alguma familiaridade com a heráldica anã.\",\"character\":\"Borin\"},{\"action\":\"Anota suas observações em um pergaminho com uma pena de corvo, murmurando para si mesma sobre a complexidade da magia de ligação e a possível origem elemental do poder da pedra.\",\"character\":\"Seraphina\"}]},{\"description\":\"O ar crepita com a energia latente de uma magia ancestral. Uma névoa prateada paira sobre um vale enevoado, onde antigas ruínas de pedra, cobertas de musgo, emergem do chão. O sol, ainda baixo no horizonte, lança raios dourados que filtram através das árvores retorcidas, iluminando padrões complexos gravados nas pedras. O silêncio é quebrado apenas pelo murmúrio distante de um rio e pelo canto de pássaros desconhecidos.\",\"items\":null,\"location\":\"Vale do Crepúsculo Eterno\",\"story\":[],\"players\":[{\"name\":\"Lyra\",\"action\":null,\"race\":\"Elfa da Floresta\",\"class\":\"Druida\",\"equipment\":null,\"backstory\":\"Uma guardiã da floresta ancestral, enviada para investigar a perturbação na tranquilidade do vale.\",\"actions\":null},{\"name\":\"Borin\",\"action\":null,\"race\":\"Anão da Montanha\",\"class\":\"Guerreiro\",\"equipment\":null,\"backstory\":\"Um exilado em busca de uma relíquia perdida de seu clã, acreditando que ela se encontra nas ruínas.\",\"actions\":null},{\"name\":\"Seraphina\",\"action\":null,\"race\":\"Humana\",\"class\":\"Feiticeira\",\"equipment\":null,\"backstory\":\"Uma estudiosa de magia arcana, atraída pelas lendas de poder oculto neste lugar.\",\"actions\":null}],\"npcs\":null,\"actions\":[{\"action\":\"Ajoelha" <> ...
+
+[lib/story_teller/llm/gemini_limiter.ex:81: StoryTeller.Llm.GeminiLimiter.handle_call/3]
+clean_state #=> %{
+  queue: {[], []},
+  tpm: %{
+    1754208560 => 391,
+    1754208562 => 983,
+    1754208563 => 1117,
+    1754208565 => 2031,
+    1754208566 => 2182,
+    1754208568 => 3182
+  },
+  rpm: %{
+    1754208560 => 1,
+    1754208562 => 1,
+    1754208563 => 1,
+    1754208565 => 1,
+    1754208566 => 1,
+    1754208568 => 1
+  },
+  rpd: %{"2025-08-03" => 6},
+  drain_pending: false
+}
+
+[debug] 📦 Headers recebidos:
+content-type: application/json; charset=UTF-8
+vary: X-Origin
+vary: Referer
+date: Sun, 03 Aug 2025 08:09:32 GMT
+server: scaffolding on HTTPServer2
+x-xss-protection: 0
+x-frame-options: SAMEORIGIN
+x-content-type-options: nosniff
+server-timing: gfet4t7; dur=2015
+alt-svc: h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+accept-ranges: none
+vary: Origin,Accept-Encoding
+transfer-encoding: chunked
+[debug] 🔍 Attempting to extract JSON block...
+[info] ✅ JSON block extracted successfully.
+[info] ✅ Next scene generated at Ruínas Centrais do Vale do Crepúsculo Eterno
+[info] 🎭 Gerando ações para a cena em Ruínas Centrais do Vale do Crepúsculo Eterno...
+[lib/story_teller/llm/gemini.ex:15: StoryTeller.Llm.Gemini.chat/3]
+prompt #=> "Você é um mestre de RPG. Com base na seguinte cena em JSON, uma string `action` para os personagens que forem agir nessa cena.\n\n✅ O resultado deve ser estritamente neste formato JSON:\n{\n  \"actions\": [\n    {\n      \"character\": \"Nome do personagem\",\n      \"action\": \"Ação que ele toma, como fala ou movimentação.\"\n    }\n  ]\n}\n\n🎯 Use o campo `scene.players`, `scene.npc` ou outro interagível para identificar os sujeitos de ação.\n\n🎯 Se existir um campo `actions`, use o conteúdo de cada `action` associado ao `player` ou `npc` ou `item`.]\n\n🎯 Os `scene.players` ou `scene.npc` não precisam agir necessariamente, tornando a narrativa mais dinâmica e menos massante.\n\n🎯 Quando algum personagem não agir, basta não adicionar em `actions` fazendo cenas mais direcionadas e fáceis de digerir.\n\nCena:\n{\"description\":\"As palavras dos aventureiros pairam no ar, carregadas de especulação e cautela. A pedra central pulsa mais forte, e um baixo zumbido ressoa pelas ruínas, fazendo o chão tremer levemente. Os símbolos nas pedras agora emitem um brilho fraco, formando um padrão interligado que circunda o grupo. De repente, um dos blocos de pedra mais afastados, que antes parecia inerte, se move lentamente, revelando uma abertura escura e sinuosa para o subsolo. Uma rajada de ar frio e com cheiro de terra úmida emana da fenda.\",\"items\":null,\"location\":\"Ruínas Centrais do Vale do Crepúsculo Eterno\",\"story\":[{\"description\":\"Ao toque de Lyra na pedra central, um arrepio percorre o vale. As runas gravadas brilham com uma intensidade repentina, e a luz intermitente da pedra se intensifica, formando um padrão em espiral. Borin, ao se aproximar, nota que um dos símbolos nas pedras próximas se assemelhava vagamente a um selo de proteção de sua antiga casa, mas corrompido. Seraphina, com o pergaminho em mãos, vê os vestígios de magia de ligação se intensificarem, conectando a pedra central a outros pontos nas ruínas, como se um circuito estivesse se completando.\",\"items\":null,\"location\":\"Ruínas Centrais do Vale do Crepúsculo Eterno\",\"story\":[],\"players\":[{\"name\":\"Lyra\",\"action\":null,\"race\":\"Elfa da Floresta\",\"class\":\"Druida\",\"equipment\":null,\"backstory\":\"Uma guardiã da floresta ancestral, enviada para investigar a perturbação na tranquilidade do vale.\",\"actions\":[\"Tocando a pedra central, sentiu um arrepio percorrer o vale.\",\"Observou as runas gravadas brilharem intensamente e o padrão em espiral se formar na luz da pedra.\"]},{\"name\":\"Borin\",\"action\":null,\"race\":\"Anão da Montanha\",\"class\":\"Guerreiro\",\"equipment\":null,\"backstory\":\"Um exilado em busca de uma relíquia perdida de seu clã, acreditando que ela se encontra nas ruínas.\",\"actions\":[\"Notou que um dos símbolos nas pedras próximas se assemelhava a um selo de proteção anão, mas corrompido.\"]},{\"name\":\"Seraphina\",\"action\":null,\"race\":\"Humana\",\"class\":\"Feiticeira\",\"equipment\":null,\"backstory\":\"Uma estudiosa de magia arcana, atraída pelas lendas de poder oculto neste lugar.\",\"actions\":[\"Observou os vestígios de magia de ligação se intensificarem, conectando a pedra central a outros pontos nas ruínas.\",\"Percebeu que um circuito mágico parecia estar se completando.\"]}],\"npcs\":null,\"actions\":[{\"action\":\"Afastando a mão da pedra, ela murmura: 'A terra geme sob este poder. Algo antigo foi despertado, ou talvez... corrompido.'\",\"character\":\"Lyra\"},{\"action\":\"Com um grunhido, ele puxa o machado das costas e aponta para um dos símbolos nas pedras. 'Esse selo... ele é uma distorção de algo que conheço. Isso não é obra dos ancestrais que eu conhecia.'\",\"character\":\"Borin\"},{\"action\":\"Ela levanta o olhar do pergaminho para a pedra central, com uma expressão de fascínio e preocupação. 'Esta rede de energia... é como se as próprias ruínas estivessem se tornando um canal. Mas para quê? E quem a ativou?'\",\"character\":\"Seraphina\"}]},{\"description\":\"As ações dos aventureiros ecoam suavemente no silêncio do vale. Lyra sente uma corrente de energia estranha emanando de uma grande pedra erguida no centro das ruínas, uma pedra que pulsa com uma luz fraca e intermitente. Borin nota que os padrões gravados nas pedras parecem se mo" <> ...
+
+[lib/story_teller/llm/gemini_limiter.ex:81: StoryTeller.Llm.GeminiLimiter.handle_call/3]
+clean_state #=> %{
+  queue: {[], []},
+  tpm: %{
+    1754208560 => 391,
+    1754208562 => 983,
+    1754208563 => 1117,
+    1754208565 => 2031,
+    1754208566 => 2182,
+    1754208568 => 3182,
+    1754208570 => 3406
+  },
+  rpm: %{
+    1754208560 => 1,
+    1754208562 => 1,
+    1754208563 => 1,
+    1754208565 => 1,
+    1754208566 => 1,
+    1754208568 => 1,
+    1754208570 => 1
+  },
+  rpd: %{"2025-08-03" => 7},
+  drain_pending: false
+}
+
+[debug] 📦 Headers recebidos:
+content-type: application/json; charset=UTF-8
+vary: X-Origin
+vary: Referer
+date: Sun, 03 Aug 2025 08:09:34 GMT
+server: scaffolding on HTTPServer2
+x-xss-protection: 0
+x-frame-options: SAMEORIGIN
+x-content-type-options: nosniff
+server-timing: gfet4t7; dur=1761
+alt-svc: h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+accept-ranges: none
+vary: Origin,Accept-Encoding
+transfer-encoding: chunked
+[debug] 📝 Ações geradas: ```json
+{
+  "actions": [
+    {
+      "character": "Lyra",
+      "action": "Aproxima-se com cautela da abertura recém-revelada, seus olhos élficos perscrutando a escuridão, e murmura: 'Um caminho para o interior... a terra fala de segredos enterrados.' Ela se ajoelha para examinar a terra recém-descoberta, procurando por raízes ou marcas que possam indicar a natureza do local."
+    },
+    {
+      "character": "Borin",
+      "action": "Puxa seu machado novamente, posicionando-se entre Lyra e a entrada. 'Cuidado, elfa. Isso cheira a armadilha ou a algo que prefere a escuridão.' Ele lança um olhar desconfiado para a pedra central, como se esperasse que ela se voltasse contra eles."
+    },
+    {
+      "character": "Seraphina",
+      "action": "Avança para mais perto da abertura, estendendo a mão aberta em direção ao fluxo de ar frio. 'A energia que emana daqui é antiga e possivelmente instável. Se este for um canal, devemos ter certeza de que não nos sugam para o esquecimento.' Ela começa a procurar em sua bolsa por componentes que possam lançar uma luz mais forte ou um escudo mágico."
+    }
+  ]
+}
+```
+[debug] 🔍 Attempting to extract JSON block...
+[info] ✅ JSON block extracted successfully.
+[info] ✅ Ações geradas com sucesso para 3 personagem(ns).
+[info] 🎭 Actions taken in scene at Ruínas Centrais do Vale do Crepúsculo Eterno
+[info] ▶️ Turn 5 of 10
+[info] 🔁 Advancing story with new turn.
+[info] ➡️ Generating next scene from current scene at Ruínas Centrais do Vale do Crepúsculo Eterno...
+[lib/story_teller/llm/gemini.ex:15: StoryTeller.Llm.Gemini.chat/3]
+prompt #=> "{\"description\":\"As palavras dos aventureiros pairam no ar, carregadas de especulação e cautela. A pedra central pulsa mais forte, e um baixo zumbido ressoa pelas ruínas, fazendo o chão tremer levemente. Os símbolos nas pedras agora emitem um brilho fraco, formando um padrão interligado que circunda o grupo. De repente, um dos blocos de pedra mais afastados, que antes parecia inerte, se move lentamente, revelando uma abertura escura e sinuosa para o subsolo. Uma rajada de ar frio e com cheiro de terra úmida emana da fenda.\",\"items\":null,\"location\":\"Ruínas Centrais do Vale do Crepúsculo Eterno\",\"story\":[{\"description\":\"Ao toque de Lyra na pedra central, um arrepio percorre o vale. As runas gravadas brilham com uma intensidade repentina, e a luz intermitente da pedra se intensifica, formando um padrão em espiral. Borin, ao se aproximar, nota que um dos símbolos nas pedras próximas se assemelhava vagamente a um selo de proteção de sua antiga casa, mas corrompido. Seraphina, com o pergaminho em mãos, vê os vestígios de magia de ligação se intensificarem, conectando a pedra central a outros pontos nas ruínas, como se um circuito estivesse se completando.\",\"items\":null,\"location\":\"Ruínas Centrais do Vale do Crepúsculo Eterno\",\"story\":[],\"players\":[{\"name\":\"Lyra\",\"action\":null,\"race\":\"Elfa da Floresta\",\"class\":\"Druida\",\"equipment\":null,\"backstory\":\"Uma guardiã da floresta ancestral, enviada para investigar a perturbação na tranquilidade do vale.\",\"actions\":[\"Tocando a pedra central, sentiu um arrepio percorrer o vale.\",\"Observou as runas gravadas brilharem intensamente e o padrão em espiral se formar na luz da pedra.\"]},{\"name\":\"Borin\",\"action\":null,\"race\":\"Anão da Montanha\",\"class\":\"Guerreiro\",\"equipment\":null,\"backstory\":\"Um exilado em busca de uma relíquia perdida de seu clã, acreditando que ela se encontra nas ruínas.\",\"actions\":[\"Notou que um dos símbolos nas pedras próximas se assemelhava a um selo de proteção anão, mas corrompido.\"]},{\"name\":\"Seraphina\",\"action\":null,\"race\":\"Humana\",\"class\":\"Feiticeira\",\"equipment\":null,\"backstory\":\"Uma estudiosa de magia arcana, atraída pelas lendas de poder oculto neste lugar.\",\"actions\":[\"Observou os vestígios de magia de ligação se intensificarem, conectando a pedra central a outros pontos nas ruínas.\",\"Percebeu que um circuito mágico parecia estar se completando.\"]}],\"npcs\":null,\"actions\":[{\"action\":\"Afastando a mão da pedra, ela murmura: 'A terra geme sob este poder. Algo antigo foi despertado, ou talvez... corrompido.'\",\"character\":\"Lyra\"},{\"action\":\"Com um grunhido, ele puxa o machado das costas e aponta para um dos símbolos nas pedras. 'Esse selo... ele é uma distorção de algo que conheço. Isso não é obra dos ancestrais que eu conhecia.'\",\"character\":\"Borin\"},{\"action\":\"Ela levanta o olhar do pergaminho para a pedra central, com uma expressão de fascínio e preocupação. 'Esta rede de energia... é como se as próprias ruínas estivessem se tornando um canal. Mas para quê? E quem a ativou?'\",\"character\":\"Seraphina\"}]},{\"description\":\"As ações dos aventureiros ecoam suavemente no silêncio do vale. Lyra sente uma corrente de energia estranha emanando de uma grande pedra erguida no centro das ruínas, uma pedra que pulsa com uma luz fraca e intermitente. Borin nota que os padrões gravados nas pedras parecem se mover sutilmente sob a luz do amanhecer, formando símbolos que ele não reconhece imediatamente. Seraphina, ao terminar seu encantamento, percebe uma aura residual de magia elementar ao redor da pedra central, acompanhada por vestígios de uma magia de ligação antiga.\",\"items\":null,\"location\":\"Ruínas Centrais do Vale do Crepúsculo Eterno\",\"story\":[],\"players\":[{\"name\":\"Lyra\",\"action\":null,\"race\":\"Elfa da Floresta\",\"class\":\"Druida\",\"equipment\":null,\"backstory\":\"Uma guardiã da floresta ancestral, enviada para investigar a perturbação na tranquilidade do vale.\",\"actions\":[\"Sentiu uma energia estranha emanando da pedra central.\",\"Percebeu que a pedra pulsa com uma luz fraca e intermitente.\"]},{\"name\":\"Borin\",\"action\":null,\"race\":\"Anão da Montanha\",\"class\":\"Guerreiro\",\"equipment\":null,\"bac" <> ...
+
+[lib/story_teller/llm/gemini_limiter.ex:81: StoryTeller.Llm.GeminiLimiter.handle_call/3]
+clean_state #=> %{
+  queue: {[], []},
+  tpm: %{
+    1754208560 => 391,
+    1754208562 => 983,
+    1754208563 => 1117,
+    1754208565 => 2031,
+    1754208566 => 2182,
+    1754208568 => 3182,
+    1754208570 => 3406,
+    1754208572 => 3590
+  },
+  rpm: %{
+    1754208560 => 1,
+    1754208562 => 1,
+    1754208563 => 1,
+    1754208565 => 1,
+    1754208566 => 1,
+    1754208568 => 1,
+    1754208570 => 1,
+    1754208572 => 1
+  },
+  rpd: %{"2025-08-03" => 8},
+  drain_pending: false
+}
+
+[debug] 📦 Headers recebidos:
+content-type: application/json; charset=UTF-8
+vary: X-Origin
+vary: Referer
+date: Sun, 03 Aug 2025 08:09:37 GMT
+server: scaffolding on HTTPServer2
+x-xss-protection: 0
+x-frame-options: SAMEORIGIN
+x-content-type-options: nosniff
+server-timing: gfet4t7; dur=2664
+alt-svc: h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+accept-ranges: none
+vary: Origin,Accept-Encoding
+transfer-encoding: chunked
+[debug] 🔍 Attempting to extract JSON block...
+[info] ✅ JSON block extracted successfully.
+[info] ✅ Next scene generated at Ruínas Centrais do Vale do Crepúsculo Eterno
+[info] 🎭 Gerando ações para a cena em Ruínas Centrais do Vale do Crepúsculo Eterno...
+[lib/story_teller/llm/gemini.ex:15: StoryTeller.Llm.Gemini.chat/3]
+prompt #=> "Você é um mestre de RPG. Com base na seguinte cena em JSON, uma string `action` para os personagens que forem agir nessa cena.\n\n✅ O resultado deve ser estritamente neste formato JSON:\n{\n  \"actions\": [\n    {\n      \"character\": \"Nome do personagem\",\n      \"action\": \"Ação que ele toma, como fala ou movimentação.\"\n    }\n  ]\n}\n\n🎯 Use o campo `scene.players`, `scene.npc` ou outro interagível para identificar os sujeitos de ação.\n\n🎯 Se existir um campo `actions`, use o conteúdo de cada `action` associado ao `player` ou `npc` ou `item`.]\n\n🎯 Os `scene.players` ou `scene.npc` não precisam agir necessariamente, tornando a narrativa mais dinâmica e menos massante.\n\n🎯 Quando algum personagem não agir, basta não adicionar em `actions` fazendo cenas mais direcionadas e fáceis de digerir.\n\nCena:\n{\"description\":\"O chão sob os pés dos aventureiros treme novamente quando a abertura para o subsolo se alarga ligeiramente. O zumbido da pedra central aumenta em tom, e as runas agora emitem um brilho azulado intenso. Lyra, ao se aproximar da entrada, sente uma forte conexão com a terra emanação da passagem, como se as próprias raízes do mundo se estendessem para lá. Borin, com o machado em punho, nota que o símbolo corrompido em uma das pedras próximas começou a emitir um leve vapor escuro. Seraphina, reunindo seus componentes, sente que a magia que conecta as ruínas se concentra cada vez mais naquela abertura, como um vórtice se formando.\",\"items\":null,\"location\":\"Ruínas Centrais do Vale do Crepúsculo Eterno\",\"story\":[{\"description\":\"As palavras dos aventureiros pairam no ar, carregadas de especulação e cautela. A pedra central pulsa mais forte, e um baixo zumbido ressoa pelas ruínas, fazendo o chão tremer levemente. Os símbolos nas pedras agora emitem um brilho fraco, formando um padrão interligado que circunda o grupo. De repente, um dos blocos de pedra mais afastados, que antes parecia inerte, se move lentamente, revelando uma abertura escura e sinuosa para o subsolo. Uma rajada de ar frio e com cheiro de terra úmida emana da fenda.\",\"items\":null,\"location\":\"Ruínas Centrais do Vale do Crepúsculo Eterno\",\"story\":[],\"players\":[{\"name\":\"Lyra\",\"action\":null,\"race\":\"Elfa da Floresta\",\"class\":\"Druida\",\"equipment\":null,\"backstory\":\"Uma guardiã da floresta ancestral, enviada para investigar a perturbação na tranquilidade do vale.\",\"actions\":[\"Murmurou sobre a terra gemendo sob o poder e algo antigo ter sido despertado ou corrompido.\"]},{\"name\":\"Borin\",\"action\":null,\"race\":\"Anão da Montanha\",\"class\":\"Guerreiro\",\"equipment\":null,\"backstory\":\"Um exilado em busca de uma relíquia perdida de seu clã, acreditando que ela se encontra nas ruínas.\",\"actions\":[\"Apontou para um dos símbolos, identificando-o como uma distorção de um selo anão conhecido.\",\"Declarou que a obra não era dos ancestrais que ele conhecia.\"]},{\"name\":\"Seraphina\",\"action\":null,\"race\":\"Humana\",\"class\":\"Feiticeira\",\"equipment\":null,\"backstory\":\"Uma estudiosa de magia arcana, atraída pelas lendas de poder oculto neste lugar.\",\"actions\":[\"Levantou o olhar do pergaminho, expressando fascínio e preocupação.\",\"Questionou a finalidade da rede de energia e quem a havia ativado.\"]}],\"npcs\":null,\"actions\":[{\"action\":\"Aproxima-se com cautela da abertura recém-revelada, seus olhos élficos perscrutando a escuridão, e murmura: 'Um caminho para o interior... a terra fala de segredos enterrados.' Ela se ajoelha para examinar a terra recém-descoberta, procurando por raízes ou marcas que possam indicar a natureza do local.\",\"character\":\"Lyra\"},{\"action\":\"Puxa seu machado novamente, posicionando-se entre Lyra e a entrada. 'Cuidado, elfa. Isso cheira a armadilha ou a algo que prefere a escuridão.' Ele lança um olhar desconfiado para a pedra central, como se esperasse que ela se voltasse contra eles.\",\"character\":\"Borin\"},{\"action\":\"Avança para mais perto da abertura, estendendo a mão aberta em direção ao fluxo de ar frio. 'A energia que emana daqui é antiga e possivelmente instável. Se este for um canal, devemos ter certeza de que não nos sugam para o esquecimento.' Ela começa a procurar em sua bolsa por co" <> ...
+
+[lib/story_teller/llm/gemini_limiter.ex:81: StoryTeller.Llm.GeminiLimiter.handle_call/3]
+clean_state #=> %{
+  queue: {[], []},
+  tpm: %{
+    1754208560 => 391,
+    1754208562 => 983,
+    1754208563 => 1117,
+    1754208565 => 2031,
+    1754208566 => 2182,
+    1754208568 => 3182,
+    1754208570 => 3406,
+    1754208572 => 3590,
+    1754208574 => 4035
+  },
+  rpm: %{
+    1754208560 => 1,
+    1754208562 => 1,
+    1754208563 => 1,
+    1754208565 => 1,
+    1754208566 => 1,
+    1754208568 => 1,
+    1754208570 => 1,
+    1754208572 => 1,
+    1754208574 => 1
+  },
+  rpd: %{"2025-08-03" => 9},
+  drain_pending: false
+}
+
+[debug] 📦 Headers recebidos:
+content-type: application/json; charset=UTF-8
+vary: X-Origin
+vary: Referer
+date: Sun, 03 Aug 2025 08:09:39 GMT
+server: scaffolding on HTTPServer2
+x-xss-protection: 0
+x-frame-options: SAMEORIGIN
+x-content-type-options: nosniff
+server-timing: gfet4t7; dur=2068
+alt-svc: h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+accept-ranges: none
+vary: Origin,Accept-Encoding
+transfer-encoding: chunked
+[debug] 📝 Ações geradas: ```json
+{
+  "actions": [
+    {
+      "character": "Lyra",
+      "action": "Com uma expressão de comunhão com a terra, ela sussurra: 'As raízes se estendem para a escuridão. O que reside lá embaixo é antigo, e a própria vida deste lugar está ligada a isso. Precisamos ter cuidado para não perturbar um sono profundo.'"
+    },
+    {
+      "character": "Borin",
+      "action": "Ele grunhe, sua voz grave ecoando na quietude: 'Um sono perturbado pode acordar com fome. Se é uma tumba ou um ninho, não gosto do cheiro. Melhor estar preparado para o pior que pode rastejar para fora dessa rachadura.'"
+    },
+    {
+      "character": "Seraphina",
+      "action": "Com os componentes em mãos, ela começa a entoar um encantamento, enquanto um pequeno orbe de luz flutuante se materializa em sua palma: 'Que esta luz nos guie e exponha o que se esconde na sombra. Se este for um portal, que saibamos para onde nos leva antes de darmos o próximo passo.'"
+    }
+  ]
+}
+```
+[debug] 🔍 Attempting to extract JSON block...
+[info] ✅ JSON block extracted successfully.
+[info] ✅ Ações geradas com sucesso para 3 personagem(ns).
+[info] 🎭 Actions taken in scene at Ruínas Centrais do Vale do Crepúsculo Eterno
+[info] ▶️ Turn 6 of 10
+[info] 🔁 Advancing story with new turn.
+[info] ➡️ Generating next scene from current scene at Ruínas Centrais do Vale do Crepúsculo Eterno...
+[lib/story_teller/llm/gemini.ex:15: StoryTeller.Llm.Gemini.chat/3]
+prompt #=> "{\"description\":\"O chão sob os pés dos aventureiros treme novamente quando a abertura para o subsolo se alarga ligeiramente. O zumbido da pedra central aumenta em tom, e as runas agora emitem um brilho azulado intenso. Lyra, ao se aproximar da entrada, sente uma forte conexão com a terra emanação da passagem, como se as próprias raízes do mundo se estendessem para lá. Borin, com o machado em punho, nota que o símbolo corrompido em uma das pedras próximas começou a emitir um leve vapor escuro. Seraphina, reunindo seus componentes, sente que a magia que conecta as ruínas se concentra cada vez mais naquela abertura, como um vórtice se formando.\",\"items\":null,\"location\":\"Ruínas Centrais do Vale do Crepúsculo Eterno\",\"story\":[{\"description\":\"As palavras dos aventureiros pairam no ar, carregadas de especulação e cautela. A pedra central pulsa mais forte, e um baixo zumbido ressoa pelas ruínas, fazendo o chão tremer levemente. Os símbolos nas pedras agora emitem um brilho fraco, formando um padrão interligado que circunda o grupo. De repente, um dos blocos de pedra mais afastados, que antes parecia inerte, se move lentamente, revelando uma abertura escura e sinuosa para o subsolo. Uma rajada de ar frio e com cheiro de terra úmida emana da fenda.\",\"items\":null,\"location\":\"Ruínas Centrais do Vale do Crepúsculo Eterno\",\"story\":[],\"players\":[{\"name\":\"Lyra\",\"action\":null,\"race\":\"Elfa da Floresta\",\"class\":\"Druida\",\"equipment\":null,\"backstory\":\"Uma guardiã da floresta ancestral, enviada para investigar a perturbação na tranquilidade do vale.\",\"actions\":[\"Murmurou sobre a terra gemendo sob o poder e algo antigo ter sido despertado ou corrompido.\"]},{\"name\":\"Borin\",\"action\":null,\"race\":\"Anão da Montanha\",\"class\":\"Guerreiro\",\"equipment\":null,\"backstory\":\"Um exilado em busca de uma relíquia perdida de seu clã, acreditando que ela se encontra nas ruínas.\",\"actions\":[\"Apontou para um dos símbolos, identificando-o como uma distorção de um selo anão conhecido.\",\"Declarou que a obra não era dos ancestrais que ele conhecia.\"]},{\"name\":\"Seraphina\",\"action\":null,\"race\":\"Humana\",\"class\":\"Feiticeira\",\"equipment\":null,\"backstory\":\"Uma estudiosa de magia arcana, atraída pelas lendas de poder oculto neste lugar.\",\"actions\":[\"Levantou o olhar do pergaminho, expressando fascínio e preocupação.\",\"Questionou a finalidade da rede de energia e quem a havia ativado.\"]}],\"npcs\":null,\"actions\":[{\"action\":\"Aproxima-se com cautela da abertura recém-revelada, seus olhos élficos perscrutando a escuridão, e murmura: 'Um caminho para o interior... a terra fala de segredos enterrados.' Ela se ajoelha para examinar a terra recém-descoberta, procurando por raízes ou marcas que possam indicar a natureza do local.\",\"character\":\"Lyra\"},{\"action\":\"Puxa seu machado novamente, posicionando-se entre Lyra e a entrada. 'Cuidado, elfa. Isso cheira a armadilha ou a algo que prefere a escuridão.' Ele lança um olhar desconfiado para a pedra central, como se esperasse que ela se voltasse contra eles.\",\"character\":\"Borin\"},{\"action\":\"Avança para mais perto da abertura, estendendo a mão aberta em direção ao fluxo de ar frio. 'A energia que emana daqui é antiga e possivelmente instável. Se este for um canal, devemos ter certeza de que não nos sugam para o esquecimento.' Ela começa a procurar em sua bolsa por componentes que possam lançar uma luz mais forte ou um escudo mágico.\",\"character\":\"Seraphina\"}]},{\"description\":\"Ao toque de Lyra na pedra central, um arrepio percorre o vale. As runas gravadas brilham com uma intensidade repentina, e a luz intermitente da pedra se intensifica, formando um padrão em espiral. Borin, ao se aproximar, nota que um dos símbolos nas pedras próximas se assemelhava vagamente a um selo de proteção de sua antiga casa, mas corrompido. Seraphina, com o pergaminho em mãos, vê os vestígios de magia de ligação se intensificarem, conectando a pedra central a outros pontos nas ruínas, como se um circuito estivesse se completando.\",\"items\":null,\"location\":\"Ruínas Centrais do Vale do Crepúsculo Eterno\",\"story\":[],\"players\":[{\"name\":\"Lyra\",\"action\":null,\"race\":\"Elfa d" <> ...
+
+[lib/story_teller/llm/gemini_limiter.ex:81: StoryTeller.Llm.GeminiLimiter.handle_call/3]
+clean_state #=> %{
+  queue: {[], []},
+  tpm: %{
+    1754208560 => 391,
+    1754208562 => 983,
+    1754208563 => 1117,
+    1754208565 => 2031,
+    1754208566 => 2182,
+    1754208568 => 3182,
+    1754208570 => 3406,
+    1754208572 => 3590,
+    1754208574 => 4035,
+    1754208577 => 4100
+  },
+  rpm: %{
+    1754208560 => 1,
+    1754208562 => 1,
+    1754208563 => 1,
+    1754208565 => 1,
+    1754208566 => 1,
+    1754208568 => 1,
+    1754208570 => 1,
+    1754208572 => 1,
+    1754208574 => 1,
+    1754208577 => 1
+  },
+  rpd: %{"2025-08-03" => 10},
+  drain_pending: false
+}
+
+[debug] 📦 Headers recebidos:
+content-type: application/json; charset=UTF-8
+vary: X-Origin
+vary: Referer
+date: Sun, 03 Aug 2025 08:09:41 GMT
+server: scaffolding on HTTPServer2
+x-xss-protection: 0
+x-frame-options: SAMEORIGIN
+x-content-type-options: nosniff
+server-timing: gfet4t7; dur=2239
+alt-svc: h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+accept-ranges: none
+vary: Origin,Accept-Encoding
+transfer-encoding: chunked
+[debug] 🔍 Attempting to extract JSON block...
+[info] ✅ JSON block extracted successfully.
+[info] ✅ Next scene generated at Entrada da Escadaria Subterrânea nas Ruínas Centrais
+[info] 🎭 Gerando ações para a cena em Entrada da Escadaria Subterrânea nas Ruínas Centrais...
+[lib/story_teller/llm/gemini.ex:15: StoryTeller.Llm.Gemini.chat/3]
+prompt #=> "Você é um mestre de RPG. Com base na seguinte cena em JSON, uma string `action` para os personagens que forem agir nessa cena.\n\n✅ O resultado deve ser estritamente neste formato JSON:\n{\n  \"actions\": [\n    {\n      \"character\": \"Nome do personagem\",\n      \"action\": \"Ação que ele toma, como fala ou movimentação.\"\n    }\n  ]\n}\n\n🎯 Use o campo `scene.players`, `scene.npc` ou outro interagível para identificar os sujeitos de ação.\n\n🎯 Se existir um campo `actions`, use o conteúdo de cada `action` associado ao `player` ou `npc` ou `item`.]\n\n🎯 Os `scene.players` ou `scene.npc` não precisam agir necessariamente, tornando a narrativa mais dinâmica e menos massante.\n\n🎯 Quando algum personagem não agir, basta não adicionar em `actions` fazendo cenas mais direcionadas e fáceis de digerir.\n\nCena:\n{\"description\":\"O orbe de luz criado por Seraphina ilumina a entrada para o subsolo, revelando uma escadaria descendente feita de pedras escuras e polidas, que parece mergulhar em um abismo de trevas. O ar que emana de lá agora traz consigo um leve aroma de ozônio e metal frio. Os símbolos nas pedras ao redor brilham com mais intensidade, e Lyra sente a terra pulsar com uma energia que parece vibrar em sincronia com o zumbido da pedra central. Borin nota que o vapor escuro que emana da pedra com o símbolo corrompido agora forma pequenas figuras fantasmagóricas que se dissipam no ar.\",\"items\":null,\"location\":\"Entrada da Escadaria Subterrânea nas Ruínas Centrais\",\"story\":[{\"description\":\"O chão sob os pés dos aventureiros treme novamente quando a abertura para o subsolo se alarga ligeiramente. O zumbido da pedra central aumenta em tom, e as runas agora emitem um brilho azulado intenso. Lyra, ao se aproximar da entrada, sente uma forte conexão com a terra emanação da passagem, como se as próprias raízes do mundo se estendessem para lá. Borin, com o machado em punho, nota que o símbolo corrompido em uma das pedras próximas começou a emitir um leve vapor escuro. Seraphina, reunindo seus componentes, sente que a magia que conecta as ruínas se concentra cada vez mais naquela abertura, como um vórtice se formando.\",\"items\":null,\"location\":\"Ruínas Centrais do Vale do Crepúsculo Eterno\",\"story\":[],\"players\":[{\"name\":\"Lyra\",\"action\":null,\"race\":\"Elfa da Floresta\",\"class\":\"Druida\",\"equipment\":null,\"backstory\":\"Uma guardiã da floresta ancestral, enviada para investigar a perturbação na tranquilidade do vale.\",\"actions\":[\"Aproximou-se com cautela da abertura, perscrutando a escuridão.\",\"Murmurou sobre caminhos para o interior e segredos enterrados.\",\"Ajoelhou-se para examinar a terra recém-descoberta.\"]},{\"name\":\"Borin\",\"action\":null,\"race\":\"Anão da Montanha\",\"class\":\"Guerreiro\",\"equipment\":null,\"backstory\":\"Um exilado em busca de uma relíquia perdida de seu clã, acreditando que ela se encontra nas ruínas.\",\"actions\":[\"Puxou seu machado, posicionando-se entre Lyra e a entrada.\",\"Lançou um olhar desconfiado para a pedra central.\",\"Notou que o símbolo corrompido em uma das pedras próximas começou a emitir um leve vapor escuro.\"]},{\"name\":\"Seraphina\",\"action\":null,\"race\":\"Humana\",\"class\":\"Feiticeira\",\"equipment\":null,\"backstory\":\"Uma estudiosa de magia arcana, atraída pelas lendas de poder oculto neste lugar.\",\"actions\":[\"Avançou para mais perto da abertura.\",\"Estendeu a mão aberta em direção ao fluxo de ar frio.\",\"Sentiu que a magia que conecta as ruínas se concentrava naquela abertura, formando um vórtice.\"]}],\"npcs\":null,\"actions\":[{\"action\":\"Com uma expressão de comunhão com a terra, ela sussurra: 'As raízes se estendem para a escuridão. O que reside lá embaixo é antigo, e a própria vida deste lugar está ligada a isso. Precisamos ter cuidado para não perturbar um sono profundo.'\",\"character\":\"Lyra\"},{\"action\":\"Ele grunhe, sua voz grave ecoando na quietude: 'Um sono perturbado pode acordar com fome. Se é uma tumba ou um ninho, não gosto do cheiro. Melhor estar preparado para o pior que pode rastejar para fora dessa rachadura.'\",\"character\":\"Borin\"},{\"action\":\"Com os componentes em mãos, ela começa a entoar um encantamento, enquanto um pequeno orbe de luz flut" <> ...
+
+[lib/story_teller/llm/gemini_limiter.ex:81: StoryTeller.Llm.GeminiLimiter.handle_call/3]
+clean_state #=> %{
+  queue: {[], []},
+  tpm: %{
+    1754208560 => 391,
+    1754208562 => 983,
+    1754208563 => 1117,
+    1754208565 => 2031,
+    1754208566 => 2182,
+    1754208568 => 3182,
+    1754208570 => 3406,
+    1754208572 => 3590,
+    1754208574 => 4035,
+    1754208577 => 4100,
+    1754208579 => 4488
+  },
+  rpm: %{
+    1754208560 => 1,
+    1754208562 => 1,
+    1754208563 => 1,
+    1754208565 => 1,
+    1754208566 => 1,
+    1754208568 => 1,
+    1754208570 => 1,
+    1754208572 => 1,
+    1754208574 => 1,
+    1754208577 => 1,
+    1754208579 => 1
+  },
+  rpd: %{"2025-08-03" => 11},
+  drain_pending: false
+}
+
+[debug] 📦 Headers recebidos:
+content-type: application/json; charset=UTF-8
+vary: X-Origin
+vary: Referer
+date: Sun, 03 Aug 2025 08:09:43 GMT
+server: scaffolding on HTTPServer2
+x-xss-protection: 0
+x-frame-options: SAMEORIGIN
+x-content-type-options: nosniff
+server-timing: gfet4t7; dur=1744
+alt-svc: h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+accept-ranges: none
+vary: Origin,Accept-Encoding
+transfer-encoding: chunked
+[debug] 📝 Ações geradas: ```json
+{
+  "actions": [
+    {
+      "character": "Lyra",
+      "action": "Com o orbe de luz pairando à sua frente, ela se inclina para a entrada da escadaria, os olhos fechados por um instante. 'A terra sussurra uma canção antiga e melancólica. Sinto uma energia de contenção, mas também de um poder adormecido que anseia por ser libertado.'"
+    },
+    {
+      "character": "Borin",
+      "action": "Ele bate com o punho cerrado na palma da outra mão. 'Contenção? Parece mais com uma gaiola enferrujada. Não gosto disso. Se vamos descer, que seja com cautela e todos os sentidos alertas. Qual é o plano, feiticeira?'"
+    },
+    {
+      "character": "Seraphina",
+      "action": "Ela ajusta o orbe de luz para que ele ilumine a parte mais funda da escadaria, e então se vira para os companheiros. 'O plano, por enquanto, é avançar com cautela. Precisamos descobrir a natureza deste lugar e, quem sabe, a origem da perturbação que sentimos. Estou preparando um feitiço de detecção de perigo mais potente, caso precisemos dele.'"
+    }
+  ]
+}
+```
+[debug] 🔍 Attempting to extract JSON block...
+[info] ✅ JSON block extracted successfully.
+[info] ✅ Ações geradas com sucesso para 3 personagem(ns).
+[info] 🎭 Actions taken in scene at Entrada da Escadaria Subterrânea nas Ruínas Centrais
+[info] ▶️ Turn 7 of 10
+[info] 🔁 Advancing story with new turn.
+[info] ➡️ Generating next scene from current scene at Entrada da Escadaria Subterrânea nas Ruínas Centrais...
+[lib/story_teller/llm/gemini.ex:15: StoryTeller.Llm.Gemini.chat/3]
+prompt #=> "{\"description\":\"O orbe de luz criado por Seraphina ilumina a entrada para o subsolo, revelando uma escadaria descendente feita de pedras escuras e polidas, que parece mergulhar em um abismo de trevas. O ar que emana de lá agora traz consigo um leve aroma de ozônio e metal frio. Os símbolos nas pedras ao redor brilham com mais intensidade, e Lyra sente a terra pulsar com uma energia que parece vibrar em sincronia com o zumbido da pedra central. Borin nota que o vapor escuro que emana da pedra com o símbolo corrompido agora forma pequenas figuras fantasmagóricas que se dissipam no ar.\",\"items\":null,\"location\":\"Entrada da Escadaria Subterrânea nas Ruínas Centrais\",\"story\":[{\"description\":\"O chão sob os pés dos aventureiros treme novamente quando a abertura para o subsolo se alarga ligeiramente. O zumbido da pedra central aumenta em tom, e as runas agora emitem um brilho azulado intenso. Lyra, ao se aproximar da entrada, sente uma forte conexão com a terra emanação da passagem, como se as próprias raízes do mundo se estendessem para lá. Borin, com o machado em punho, nota que o símbolo corrompido em uma das pedras próximas começou a emitir um leve vapor escuro. Seraphina, reunindo seus componentes, sente que a magia que conecta as ruínas se concentra cada vez mais naquela abertura, como um vórtice se formando.\",\"items\":null,\"location\":\"Ruínas Centrais do Vale do Crepúsculo Eterno\",\"story\":[],\"players\":[{\"name\":\"Lyra\",\"action\":null,\"race\":\"Elfa da Floresta\",\"class\":\"Druida\",\"equipment\":null,\"backstory\":\"Uma guardiã da floresta ancestral, enviada para investigar a perturbação na tranquilidade do vale.\",\"actions\":[\"Aproximou-se com cautela da abertura, perscrutando a escuridão.\",\"Murmurou sobre caminhos para o interior e segredos enterrados.\",\"Ajoelhou-se para examinar a terra recém-descoberta.\"]},{\"name\":\"Borin\",\"action\":null,\"race\":\"Anão da Montanha\",\"class\":\"Guerreiro\",\"equipment\":null,\"backstory\":\"Um exilado em busca de uma relíquia perdida de seu clã, acreditando que ela se encontra nas ruínas.\",\"actions\":[\"Puxou seu machado, posicionando-se entre Lyra e a entrada.\",\"Lançou um olhar desconfiado para a pedra central.\",\"Notou que o símbolo corrompido em uma das pedras próximas começou a emitir um leve vapor escuro.\"]},{\"name\":\"Seraphina\",\"action\":null,\"race\":\"Humana\",\"class\":\"Feiticeira\",\"equipment\":null,\"backstory\":\"Uma estudiosa de magia arcana, atraída pelas lendas de poder oculto neste lugar.\",\"actions\":[\"Avançou para mais perto da abertura.\",\"Estendeu a mão aberta em direção ao fluxo de ar frio.\",\"Sentiu que a magia que conecta as ruínas se concentrava naquela abertura, formando um vórtice.\"]}],\"npcs\":null,\"actions\":[{\"action\":\"Com uma expressão de comunhão com a terra, ela sussurra: 'As raízes se estendem para a escuridão. O que reside lá embaixo é antigo, e a própria vida deste lugar está ligada a isso. Precisamos ter cuidado para não perturbar um sono profundo.'\",\"character\":\"Lyra\"},{\"action\":\"Ele grunhe, sua voz grave ecoando na quietude: 'Um sono perturbado pode acordar com fome. Se é uma tumba ou um ninho, não gosto do cheiro. Melhor estar preparado para o pior que pode rastejar para fora dessa rachadura.'\",\"character\":\"Borin\"},{\"action\":\"Com os componentes em mãos, ela começa a entoar um encantamento, enquanto um pequeno orbe de luz flutuante se materializa em sua palma: 'Que esta luz nos guie e exponha o que se esconde na sombra. Se este for um portal, que saibamos para onde nos leva antes de darmos o próximo passo.'\",\"character\":\"Seraphina\"}]},{\"description\":\"As palavras dos aventureiros pairam no ar, carregadas de especulação e cautela. A pedra central pulsa mais forte, e um baixo zumbido ressoa pelas ruínas, fazendo o chão tremer levemente. Os símbolos nas pedras agora emitem um brilho fraco, formando um padrão interligado que circunda o grupo. De repente, um dos blocos de pedra mais afastados, que antes parecia inerte, se move lentamente, revelando uma abertura escura e sinuosa para o subsolo. Uma rajada de ar frio e com cheiro de terra úmida emana da fenda.\",\"items\":null,\"location\":\"Ruínas Centrais do Vale " <> ...
+
+[lib/story_teller/llm/gemini_limiter.ex:81: StoryTeller.Llm.GeminiLimiter.handle_call/3]
+clean_state #=> %{
+  queue: {[], []},
+  tpm: %{
+    1754208560 => 391,
+    1754208562 => 983,
+    1754208563 => 1117,
+    1754208565 => 2031,
+    1754208566 => 2182,
+    1754208568 => 3182,
+    1754208570 => 3406,
+    1754208572 => 3590,
+    1754208574 => 4035,
+    1754208577 => 4100,
+    1754208579 => 4488,
+    1754208581 => 4398
+  },
+  rpm: %{
+    1754208560 => 1,
+    1754208562 => 1,
+    1754208563 => 1,
+    1754208565 => 1,
+    1754208566 => 1,
+    1754208568 => 1,
+    1754208570 => 1,
+    1754208572 => 1,
+    1754208574 => 1,
+    1754208577 => 1,
+    1754208579 => 1,
+    1754208581 => 1
+  },
+  rpd: %{"2025-08-03" => 12},
+  drain_pending: false
+}
+
+[debug] 📦 Headers recebidos:
+content-type: application/json; charset=UTF-8
+vary: X-Origin
+vary: Referer
+date: Sun, 03 Aug 2025 08:09:45 GMT
+server: scaffolding on HTTPServer2
+x-xss-protection: 0
+x-frame-options: SAMEORIGIN
+x-content-type-options: nosniff
+server-timing: gfet4t7; dur=2366
+alt-svc: h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+accept-ranges: none
+vary: Origin,Accept-Encoding
+transfer-encoding: chunked
+[debug] 🔍 Attempting to extract JSON block...
+[info] ✅ JSON block extracted successfully.
+[info] ✅ Next scene generated at Escadaria Subterrânea nas Ruínas Centrais
+[info] 🎭 Gerando ações para a cena em Escadaria Subterrânea nas Ruínas Centrais...
+[lib/story_teller/llm/gemini.ex:15: StoryTeller.Llm.Gemini.chat/3]
+prompt #=> "Você é um mestre de RPG. Com base na seguinte cena em JSON, uma string `action` para os personagens que forem agir nessa cena.\n\n✅ O resultado deve ser estritamente neste formato JSON:\n{\n  \"actions\": [\n    {\n      \"character\": \"Nome do personagem\",\n      \"action\": \"Ação que ele toma, como fala ou movimentação.\"\n    }\n  ]\n}\n\n🎯 Use o campo `scene.players`, `scene.npc` ou outro interagível para identificar os sujeitos de ação.\n\n🎯 Se existir um campo `actions`, use o conteúdo de cada `action` associado ao `player` ou `npc` ou `item`.]\n\n🎯 Os `scene.players` ou `scene.npc` não precisam agir necessariamente, tornando a narrativa mais dinâmica e menos massante.\n\n🎯 Quando algum personagem não agir, basta não adicionar em `actions` fazendo cenas mais direcionadas e fáceis de digerir.\n\nCena:\n{\"description\":\"O orbe de luz oscila, e a escuridão da escadaria parece tentar engoli-lo. A melodia sussurrada por Lyra é quase inaudível, mas o ar na entrada parece ficar mais denso. Borin, com sua postura tensa, aguarda a decisão de Seraphina, o machado pronto. Enquanto Seraphina se concentra em seu feitiço, os símbolos azuis nas pedras da escadaria começam a piscar em uníssono com a pedra central, enviando pulsos de energia pela estrutura antiga. Um leve tremor adicional percorre o solo, e um murmúrio distante, quase como um lamento, pode ser ouvido vindo das profundezas.\",\"items\":null,\"location\":\"Escadaria Subterrânea nas Ruínas Centrais\",\"story\":[{\"description\":\"O orbe de luz criado por Seraphina ilumina a entrada para o subsolo, revelando uma escadaria descendente feita de pedras escuras e polidas, que parece mergulhar em um abismo de trevas. O ar que emana de lá agora traz consigo um leve aroma de ozônio e metal frio. Os símbolos nas pedras ao redor brilham com mais intensidade, e Lyra sente a terra pulsar com uma energia que parece vibrar em sincronia com o zumbido da pedra central. Borin nota que o vapor escuro que emana da pedra com o símbolo corrompido agora forma pequenas figuras fantasmagóricas que se dissipam no ar.\",\"items\":null,\"location\":\"Entrada da Escadaria Subterrânea nas Ruínas Centrais\",\"story\":[],\"players\":[{\"name\":\"Lyra\",\"action\":null,\"race\":\"Elfa da Floresta\",\"class\":\"Druida\",\"equipment\":null,\"backstory\":\"Uma guardiã da floresta ancestral, enviada para investigar a perturbação na tranquilidade do vale.\",\"actions\":[\"Aproximou-se da entrada, sentindo uma forte conexão com a terra dali.\",\"Murmurou sobre raízes que se estendem para a escuridão.\",\"Descreveu o que reside lá embaixo como antigo e ligado à vida do lugar.\"]},{\"name\":\"Borin\",\"action\":null,\"race\":\"Anão da Montanha\",\"class\":\"Guerreiro\",\"equipment\":null,\"backstory\":\"Um exilado em busca de uma relíquia perdida de seu clã, acreditando que ela se encontra nas ruínas.\",\"actions\":[\"Grunhiu sobre um sono perturbado que pode acordar com fome.\",\"Declarou que o cheiro indicava uma armadilha ou algo que prefere a escuridão.\",\"Notou que o vapor escuro que emanava da pedra corrompida formava pequenas figuras fantasmagóricas.\"]},{\"name\":\"Seraphina\",\"action\":null,\"race\":\"Humana\",\"class\":\"Feiticeira\",\"equipment\":null,\"backstory\":\"Uma estudiosa de magia arcana, atraída pelas lendas de poder oculto neste lugar.\",\"actions\":[\"Começou a entoar um encantamento.\",\"Materializou um pequeno orbe de luz flutuante.\",\"Declarou que a luz os guiaria e exporia o que se esconde na sombra.\"]}],\"npcs\":null,\"actions\":[{\"action\":\"Com o orbe de luz pairando à sua frente, ela se inclina para a entrada da escadaria, os olhos fechados por um instante. 'A terra sussurra uma canção antiga e melancólica. Sinto uma energia de contenção, mas também de um poder adormecido que anseia por ser libertado.'\",\"character\":\"Lyra\"},{\"action\":\"Ele bate com o punho cerrado na palma da outra mão. 'Contenção? Parece mais com uma gaiola enferrujada. Não gosto disso. Se vamos descer, que seja com cautela e todos os sentidos alertas. Qual é o plano, feiticeira?'\",\"character\":\"Borin\"},{\"action\":\"Ela ajusta o orbe de luz para que ele ilumine a parte mais funda da escadaria, e então se vira para os companheiros. 'O plano, por enqu" <> ...
+
+[lib/story_teller/llm/gemini_limiter.ex:81: StoryTeller.Llm.GeminiLimiter.handle_call/3]
+clean_state #=> %{
+  queue: {[], []},
+  tpm: %{
+    1754208560 => 391,
+    1754208562 => 983,
+    1754208563 => 1117,
+    1754208565 => 2031,
+    1754208566 => 2182,
+    1754208568 => 3182,
+    1754208570 => 3406,
+    1754208572 => 3590,
+    1754208574 => 4035,
+    1754208577 => 4100,
+    1754208579 => 4488,
+    1754208581 => 4398,
+    1754208583 => 4822
+  },
+  rpm: %{
+    1754208560 => 1,
+    1754208562 => 1,
+    1754208563 => 1,
+    1754208565 => 1,
+    1754208566 => 1,
+    1754208568 => 1,
+    1754208570 => 1,
+    1754208572 => 1,
+    1754208574 => 1,
+    1754208577 => 1,
+    1754208579 => 1,
+    1754208581 => 1,
+    1754208583 => 1
+  },
+  rpd: %{"2025-08-03" => 13},
+  drain_pending: false
+}
+
+[debug] 📦 Headers recebidos:
+content-type: application/json; charset=UTF-8
+vary: X-Origin
+vary: Referer
+date: Sun, 03 Aug 2025 08:09:47 GMT
+server: scaffolding on HTTPServer2
+x-xss-protection: 0
+x-frame-options: SAMEORIGIN
+x-content-type-options: nosniff
+server-timing: gfet4t7; dur=1935
+alt-svc: h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+accept-ranges: none
+vary: Origin,Accept-Encoding
+transfer-encoding: chunked
+[debug] 📝 Ações geradas: ```json
+{
+  "actions": [
+    {
+      "character": "Seraphina",
+      "action": "Com um gesto final e um murmúrio de palavras arcanas, o orbe de luz em sua mão se expande, lançando uma luz mais forte e estável que ilumina a escadaria em sua totalidade. A luz revela mais detalhes nas paredes, mostrando entalhes de criaturas estranhas e geométricas. A feiticeira então aponta para o início da descida: 'Parece que nossa jornada começa agora. Mantenham-se atentos. O feitiço de detecção de perigo está ativo, mas prefiro que evitemos descobri-lo na prática.'"
+    },
+    {
+      "character": "Borin",
+      "action": "Ele assente com a cabeça, sua expressão tensa não diminuindo. 'Pode deixar. Qualquer coisa que se mexa, eu cuido.' Ele dá o primeiro passo para a escadaria, seu machado balançando suavemente ao lado do corpo, enquanto Lyra o segue de perto."
+    },
+    {
+      "character": "Lyra",
+      "action": "Ela se junta a Borin, sua atenção dividida entre a escadaria e os movimentos sutis do ambiente ao redor. Seus olhos parecem captar nuances que os outros não veem, e ela mantém a mão pairando perto do chão, como se estivesse em contato com a própria terra que a circunda."
+    }
+  ]
+}
+```
+[debug] 🔍 Attempting to extract JSON block...
+[info] ✅ JSON block extracted successfully.
+[info] ✅ Ações geradas com sucesso para 3 personagem(ns).
+[info] 🎭 Actions taken in scene at Escadaria Subterrânea nas Ruínas Centrais
+[info] ▶️ Turn 8 of 10
+[info] 🔁 Advancing story with new turn.
+[info] ➡️ Generating next scene from current scene at Escadaria Subterrânea nas Ruínas Centrais...
+[lib/story_teller/llm/gemini.ex:15: StoryTeller.Llm.Gemini.chat/3]
+prompt #=> "{\"description\":\"O orbe de luz oscila, e a escuridão da escadaria parece tentar engoli-lo. A melodia sussurrada por Lyra é quase inaudível, mas o ar na entrada parece ficar mais denso. Borin, com sua postura tensa, aguarda a decisão de Seraphina, o machado pronto. Enquanto Seraphina se concentra em seu feitiço, os símbolos azuis nas pedras da escadaria começam a piscar em uníssono com a pedra central, enviando pulsos de energia pela estrutura antiga. Um leve tremor adicional percorre o solo, e um murmúrio distante, quase como um lamento, pode ser ouvido vindo das profundezas.\",\"items\":null,\"location\":\"Escadaria Subterrânea nas Ruínas Centrais\",\"story\":[{\"description\":\"O orbe de luz criado por Seraphina ilumina a entrada para o subsolo, revelando uma escadaria descendente feita de pedras escuras e polidas, que parece mergulhar em um abismo de trevas. O ar que emana de lá agora traz consigo um leve aroma de ozônio e metal frio. Os símbolos nas pedras ao redor brilham com mais intensidade, e Lyra sente a terra pulsar com uma energia que parece vibrar em sincronia com o zumbido da pedra central. Borin nota que o vapor escuro que emana da pedra com o símbolo corrompido agora forma pequenas figuras fantasmagóricas que se dissipam no ar.\",\"items\":null,\"location\":\"Entrada da Escadaria Subterrânea nas Ruínas Centrais\",\"story\":[],\"players\":[{\"name\":\"Lyra\",\"action\":null,\"race\":\"Elfa da Floresta\",\"class\":\"Druida\",\"equipment\":null,\"backstory\":\"Uma guardiã da floresta ancestral, enviada para investigar a perturbação na tranquilidade do vale.\",\"actions\":[\"Aproximou-se da entrada, sentindo uma forte conexão com a terra dali.\",\"Murmurou sobre raízes que se estendem para a escuridão.\",\"Descreveu o que reside lá embaixo como antigo e ligado à vida do lugar.\"]},{\"name\":\"Borin\",\"action\":null,\"race\":\"Anão da Montanha\",\"class\":\"Guerreiro\",\"equipment\":null,\"backstory\":\"Um exilado em busca de uma relíquia perdida de seu clã, acreditando que ela se encontra nas ruínas.\",\"actions\":[\"Grunhiu sobre um sono perturbado que pode acordar com fome.\",\"Declarou que o cheiro indicava uma armadilha ou algo que prefere a escuridão.\",\"Notou que o vapor escuro que emanava da pedra corrompida formava pequenas figuras fantasmagóricas.\"]},{\"name\":\"Seraphina\",\"action\":null,\"race\":\"Humana\",\"class\":\"Feiticeira\",\"equipment\":null,\"backstory\":\"Uma estudiosa de magia arcana, atraída pelas lendas de poder oculto neste lugar.\",\"actions\":[\"Começou a entoar um encantamento.\",\"Materializou um pequeno orbe de luz flutuante.\",\"Declarou que a luz os guiaria e exporia o que se esconde na sombra.\"]}],\"npcs\":null,\"actions\":[{\"action\":\"Com o orbe de luz pairando à sua frente, ela se inclina para a entrada da escadaria, os olhos fechados por um instante. 'A terra sussurra uma canção antiga e melancólica. Sinto uma energia de contenção, mas também de um poder adormecido que anseia por ser libertado.'\",\"character\":\"Lyra\"},{\"action\":\"Ele bate com o punho cerrado na palma da outra mão. 'Contenção? Parece mais com uma gaiola enferrujada. Não gosto disso. Se vamos descer, que seja com cautela e todos os sentidos alertas. Qual é o plano, feiticeira?'\",\"character\":\"Borin\"},{\"action\":\"Ela ajusta o orbe de luz para que ele ilumine a parte mais funda da escadaria, e então se vira para os companheiros. 'O plano, por enquanto, é avançar com cautela. Precisamos descobrir a natureza deste lugar e, quem sabe, a origem da perturbação que sentimos. Estou preparando um feitiço de detecção de perigo mais potente, caso precisemos dele.'\",\"character\":\"Seraphina\"}]},{\"description\":\"O chão sob os pés dos aventureiros treme novamente quando a abertura para o subsolo se alarga ligeiramente. O zumbido da pedra central aumenta em tom, e as runas agora emitem um brilho azulado intenso. Lyra, ao se aproximar da entrada, sente uma forte conexão com a terra emanação da passagem, como se as próprias raízes do mundo se estendessem para lá. Borin, com o machado em punho, nota que o símbolo corrompido em uma das pedras próximas começou a emitir um leve vapor escuro. Seraphina, reunindo seus componentes, sente que a magi" <> ...
+
+[lib/story_teller/llm/gemini_limiter.ex:81: StoryTeller.Llm.GeminiLimiter.handle_call/3]
+clean_state #=> %{
+  queue: {[], []},
+  tpm: %{
+    1754208560 => 391,
+    1754208562 => 983,
+    1754208563 => 1117,
+    1754208565 => 2031,
+    1754208566 => 2182,
+    1754208568 => 3182,
+    1754208570 => 3406,
+    1754208572 => 3590,
+    1754208574 => 4035,
+    1754208577 => 4100,
+    1754208579 => 4488,
+    1754208581 => 4398,
+    1754208583 => 4822,
+    1754208586 => 4541
+  },
+  rpm: %{
+    1754208560 => 1,
+    1754208562 => 1,
+    1754208563 => 1,
+    1754208565 => 1,
+    1754208566 => 1,
+    1754208568 => 1,
+    1754208570 => 1,
+    1754208572 => 1,
+    1754208574 => 1,
+    1754208577 => 1,
+    1754208579 => 1,
+    1754208581 => 1,
+    1754208583 => 1,
+    1754208586 => 1
+  },
+  rpd: %{"2025-08-03" => 14},
+  drain_pending: false
+}
+
+[debug] 📦 Headers recebidos:
+content-type: application/json; charset=UTF-8
+vary: X-Origin
+vary: Referer
+date: Sun, 03 Aug 2025 08:09:50 GMT
+server: scaffolding on HTTPServer2
+x-xss-protection: 0
+x-frame-options: SAMEORIGIN
+x-content-type-options: nosniff
+server-timing: gfet4t7; dur=2348
+alt-svc: h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+accept-ranges: none
+vary: Origin,Accept-Encoding
+transfer-encoding: chunked
+[debug] 🔍 Attempting to extract JSON block...
+[info] ✅ JSON block extracted successfully.
+[info] ✅ Next scene generated at Primeiros degraus da Escadaria Subterrânea
+[lib/story_teller/llm/gemini.ex:15: StoryTeller.Llm.Gemini.chat/3]
+prompt #=> "Você é um mestre de RPG. Com base na seguinte cena em JSON, uma string `action` para os personagens que forem agir nessa cena.\n\n✅ O resultado deve ser estritamente neste formato JSON:\n{\n  \"actions\": [\n    {\n      \"character\": \"Nome do personagem\",\n      \"action\": \"Ação que ele toma, como fala ou movimentação.\"\n    }\n  ]\n}\n\n🎯 Use o campo `scene.players`, `scene.npc` ou outro interagível para identificar os sujeitos de ação.\n\n🎯 Se existir um campo `actions`, use o conteúdo de cada `action` associado ao `player` ou `npc` ou `item`.]\n\n🎯 Os `scene.players` ou `scene.npc` não precisam agir necessariamente, tornando a narrativa mais dinâmica e menos massante.\n\n🎯 Quando algum personagem não agir, basta não adicionar em `actions` fazendo cenas mais direcionadas e fáceis de digerir.\n\nCena:\n{\"description\":\"Ao descerem os primeiros degraus, a luz do orbe de Seraphina revela que a escadaria não é uma construção simples. Os degraus parecem ser esculpidos em um material negro e lustroso, e os entalhes nas paredes ganham vida sob a luz, mostrando padrões que se movem sutilmente, como se os desenhos tivessem uma consciência própria. O murmúrio distante se intensifica, agora soando como uma voz rouca e antiga entoando palavras em uma língua esquecida. Borin sente uma vibração estranha através das solas de suas botas, como se a escadaria estivesse viva. Lyra sente a energia vital da floresta diminuir drasticamente à medida que se aprofundam, sendo substituída por uma aura de poder mais sombrio e artificial.\",\"items\":null,\"location\":\"Primeiros degraus da Escadaria Subterrânea\",\"story\":[{\"description\":\"O orbe de luz oscila, e a escuridão da escadaria parece tentar engoli-lo. A melodia sussurrada por Lyra é quase inaudível, mas o ar na entrada parece ficar mais denso. Borin, com sua postura tensa, aguarda a decisão de Seraphina, o machado pronto. Enquanto Seraphina se concentra em seu feitiço, os símbolos azuis nas pedras da escadaria começam a piscar em uníssono com a pedra central, enviando pulsos de energia pela estrutura antiga. Um leve tremor adicional percorre o solo, e um murmúrio distante, quase como um lamento, pode ser ouvido vindo das profundezas.\",\"items\":null,\"location\":\"Escadaria Subterrânea nas Ruínas Centrais\",\"story\":[],\"players\":[{\"name\":\"Lyra\",\"action\":null,\"race\":\"Elfa da Floresta\",\"class\":\"Druida\",\"equipment\":null,\"backstory\":\"Uma guardiã da floresta ancestral, enviada para investigar a perturbação na tranquilidade do vale.\",\"actions\":[\"Fechou os olhos por um instante, sentindo a terra.\",\"Sussurrou sobre uma canção antiga e melancólica.\",\"Descreveu a energia como de contenção e um poder adormecido anseando por libertação.\"]},{\"name\":\"Borin\",\"action\":null,\"race\":\"Anão da Montanha\",\"class\":\"Guerreiro\",\"equipment\":null,\"backstory\":\"Um exilado em busca de uma relíquia perdida de seu clã, acreditando que ela se encontra nas ruínas.\",\"actions\":[\"Descreveu a contenção como uma gaiola enferrujada.\",\"Declarou que não gostava do que sentia.\",\"Perguntou a Seraphina qual era o plano, enfatizando a cautela e os sentidos alertas.\"]},{\"name\":\"Seraphina\",\"action\":null,\"race\":\"Humana\",\"class\":\"Feiticeira\",\"equipment\":null,\"backstory\":\"Uma estudiosa de magia arcana, atraída pelas lendas de poder oculto neste lugar.\",\"actions\":[\"Ajustou o orbe de luz para iluminar mais fundo na escadaria.\",\"Virou-se para os companheiros.\",\"Declarou que o plano era avançar com cautela para descobrir a natureza do lugar e a origem da perturbação.\",\"Informou que estava preparando um feitiço de detecção de perigo.\"]}],\"npcs\":null,\"actions\":[{\"action\":\"Com um gesto final e um murmúrio de palavras arcanas, o orbe de luz em sua mão se expande, lançando uma luz mais forte e estável que ilumina a escadaria em sua totalidade. A luz revela mais detalhes nas paredes, mostrando entalhes de criaturas estranhas e geométricas. A feiticeira então aponta para o início da descida: 'Parece que nossa jornada começa agora. Mantenham-se atentos. O feitiço de detecção de perigo está ativo, mas prefiro que evitemos descobri-lo na prática.'\",\"character\":\"Seraphina\"},{\"action\":\"Ele a" <> ...
+
+[info] 🎭 Gerando ações para a cena em Primeiros degraus da Escadaria Subterrânea...
+[lib/story_teller/llm/gemini_limiter.ex:81: StoryTeller.Llm.GeminiLimiter.handle_call/3]
+clean_state #=> %{
+  queue: {[], []},
+  tpm: %{
+    1754208560 => 391,
+    1754208562 => 983,
+    1754208563 => 1117,
+    1754208565 => 2031,
+    1754208566 => 2182,
+    1754208568 => 3182,
+    1754208570 => 3406,
+    1754208572 => 3590,
+    1754208574 => 4035,
+    1754208577 => 4100,
+    1754208579 => 4488,
+    1754208581 => 4398,
+    1754208583 => 4822,
+    1754208586 => 4541,
+    1754208588 => 5071
+  },
+  rpm: %{
+    1754208560 => 1,
+    1754208562 => 1,
+    1754208563 => 1,
+    1754208565 => 1,
+    1754208566 => 1,
+    1754208568 => 1,
+    1754208570 => 1,
+    1754208572 => 1,
+    1754208574 => 1,
+    1754208577 => 1,
+    1754208579 => 1,
+    1754208581 => 1,
+    1754208583 => 1,
+    1754208586 => 1,
+    1754208588 => 1
+  },
+  rpd: %{"2025-08-03" => 15},
+  drain_pending: false
+}
+
+[info] ⏳ Limite atingido: RPM (15/15). Enfileirando requisição...
+[debug] ⏳ Agendando drain para 30000ms
+[lib/story_teller/llm/gemini_limiter.ex:127: StoryTeller.Llm.GeminiLimiter.handle_info/2]
+clean_state #=> %{
+  queue: {[
+     {{#PID<0.687.0>, #Reference<0.2181529131.3419930631.114355>}, 4745,
+      #Function<0.9845778/0 in StoryTeller.Llm.Gemini.chat/3>}
+   ], []},
+  tpm: %{
+    1754208562 => 983,
+    1754208563 => 1117,
+    1754208565 => 2031,
+    1754208566 => 2182,
+    1754208568 => 3182,
+    1754208570 => 3406,
+    1754208572 => 3590,
+    1754208574 => 4035,
+    1754208577 => 4100,
+    1754208579 => 4488,
+    1754208581 => 4398,
+    1754208583 => 4822,
+    1754208586 => 4541,
+    1754208588 => 5071
+  },
+  rpm: %{
+    1754208562 => 1,
+    1754208563 => 1,
+    1754208565 => 1,
+    1754208566 => 1,
+    1754208568 => 1,
+    1754208570 => 1,
+    1754208572 => 1,
+    1754208574 => 1,
+    1754208577 => 1,
+    1754208579 => 1,
+    1754208581 => 1,
+    1754208583 => 1,
+    1754208586 => 1,
+    1754208588 => 1
+  },
+  rpd: %{"2025-08-03" => 15},
+  drain_pending: true
+}
+
+[info] ✅ Executando requisição liberada da fila.
+[debug] 📦 Headers recebidos:
+content-type: application/json; charset=UTF-8
+vary: X-Origin
+vary: Referer
+date: Sun, 03 Aug 2025 08:10:22 GMT
+server: scaffolding on HTTPServer2
+x-xss-protection: 0
+x-frame-options: SAMEORIGIN
+x-content-type-options: nosniff
+server-timing: gfet4t7; dur=1858
+alt-svc: h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+accept-ranges: none
+vary: Origin,Accept-Encoding
+transfer-encoding: chunked
+[debug] 📝 Ações geradas: ```json
+{
+  "actions": [
+    {
+      "character": "Seraphina",
+      "action": "Com um toque sutil na própria testa, ela sussurra palavras adicionais que fazem o orbe de luz brilhar mais intensamente, lançando sombras dançantes nas paredes. 'O feitiço está ancorado. Sinto flutuações de energia em certos pontos da escadaria, o que sugere armadilhas ou algum tipo de ativação por proximidade. Mantenham-se próximos a mim, e tentem não tocar em nada que pareça suspeito.' Ela dá um passo cuidadoso para a escadaria, o orbe flutuando ligeiramente à sua frente."
+    },
+    {
+      "character": "Lyra",
+      "action": "Ela olha para Borin com um leve sorriso tranquilizador antes de continuar a descida, a mão ainda pairando perto do chão. 'A terra aqui está... quieta. Não como a floresta que conheço, mas não sinto uma malevolência inerente, apenas um poder contido, talvez em sofrimento.' Seus olhos varrem os entalhes com curiosidade, tentando discernir seu significado natural."
+    }
+  ]
+}
+```
+[lib/story_teller/llm/gemini_limiter.ex:127: StoryTeller.Llm.GeminiLimiter.handle_info/2]
+clean_state #=> %{
+  queue: {[], []},
+  tpm: %{
+    1754208563 => 1117,
+    1754208565 => 2031,
+    1754208566 => 2182,
+    1754208568 => 3182,
+    1754208570 => 3406,
+    1754208572 => 3590,
+    1754208574 => 4035,
+    1754208577 => 4100,
+    1754208579 => 4488,
+    1754208581 => 4398,
+    1754208583 => 4822,
+    1754208586 => 4541,
+    1754208588 => 5071,
+    1754208620 => 4745
+  },
+  rpm: %{
+    1754208563 => 1,
+    1754208565 => 1,
+    1754208566 => 1,
+    1754208568 => 1,
+    1754208570 => 1,
+    1754208572 => 1,
+    1754208574 => 1,
+    1754208577 => 1,
+    1754208579 => 1,
+    1754208581 => 1,
+    1754208583 => 1,
+    1754208586 => 1,
+    1754208588 => 1,
+    1754208620 => 1
+  },
+  rpd: %{"2025-08-03" => 16},
+  drain_pending: true
+}
+
+[debug] 🔍 Attempting to extract JSON block...
+[info] ✅ JSON block extracted successfully.
+[info] ✅ Ações geradas com sucesso para 2 personagem(ns).
+[info] 🎭 Actions taken in scene at Primeiros degraus da Escadaria Subterrânea
+[info] ▶️ Turn 9 of 10
+[info] 🔁 Advancing story with new turn.
+[info] ➡️ Generating next scene from current scene at Primeiros degraus da Escadaria Subterrânea...
+[lib/story_teller/llm/gemini.ex:15: StoryTeller.Llm.Gemini.chat/3]
+prompt #=> "{\"description\":\"Ao descerem os primeiros degraus, a luz do orbe de Seraphina revela que a escadaria não é uma construção simples. Os degraus parecem ser esculpidos em um material negro e lustroso, e os entalhes nas paredes ganham vida sob a luz, mostrando padrões que se movem sutilmente, como se os desenhos tivessem uma consciência própria. O murmúrio distante se intensifica, agora soando como uma voz rouca e antiga entoando palavras em uma língua esquecida. Borin sente uma vibração estranha através das solas de suas botas, como se a escadaria estivesse viva. Lyra sente a energia vital da floresta diminuir drasticamente à medida que se aprofundam, sendo substituída por uma aura de poder mais sombrio e artificial.\",\"items\":null,\"location\":\"Primeiros degraus da Escadaria Subterrânea\",\"story\":[{\"description\":\"O orbe de luz oscila, e a escuridão da escadaria parece tentar engoli-lo. A melodia sussurrada por Lyra é quase inaudível, mas o ar na entrada parece ficar mais denso. Borin, com sua postura tensa, aguarda a decisão de Seraphina, o machado pronto. Enquanto Seraphina se concentra em seu feitiço, os símbolos azuis nas pedras da escadaria começam a piscar em uníssono com a pedra central, enviando pulsos de energia pela estrutura antiga. Um leve tremor adicional percorre o solo, e um murmúrio distante, quase como um lamento, pode ser ouvido vindo das profundezas.\",\"items\":null,\"location\":\"Escadaria Subterrânea nas Ruínas Centrais\",\"story\":[],\"players\":[{\"name\":\"Lyra\",\"action\":null,\"race\":\"Elfa da Floresta\",\"class\":\"Druida\",\"equipment\":null,\"backstory\":\"Uma guardiã da floresta ancestral, enviada para investigar a perturbação na tranquilidade do vale.\",\"actions\":[\"Fechou os olhos por um instante, sentindo a terra.\",\"Sussurrou sobre uma canção antiga e melancólica.\",\"Descreveu a energia como de contenção e um poder adormecido anseando por libertação.\"]},{\"name\":\"Borin\",\"action\":null,\"race\":\"Anão da Montanha\",\"class\":\"Guerreiro\",\"equipment\":null,\"backstory\":\"Um exilado em busca de uma relíquia perdida de seu clã, acreditando que ela se encontra nas ruínas.\",\"actions\":[\"Descreveu a contenção como uma gaiola enferrujada.\",\"Declarou que não gostava do que sentia.\",\"Perguntou a Seraphina qual era o plano, enfatizando a cautela e os sentidos alertas.\"]},{\"name\":\"Seraphina\",\"action\":null,\"race\":\"Humana\",\"class\":\"Feiticeira\",\"equipment\":null,\"backstory\":\"Uma estudiosa de magia arcana, atraída pelas lendas de poder oculto neste lugar.\",\"actions\":[\"Ajustou o orbe de luz para iluminar mais fundo na escadaria.\",\"Virou-se para os companheiros.\",\"Declarou que o plano era avançar com cautela para descobrir a natureza do lugar e a origem da perturbação.\",\"Informou que estava preparando um feitiço de detecção de perigo.\"]}],\"npcs\":null,\"actions\":[{\"action\":\"Com um gesto final e um murmúrio de palavras arcanas, o orbe de luz em sua mão se expande, lançando uma luz mais forte e estável que ilumina a escadaria em sua totalidade. A luz revela mais detalhes nas paredes, mostrando entalhes de criaturas estranhas e geométricas. A feiticeira então aponta para o início da descida: 'Parece que nossa jornada começa agora. Mantenham-se atentos. O feitiço de detecção de perigo está ativo, mas prefiro que evitemos descobri-lo na prática.'\",\"character\":\"Seraphina\"},{\"action\":\"Ele assente com a cabeça, sua expressão tensa não diminuindo. 'Pode deixar. Qualquer coisa que se mexa, eu cuido.' Ele dá o primeiro passo para a escadaria, seu machado balançando suavemente ao lado do corpo, enquanto Lyra o segue de perto.\",\"character\":\"Borin\"},{\"action\":\"Ela se junta a Borin, sua atenção dividida entre a escadaria e os movimentos sutis do ambiente ao redor. Seus olhos parecem captar nuances que os outros não veem, e ela mantém a mão pairando perto do chão, como se estivesse em contato com a própria terra que a circunda.\",\"character\":\"Lyra\"}]},{\"description\":\"O orbe de luz criado por Seraphina ilumina a entrada para o subsolo, revelando uma escadaria descendente feita de pedras escuras e polidas, que parece mergulhar em um abismo de trevas. O ar que emana de lá agora " <> ...
+
+[lib/story_teller/llm/gemini_limiter.ex:81: StoryTeller.Llm.GeminiLimiter.handle_call/3]
+clean_state #=> %{
+  queue: {[], []},
+  tpm: %{
+    1754208563 => 1117,
+    1754208565 => 2031,
+    1754208566 => 2182,
+    1754208568 => 3182,
+    1754208570 => 3406,
+    1754208572 => 3590,
+    1754208574 => 4035,
+    1754208577 => 4100,
+    1754208579 => 4488,
+    1754208581 => 4398,
+    1754208583 => 4822,
+    1754208586 => 4541,
+    1754208588 => 5071,
+    1754208620 => 4745
+  },
+  rpm: %{
+    1754208563 => 1,
+    1754208565 => 1,
+    1754208566 => 1,
+    1754208568 => 1,
+    1754208570 => 1,
+    1754208572 => 1,
+    1754208574 => 1,
+    1754208577 => 1,
+    1754208579 => 1,
+    1754208581 => 1,
+    1754208583 => 1,
+    1754208586 => 1,
+    1754208588 => 1,
+    1754208620 => 1
+  },
+  rpd: %{"2025-08-03" => 16},
+  drain_pending: false
+}
+
+[debug] 📦 Headers recebidos:
+content-type: application/json; charset=UTF-8
+vary: X-Origin
+vary: Referer
+date: Sun, 03 Aug 2025 08:10:24 GMT
+server: scaffolding on HTTPServer2
+x-xss-protection: 0
+x-frame-options: SAMEORIGIN
+x-content-type-options: nosniff
+server-timing: gfet4t7; dur=2511
+alt-svc: h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+accept-ranges: none
+vary: Origin,Accept-Encoding
+transfer-encoding: chunked
+[debug] 🔍 Attempting to extract JSON block...
+[info] ✅ JSON block extracted successfully.
+[info] ✅ Next scene generated at Meio da Escadaria Subterrânea
+[info] 🎭 Gerando ações para a cena em Meio da Escadaria Subterrânea...
+[lib/story_teller/llm/gemini.ex:15: StoryTeller.Llm.Gemini.chat/3]
+prompt #=> "Você é um mestre de RPG. Com base na seguinte cena em JSON, uma string `action` para os personagens que forem agir nessa cena.\n\n✅ O resultado deve ser estritamente neste formato JSON:\n{\n  \"actions\": [\n    {\n      \"character\": \"Nome do personagem\",\n      \"action\": \"Ação que ele toma, como fala ou movimentação.\"\n    }\n  ]\n}\n\n🎯 Use o campo `scene.players`, `scene.npc` ou outro interagível para identificar os sujeitos de ação.\n\n🎯 Se existir um campo `actions`, use o conteúdo de cada `action` associado ao `player` ou `npc` ou `item`.]\n\n🎯 Os `scene.players` ou `scene.npc` não precisam agir necessariamente, tornando a narrativa mais dinâmica e menos massante.\n\n🎯 Quando algum personagem não agir, basta não adicionar em `actions` fazendo cenas mais direcionadas e fáceis de digerir.\n\nCena:\n{\"description\":\"Ao avançarem mais pela escadaria, a luz do orbe de Seraphina revela que os entalhes nas paredes não são apenas decorativos; eles parecem se mover e se reorganizar à medida que o grupo passa, criando novas formas e padrões que parecem reagir à presença deles. Um dos padrões na parede, próximo a Borin, de repente se projeta para fora, formando uma pequena lâmina de energia escura que estala em sua direção. Borin reage instantaneamente, levantando seu machado para aparar o projétil com um clangor metálico.\",\"items\":null,\"location\":\"Meio da Escadaria Subterrânea\",\"story\":[{\"description\":\"Ao descerem os primeiros degraus, a luz do orbe de Seraphina revela que a escadaria não é uma construção simples. Os degraus parecem ser esculpidos em um material negro e lustroso, e os entalhes nas paredes ganham vida sob a luz, mostrando padrões que se movem sutilmente, como se os desenhos tivessem uma consciência própria. O murmúrio distante se intensifica, agora soando como uma voz rouca e antiga entoando palavras em uma língua esquecida. Borin sente uma vibração estranha através das solas de suas botas, como se a escadaria estivesse viva. Lyra sente a energia vital da floresta diminuir drasticamente à medida que se aprofundam, sendo substituída por uma aura de poder mais sombrio e artificial.\",\"items\":null,\"location\":\"Primeiros degraus da Escadaria Subterrânea\",\"story\":[],\"players\":[{\"name\":\"Seraphina\",\"action\":null,\"race\":\"Humana\",\"class\":\"Feiticeira\",\"equipment\":null,\"backstory\":\"Uma estudiosa de magia arcana, atraída pelas lendas de poder oculto neste lugar.\",\"actions\":[\"Expandiu o orbe de luz, iluminando toda a escadaria.\",\"Observou os entalhes nas paredes ganharem vida com padrões em movimento.\",\"Declarou que a jornada começava e que deveriam se manter atentos.\",\"Mencionou que o feitiço de detecção de perigo estava ativo.\"]},{\"name\":\"Borin\",\"action\":null,\"race\":\"Anão da Montanha\",\"class\":\"Guerreiro\",\"equipment\":null,\"backstory\":\"Um exilado em busca de uma relíquia perdida de seu clã, acreditando que ela se encontra nas ruínas.\",\"actions\":[\"Assentiu com a cabeça, sua expressão tensa.\",\"Declarou que cuidaria de qualquer coisa que se mexesse.\",\"Deu o primeiro passo para a escadaria, com o machado pronto.\"]},{\"name\":\"Lyra\",\"action\":null,\"race\":\"Elfa da Floresta\",\"class\":\"Druida\",\"equipment\":null,\"backstory\":\"Uma guardiã da floresta ancestral, enviada para investigar a perturbação na tranquilidade do vale.\",\"actions\":[\"Seguiu Borin de perto.\",\"Manteve a mão pairando perto do chão, em contato com a terra.\",\"Sentiu a energia vital da floresta diminuir drasticamente.\",\"Percebeu uma aura de poder mais sombrio e artificial.\"]}],\"npcs\":null,\"actions\":[{\"action\":\"Com um toque sutil na própria testa, ela sussurra palavras adicionais que fazem o orbe de luz brilhar mais intensamente, lançando sombras dançantes nas paredes. 'O feitiço está ancorado. Sinto flutuações de energia em certos pontos da escadaria, o que sugere armadilhas ou algum tipo de ativação por proximidade. Mantenham-se próximos a mim, e tentem não tocar em nada que pareça suspeito.' Ela dá um passo cuidadoso para a escadaria, o orbe flutuando ligeiramente à sua frente.\",\"character\":\"Seraphina\"},{\"action\":\"Ela olha para Borin com um leve sorriso tranquilizador antes de continuar a descida," <> ...
+
+[lib/story_teller/llm/gemini_limiter.ex:81: StoryTeller.Llm.GeminiLimiter.handle_call/3]
+clean_state #=> %{
+  queue: {[], []},
+  tpm: %{
+    1754208565 => 2031,
+    1754208566 => 2182,
+    1754208568 => 3182,
+    1754208570 => 3406,
+    1754208572 => 3590,
+    1754208574 => 4035,
+    1754208577 => 4100,
+    1754208579 => 4488,
+    1754208581 => 4398,
+    1754208583 => 4822,
+    1754208586 => 4541,
+    1754208588 => 5071,
+    1754208620 => 4745,
+    1754208622 => 5132
+  },
+  rpm: %{
+    1754208565 => 1,
+    1754208566 => 1,
+    1754208568 => 1,
+    1754208570 => 1,
+    1754208572 => 1,
+    1754208574 => 1,
+    1754208577 => 1,
+    1754208579 => 1,
+    1754208581 => 1,
+    1754208583 => 1,
+    1754208586 => 1,
+    1754208588 => 1,
+    1754208620 => 1,
+    1754208622 => 1
+  },
+  rpd: %{"2025-08-03" => 17},
+  drain_pending: false
+}
+
+[debug] 📦 Headers recebidos:
+content-type: application/json; charset=UTF-8
+vary: X-Origin
+vary: Referer
+date: Sun, 03 Aug 2025 08:10:27 GMT
+server: scaffolding on HTTPServer2
+x-xss-protection: 0
+x-frame-options: SAMEORIGIN
+x-content-type-options: nosniff
+server-timing: gfet4t7; dur=2249
+alt-svc: h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+accept-ranges: none
+vary: Origin,Accept-Encoding
+transfer-encoding: chunked
+[debug] 📝 Ações geradas: ```json
+{
+  "actions": [
+    {
+      "character": "Seraphina",
+      "action": "Com o ataque bloqueado, ela rapidamente entoa outro feitiço, direcionando o orbe de luz para o padrão que projetou a lâmina. 'Parece que a escadaria reage ao nosso avanço com hostilidade. Precisaremos de mais do que apenas iluminação.' Ela move o orbe para iluminar mais a frente, buscando a fonte da energia reativa."
+    },
+    {
+      "character": "Lyra",
+      "action": "Recua um passo instintivamente com o ataque, mas mantém a compostura. Ela pousa uma mão sobre o ombro de Borin. 'Você está bem, Borin? Esta terra antiga está protegendo seus segredos, e parece que de forma agressiva.' Seus olhos percorrem os entalhes ao redor, tentando entender a natureza da ameaça."
+    },
+    {
+      "character": "Borin",
+      "action": "Aparou o golpe com um grunhido, o machado estalando com o impacto da energia. Ele dá um passo para trás, mantendo o machado pronto. 'Senti que algo não estava certo. Essa coisa era rápida. Vamos continuar com cautela redobrada. Eu abro caminho, você vigia o que pode vir das paredes e de cima, feiticeira. Elfa, fique atenta ao chão e às energias que você sente.' Ele se recompõe e avança mais um degrau, olhando para o próximo conjunto de entalhes com desconfiança."
+    }
+  ]
+}
+```
+[debug] 🔍 Attempting to extract JSON block...
+[info] ✅ JSON block extracted successfully.
+[info] ✅ Ações geradas com sucesso para 3 personagem(ns).
+[info] 🎭 Actions taken in scene at Meio da Escadaria Subterrânea
+[lib/story_teller/llm/gemini.ex:15: StoryTeller.Llm.Gemini.chat/3]
+prompt #=> "{\"description\":\"Ao avançarem mais pela escadaria, a luz do orbe de Seraphina revela que os entalhes nas paredes não são apenas decorativos; eles parecem se mover e se reorganizar à medida que o grupo passa, criando novas formas e padrões que parecem reagir à presença deles. Um dos padrões na parede, próximo a Borin, de repente se projeta para fora, formando uma pequena lâmina de energia escura que estala em sua direção. Borin reage instantaneamente, levantando seu machado para aparar o projétil com um clangor metálico.\",\"items\":null,\"location\":\"Meio da Escadaria Subterrânea\",\"story\":[{\"description\":\"Ao descerem os primeiros degraus, a luz do orbe de Seraphina revela que a escadaria não é uma construção simples. Os degraus parecem ser esculpidos em um material negro e lustroso, e os entalhes nas paredes ganham vida sob a luz, mostrando padrões que se movem sutilmente, como se os desenhos tivessem uma consciência própria. O murmúrio distante se intensifica, agora soando como uma voz rouca e antiga entoando palavras em uma língua esquecida. Borin sente uma vibração estranha através das solas de suas botas, como se a escadaria estivesse viva. Lyra sente a energia vital da floresta diminuir drasticamente à medida que se aprofundam, sendo substituída por uma aura de poder mais sombrio e artificial.\",\"items\":null,\"location\":\"Primeiros degraus da Escadaria Subterrânea\",\"story\":[],\"players\":[{\"name\":\"Seraphina\",\"action\":null,\"race\":\"Humana\",\"class\":\"Feiticeira\",\"equipment\":null,\"backstory\":\"Uma estudiosa de magia arcana, atraída pelas lendas de poder oculto neste lugar.\",\"actions\":[\"Expandiu o orbe de luz, iluminando toda a escadaria.\",\"Observou os entalhes nas paredes ganharem vida com padrões em movimento.\",\"Declarou que a jornada começava e que deveriam se manter atentos.\",\"Mencionou que o feitiço de detecção de perigo estava ativo.\"]},{\"name\":\"Borin\",\"action\":null,\"race\":\"Anão da Montanha\",\"class\":\"Guerreiro\",\"equipment\":null,\"backstory\":\"Um exilado em busca de uma relíquia perdida de seu clã, acreditando que ela se encontra nas ruínas.\",\"actions\":[\"Assentiu com a cabeça, sua expressão tensa.\",\"Declarou que cuidaria de qualquer coisa que se mexesse.\",\"Deu o primeiro passo para a escadaria, com o machado pronto.\"]},{\"name\":\"Lyra\",\"action\":null,\"race\":\"Elfa da Floresta\",\"class\":\"Druida\",\"equipment\":null,\"backstory\":\"Uma guardiã da floresta ancestral, enviada para investigar a perturbação na tranquilidade do vale.\",\"actions\":[\"Seguiu Borin de perto.\",\"Manteve a mão pairando perto do chão, em contato com a terra.\",\"Sentiu a energia vital da floresta diminuir drasticamente.\",\"Percebeu uma aura de poder mais sombrio e artificial.\"]}],\"npcs\":null,\"actions\":[{\"action\":\"Com um toque sutil na própria testa, ela sussurra palavras adicionais que fazem o orbe de luz brilhar mais intensamente, lançando sombras dançantes nas paredes. 'O feitiço está ancorado. Sinto flutuações de energia em certos pontos da escadaria, o que sugere armadilhas ou algum tipo de ativação por proximidade. Mantenham-se próximos a mim, e tentem não tocar em nada que pareça suspeito.' Ela dá um passo cuidadoso para a escadaria, o orbe flutuando ligeiramente à sua frente.\",\"character\":\"Seraphina\"},{\"action\":\"Ela olha para Borin com um leve sorriso tranquilizador antes de continuar a descida, a mão ainda pairando perto do chão. 'A terra aqui está... quieta. Não como a floresta que conheço, mas não sinto uma malevolência inerente, apenas um poder contido, talvez em sofrimento.' Seus olhos varrem os entalhes com curiosidade, tentando discernir seu significado natural.\",\"character\":\"Lyra\"}]},{\"description\":\"O orbe de luz oscila, e a escuridão da escadaria parece tentar engoli-lo. A melodia sussurrada por Lyra é quase inaudível, mas o ar na entrada parece ficar mais denso. Borin, com sua postura tensa, aguarda a decisão de Seraphina, o machado pronto. Enquanto Seraphina se concentra em seu feitiço, os símbolos azuis nas pedras da escadaria começam a piscar em uníssono com a pedra central, enviando pulsos de energia pela estrutura antiga. Um leve tremor adicional percorre " <> ...
+
+[info] ▶️ Turn 10 of 10
+[info] 🔁 Advancing story with new turn.
+[info] ➡️ Generating next scene from current scene at Meio da Escadaria Subterrânea...
+[lib/story_teller/llm/gemini_limiter.ex:81: StoryTeller.Llm.GeminiLimiter.handle_call/3]
+clean_state #=> %{
+  queue: {[], []},
+  tpm: %{
+    1754208568 => 3182,
+    1754208570 => 3406,
+    1754208572 => 3590,
+    1754208574 => 4035,
+    1754208577 => 4100,
+    1754208579 => 4488,
+    1754208581 => 4398,
+    1754208583 => 4822,
+    1754208586 => 4541,
+    1754208588 => 5071,
+    1754208620 => 4745,
+    1754208622 => 5132,
+    1754208624 => 4720
+  },
+  rpm: %{
+    1754208568 => 1,
+    1754208570 => 1,
+    1754208572 => 1,
+    1754208574 => 1,
+    1754208577 => 1,
+    1754208579 => 1,
+    1754208581 => 1,
+    1754208583 => 1,
+    1754208586 => 1,
+    1754208588 => 1,
+    1754208620 => 1,
+    1754208622 => 1,
+    1754208624 => 1
+  },
+  rpd: %{"2025-08-03" => 18},
+  drain_pending: false
+}
+
+[debug] 📦 Headers recebidos:
+content-type: application/json; charset=UTF-8
+vary: X-Origin
+vary: Referer
+date: Sun, 03 Aug 2025 08:10:29 GMT
+server: scaffolding on HTTPServer2
+x-xss-protection: 0
+x-frame-options: SAMEORIGIN
+x-content-type-options: nosniff
+server-timing: gfet4t7; dur=2434
+alt-svc: h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+accept-ranges: none
+vary: Origin,Accept-Encoding
+transfer-encoding: chunked
+[debug] 🔍 Attempting to extract JSON block...
+[info] ✅ JSON block extracted successfully.
+[info] ✅ Next scene generated at Meio da Escadaria Subterrânea
+[info] 🎭 Gerando ações para a cena em Meio da Escadaria Subterrânea...
+[lib/story_teller/llm/gemini.ex:15: StoryTeller.Llm.Gemini.chat/3]
+prompt #=> "Você é um mestre de RPG. Com base na seguinte cena em JSON, uma string `action` para os personagens que forem agir nessa cena.\n\n✅ O resultado deve ser estritamente neste formato JSON:\n{\n  \"actions\": [\n    {\n      \"character\": \"Nome do personagem\",\n      \"action\": \"Ação que ele toma, como fala ou movimentação.\"\n    }\n  ]\n}\n\n🎯 Use o campo `scene.players`, `scene.npc` ou outro interagível para identificar os sujeitos de ação.\n\n🎯 Se existir um campo `actions`, use o conteúdo de cada `action` associado ao `player` ou `npc` ou `item`.]\n\n🎯 Os `scene.players` ou `scene.npc` não precisam agir necessariamente, tornando a narrativa mais dinâmica e menos massante.\n\n🎯 Quando algum personagem não agir, basta não adicionar em `actions` fazendo cenas mais direcionadas e fáceis de digerir.\n\nCena:\n{\"description\":\"O ataque repelido causa um leve tremor na escadaria, e os entalhes nas paredes parecem se agitar com mais intensidade. O murmúrio distante se transforma em uma série de cliques agudos e rápidos, como o som de muitos insetos se movendo em uníssono. Seraphina, com o orbe de luz agora mais focado, revela que o padrão que atacou Borin se desfez e se reorganizou em uma forma mais complexa na parede adjacente. Lyra sente que a energia sombria que emanava da escadaria agora está mais concentrada, como se o próprio ato de resistir a ela tivesse fortalecido sua origem.\",\"items\":null,\"location\":\"Meio da Escadaria Subterrânea\",\"story\":[{\"description\":\"Ao avançarem mais pela escadaria, a luz do orbe de Seraphina revela que os entalhes nas paredes não são apenas decorativos; eles parecem se mover e se reorganizar à medida que o grupo passa, criando novas formas e padrões que parecem reagir à presença deles. Um dos padrões na parede, próximo a Borin, de repente se projeta para fora, formando uma pequena lâmina de energia escura que estala em sua direção. Borin reage instantaneamente, levantando seu machado para aparar o projétil com um clangor metálico.\",\"items\":null,\"location\":\"Meio da Escadaria Subterrânea\",\"story\":[],\"players\":[{\"name\":\"Seraphina\",\"action\":null,\"race\":\"Humana\",\"class\":\"Feiticeira\",\"equipment\":null,\"backstory\":\"Uma estudiosa de magia arcana, atraída pelas lendas de poder oculto neste lugar.\",\"actions\":[\"Sussurrou palavras adicionais, fazendo o orbe de luz brilhar mais intensamente.\",\"Observou os entalhes nas paredes se moverem e reorganizarem.\",\"Sentiu flutuações de energia, indicando armadilhas ou ativação por proximidade.\",\"Instruiu os companheiros a manterem a proximidade e evitarem tocar em objetos suspeitos.\",\"Deu um passo cuidadoso para a escadaria.\"]},{\"name\":\"Lyra\",\"action\":null,\"race\":\"Elfa da Floresta\",\"class\":\"Druida\",\"equipment\":null,\"backstory\":\"Uma guardiã da floresta ancestral, enviada para investigar a perturbação na tranquilidade do vale.\",\"actions\":[\"Olhou para Borin com um sorriso tranquilizador.\",\"Continuou a descida, a mão ainda pairando perto do chão.\",\"Descreveu a terra como quieta, com energia contida e em sofrimento.\",\"Varreu os entalhes com curiosidade, tentando discernir seu significado natural.\"]},{\"name\":\"Borin\",\"action\":null,\"race\":\"Anão da Montanha\",\"class\":\"Guerreiro\",\"equipment\":null,\"backstory\":\"Um exilado em busca de uma relíquia perdida de seu clã, acreditando que ela se encontra nas ruínas.\",\"actions\":[\"Sentiu uma vibração estranha através das solas de suas botas.\",\"Reagiu instantaneamente a uma lâmina de energia escura projetada de um entalhe na parede.\",\"Levantou seu machado para aparar o projétil com um clangor metálico.\"]}],\"npcs\":null,\"actions\":[{\"action\":\"Com o ataque bloqueado, ela rapidamente entoa outro feitiço, direcionando o orbe de luz para o padrão que projetou a lâmina. 'Parece que a escadaria reage ao nosso avanço com hostilidade. Precisaremos de mais do que apenas iluminação.' Ela move o orbe para iluminar mais a frente, buscando a fonte da energia reativa.\",\"character\":\"Seraphina\"},{\"action\":\"Recua um passo instintivamente com o ataque, mas mantém a compostura. Ela pousa uma mão sobre o ombro de Borin. 'Você está bem, Borin? Esta terra antiga está protegendo seus segredos" <> ...
+
+[lib/story_teller/llm/gemini_limiter.ex:81: StoryTeller.Llm.GeminiLimiter.handle_call/3]
+clean_state #=> %{
+  queue: {[], []},
+  tpm: %{
+    1754208570 => 3406,
+    1754208572 => 3590,
+    1754208574 => 4035,
+    1754208577 => 4100,
+    1754208579 => 4488,
+    1754208581 => 4398,
+    1754208583 => 4822,
+    1754208586 => 4541,
+    1754208588 => 5071,
+    1754208620 => 4745,
+    1754208622 => 5132,
+    1754208624 => 4720,
+    1754208627 => 5312
+  },
+  rpm: %{
+    1754208570 => 1,
+    1754208572 => 1,
+    1754208574 => 1,
+    1754208577 => 1,
+    1754208579 => 1,
+    1754208581 => 1,
+    1754208583 => 1,
+    1754208586 => 1,
+    1754208588 => 1,
+    1754208620 => 1,
+    1754208622 => 1,
+    1754208624 => 1,
+    1754208627 => 1
+  },
+  rpd: %{"2025-08-03" => 19},
+  drain_pending: false
+}
+
+[debug] 📦 Headers recebidos:
+content-type: application/json; charset=UTF-8
+vary: X-Origin
+vary: Referer
+date: Sun, 03 Aug 2025 08:10:31 GMT
+server: scaffolding on HTTPServer2
+x-xss-protection: 0
+x-frame-options: SAMEORIGIN
+x-content-type-options: nosniff
+server-timing: gfet4t7; dur=2017
+alt-svc: h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+accept-ranges: none
+vary: Origin,Accept-Encoding
+transfer-encoding: chunked
+[debug] 📝 Ações geradas: ```json
+{
+  "actions": [
+    {
+      "character": "Seraphina",
+      "action": "Com um gesto rápido, ela concentra mais energia no orbe, que brilha mais intensamente e se expande ligeiramente, revelando mais da escadaria. 'Prestem atenção', ela avisa, sua voz firme apesar da tensão. 'O padrão na parede se reformou. Ele está se acumulando novamente. Precisamos avançar ou recuar rapidamente para evitar outro ataque.'"
+    },
+    {
+      "character": "Lyra",
+      "action": "Ela se ajoelha brevemente, tocando um dos degraus inferiores. 'A terra aqui... está adormecida, mas sobressaltada. Sinto que esses padrões são como tentáculos dessa energia sombria, buscando se alimentar ou se defender. Se pudermos encontrar a fonte principal, talvez possamos acalmar isso.'"
+    },
+    {
+      "character": "Borin",
+      "action": "Ele grunhe, o machado firme em suas mãos. 'Acalmar? Não tenho tempo para cantigas de ninar. Eu vou na frente. Se algo mais saltar, eu cuido disso.' Ele dá um passo decidido para o próximo degrau, o olhar fixo nos entalhes à frente."
+    }
+  ]
+}
+```
+[debug] 🔍 Attempting to extract JSON block...
+[info] ✅ JSON block extracted successfully.
+[info] ✅ Ações geradas com sucesso para 3 personagem(ns).
+[info] 🎭 Actions taken in scene at Meio da Escadaria Subterrânea
+[info] 🏁 Story complete. 10 turns played.
+:ok

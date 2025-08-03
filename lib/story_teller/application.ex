@@ -14,6 +14,7 @@ defmodule StoryTeller.Application do
       {Phoenix.PubSub, name: StoryTeller.PubSub},
       # Start the Finch HTTP client for sending emails
       {Finch, name: StoryTeller.Finch},
+      StoryTeller.Llm.GeminiLimiter,
       # Start a worker by calling: StoryTeller.Worker.start_link(arg)
       # {StoryTeller.Worker, arg},
       # Start to serve requests, typically the last entry

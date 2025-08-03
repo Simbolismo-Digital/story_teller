@@ -9,18 +9,25 @@ defmodule StoryTeller.Llm.Gemini do
 
   require Logger
 
+  alias StoryTeller.Llm.GeminiLimiter
+
   def chat(context, prompt, story \\ []) do
+    dbg(prompt)
+    {:ok, tokens} = GeminiLimiter.estimate_tokens(context, prompt)
+
+    GeminiLimiter.run(tokens, fn ->
+      do_chat(context, prompt, story)
+    end)
+  end
+
+  defp do_chat(context, prompt, story) do
     contents = contents(context, prompt, story)
 
     body =
-      %{
-        contents: contents
-      }
+      %{contents: contents}
       |> Jason.encode!()
 
-    headers = [
-      {"Content-Type", "application/json"}
-    ]
+    headers = [{"Content-Type", "application/json"}]
 
     Finch.build(:post, "#{@url}?key=#{api_key()}", headers, body)
     |> Finch.request(StoryTeller.Finch)
@@ -63,7 +70,14 @@ defmodule StoryTeller.Llm.Gemini do
       ]
   end
 
-  defp handle_response({:ok, %Finch.Response{status: 200, body: body}}, contents) do
+  defp handle_response(
+         {:ok, %Finch.Response{status: 200, body: body, headers: headers}},
+         contents
+       ) do
+    Logger.debug(
+      "📦 Headers recebidos:\n#{Enum.map_join(headers, "\n", fn {k, v} -> "#{k}: #{v}" end)}"
+    )
+
     case Jason.decode(body) do
       {:ok, %{"candidates" => [%{"content" => %{"parts" => candidate}} | _]}} ->
         answer =

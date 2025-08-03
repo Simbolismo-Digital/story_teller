@@ -2,11 +2,13 @@ defmodule StoryTeller.Universe do
   @moduledoc """
   The universe of a mythic RPG world.
 
-  StoryTeller.Universe.play_n_turns(10) |> StoryTeller.Universe.print_story()
+  StoryTeller.Universe.play_n_turns(10) |> StoryTeller.Scene.Export.print_story_to_file("output.md")
   """
   alias StoryTeller.Llm.Gemini
 
   require Logger
+
+  @scene_memory 2
 
   def opening_scene() do
     Logger.info("🌅 Generating opening scene...")
@@ -37,9 +39,20 @@ defmodule StoryTeller.Universe do
           |> Jason.decode!()
           |> StoryTeller.Scene.parse()
 
+        story =
+          [scene | scene.story || []]
+          |> flatten_story()
+          |> Enum.take(@scene_memory)
+
         Logger.info("✅ Next scene generated at #{next_scene.location}")
-        {:ok, %{next_scene | story: [scene | scene.story]}, next_model_story}
+        {:ok, %{next_scene | story: story}, next_model_story}
     end
+  end
+
+  def flatten_story([]), do: []
+
+  def flatten_story([%{story: story} = scene | rest]) do
+    [Map.put(scene, :story, []) | flatten_story(story ++ rest)]
   end
 
   def turn(last_scene \\ nil, story_log \\ [])
@@ -78,52 +91,6 @@ defmodule StoryTeller.Universe do
     Logger.info("▶️ Turn #{length(acc) + 1} of #{n + length(acc)}")
     {:ok, new_scene, new_story} = turn(scene, story)
     play_n_turns(n - 1, new_scene, new_story, [new_scene | acc])
-  end
-
-  def print_story([]), do: IO.puts("Nenhuma cena registrada.")
-
-  def print_story(scenes) when is_list(scenes) do
-    # Log sync
-    :timer.sleep(1000)
-
-    scenes
-    |> Enum.with_index(1)
-    |> Enum.each(fn {scene, index} ->
-      IO.puts("\n===== TURNO #{index} =====")
-      IO.puts("\n📍 Local: #{scene.location}\n")
-      IO.puts("📖 Cena:\n#{scene.description}\n")
-
-      if index == 1 do
-        IO.puts("\n🧙 Personagens:")
-
-        Enum.each(scene.players, fn player ->
-          IO.puts("- #{player.name} (#{player.race} #{player.class})")
-          IO.puts("  🎒 Background: #{player.backstory}")
-
-          if Map.get(player, :equipment) do
-            IO.puts("  🧰 Equipamento: #{player.equipment}")
-          end
-
-          if Map.has_key?(player, :npc) do
-            IO.puts("  🧑‍🤝‍🧑 NPC: #{player.npc}")
-          end
-
-          IO.puts("")
-        end)
-      end
-
-      if Enum.any?(scene.actions) do
-        IO.puts("🎭 Ações:")
-
-        Enum.each(scene.actions, fn %{"character" => c, "action" => a} ->
-          IO.puts("- #{c}: #{a}")
-        end)
-      else
-        IO.puts("⚠️  Nenhuma ação registrada.")
-      end
-    end)
-
-    IO.puts("\n===== FIM DA HISTÓRIA =====\n")
   end
 
   def context() do
