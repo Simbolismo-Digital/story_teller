@@ -1,4 +1,6 @@
 defmodule StoryTeller.God.CreateEntity do
+  alias StoryTeller.Repo
+
   def create(intent, prompt, struct) do
     {:ok, entities, _story} = StoryTeller.Llm.Gemini.chat(prompt, context(intent, struct))
 
@@ -6,6 +8,17 @@ defmodule StoryTeller.God.CreateEntity do
     |> dbg()
     |> StoryTeller.Json.extract_json_block()
     |> Jason.decode!()
+    |> Enum.map(&persist_and_spawn!(&1, struct))
+  end
+
+  defp persist_and_spawn!(attrs, %module{}) do
+    player =
+      module.changeset(attrs)
+      |> Repo.insert!(on_conflict: :nothing, conflict_target: :name)
+
+    {:ok, _pid} = module.start_link(player)
+
+    player
   end
 
   def context(intent, struct) do

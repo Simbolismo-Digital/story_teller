@@ -4,9 +4,8 @@ Sistema interativo de geração de histórias, personagens e cenas utilizando El
 
 ## 📍 Roadmap
 
-* [ ] Persistência e restauração das histórias geradas
-* [x] Mensageria central com controle de limites da Gemini API (rate limiting)
 * [ ] Agentificação de personagens e elementos dinâmicos das cenas (NPCs, itens, clima)
+* [ ] Persistência e restauração das histórias geradas
 
 ## 🚀 Instalação
 
@@ -70,12 +69,13 @@ O ar da floresta antiga vibra com uma energia primordial...
 
 | Data         | Categoria                 | Descrição                                                                                                                                                 |
 | ------------ | ------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `16/08/2025` | 📘 **Adição de Player.Agent** | Além de criar os devidos processos, eles estão persistidos no banco.               |
 | `16/08/2025` | 📘 **Adição de MusicPlayer** | Genserver supervisionado junto com o processo God somente quando executando `iex -S` suportando player `mpv` e `cvlc` testado no linux               |
 | `16/08/2025` | 📘 **Introdução do processo God** | Cena inicial com efeitos de terminal.               |
 | `05/08/2025` | 📘 **Melhoria de README** | Documentadas novas tasks `mix play` e `mix package.zip`. Adicionado exemplo direto de uso para execução de história interativa no terminal.               |
+| `05/08/2025` | 🔐 **.env Automático**    | Adicionado suporte a carregamento automático de variáveis do `.env` via `DotenvParser` em `runtime.exs`. Protegido por checagem de ambiente e existência. |
 | `05/08/2025` | 🧪 **Mix Task: play**     | Criada task `mix play` com suporte a número de turnos como argumento. Gera e exporta a história diretamente para `story_teller.md`.                       |
 | `05/08/2025` | 📦 **Mix Task: package.zip**      | Criada task `mix package.zip` que empacota o projeto, excluindo `deps`, `_build`, `.git`, `cover/`, `doc/` e o próprio `.zip`. Ideal para distribuição.   |
-| `05/08/2025` | 🔐 **.env Automático**    | Adicionado suporte a carregamento automático de variáveis do `.env` via `DotenvParser` em `runtime.exs`. Protegido por checagem de ambiente e existência. |
 | `05/08/2025` | 🔧 **Refatoração JSON**   | A função `Scene.parse/1` agora lida diretamente com blocos JSON, delegando parsing e casting. Reduziu redundância e melhorou legibilidade.                |
 | `03/08/2025` | 🛡️ **Rate Limiting** | Implementado controle de cotas para Gemini API (Free Tier): `15 RPM`, `250.000 TPM`, `1.000 RPD`. <br>Adicionada lógica de `clean_state`.          |
 | `03/08/2025` | 🧠 **Prompt Cleanup** | Detectada duplicação de conteúdo em `Scene.story`. Agora o histórico é `flattened` e truncado a `@scene_memory = 2`. Dramática economia de tokens. |

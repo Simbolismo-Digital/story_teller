@@ -4,6 +4,7 @@ defmodule StoryTeller.God do
   alias StoryTeller.Cli.TextFx
 
   import StoryTeller.God.Brain
+  import StoryTeller.God.Memory
 
   @clean_state %{players: []}
 
@@ -25,7 +26,8 @@ defmodule StoryTeller.God do
   @impl true
   def handle_continue(:prompt, state) do
     # introduction()
-    {:noreply, state}
+
+    {:noreply, resume()}
   end
 
   @impl true
