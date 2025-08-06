@@ -4,9 +4,8 @@ Sistema interativo de geração de histórias, personagens e cenas utilizando El
 
 ## 📍 Roadmap
 
-* [ ] Persistência e restauração das histórias geradas
-* [x] Mensageria central com controle de limites da Gemini API (rate limiting)
 * [ ] Agentificação de personagens e elementos dinâmicos das cenas (NPCs, itens, clima)
+* [ ] Persistência e restauração das histórias geradas
 
 ## 🚀 Instalação
 
