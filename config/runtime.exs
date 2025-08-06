@@ -20,6 +20,10 @@ if System.get_env("PHX_SERVER") do
   config :story_teller, StoryTellerWeb.Endpoint, server: true
 end
 
+if Code.ensure_loaded?(DotenvParser) && File.exists?(".env") do
+  DotenvParser.load_file(".env")
+end
+
 config :story_teller, :gemini, api_key: System.fetch_env!("GEMINI_API_KEY")
 
 if config_env() == :prod do

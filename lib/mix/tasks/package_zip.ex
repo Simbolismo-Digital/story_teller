@@ -13,8 +13,17 @@ defmodule Mix.Tasks.Package.Zip do
       System.cmd(
         "zip",
         [
-          "-r", zip_name, ".", "-FS",
-          "-x", "deps/*", "_build/*", ".git/*", "story_teller.zip", "cover/*", "doc/*"
+          "-r",
+          zip_name,
+          ".",
+          "-FS",
+          "-x",
+          "deps/*",
+          "_build/*",
+          ".git/*",
+          "story_teller.zip",
+          "cover/*",
+          "doc/*"
         ],
         stderr_to_stdout: true,
         into: IO.stream(:stdio, :line)

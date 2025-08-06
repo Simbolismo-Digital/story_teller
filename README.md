@@ -23,12 +23,18 @@ Obtenha sua chave em: [https://aistudio.google.com/app/apikey](https://aistudio.
 ```bash
 mix setup
 iex -S mix phx.server
-```
+``` 
 
 ## 🧪 Execução (modo interativo)
 
 ```elixir
 StoryTeller.Universe.play_n_turns(2) |> StoryTeller.Universe.print_story()
+```
+
+## Execução via mix task
+```bash
+mix play # executa por padrão 2 turnos
+mix play 2 # configura n turnos
 ```
 
 ---

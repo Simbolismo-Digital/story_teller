@@ -10,6 +10,11 @@ defmodule StoryTeller.Universe do
 
   @scene_memory 2
 
+  def play(turns, output_file) do
+    StoryTeller.Universe.play_n_turns(turns)
+    |> StoryTeller.Scene.Export.print_story_to_file(output_file)
+  end
+
   def opening_scene() do
     Logger.info("🌅 Generating opening scene...")
 
@@ -22,11 +27,7 @@ defmodule StoryTeller.Universe do
 
     {:ok, next_json_scene, next_model_story} =
       context()
-      |> Gemini.chat(
-        scene
-        |> Jason.encode!(),
-        model_story
-      )
+      |> Gemini.chat(Jason.encode!(scene), model_story)
 
     case StoryTeller.Json.extract_json_block(next_json_scene) do
       {:error, text} ->
@@ -34,10 +35,7 @@ defmodule StoryTeller.Universe do
         {:ok, %{scene | description: text}, next_model_story}
 
       json_response ->
-        next_scene =
-          json_response
-          |> Jason.decode!()
-          |> StoryTeller.Scene.parse()
+        next_scene = StoryTeller.Scene.parse(json_response)
 
         story =
           [scene | scene.story || []]
@@ -62,10 +60,7 @@ defmodule StoryTeller.Universe do
     {:ok, raw_scene, model_story} = opening_scene()
 
     scene =
-      raw_scene
-      |> StoryTeller.Json.extract_json_block()
-      |> Jason.decode!()
-      |> StoryTeller.Scene.parse()
+      StoryTeller.Scene.parse(raw_scene)
       |> StoryTeller.Action.make_actions(model_story)
 
     Logger.info("✅ Opening scene parsed and actions made.")

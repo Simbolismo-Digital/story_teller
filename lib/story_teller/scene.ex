@@ -10,7 +10,16 @@ defmodule StoryTeller.Scene do
     actions: []
   ]
 
-  def parse(%{"scene" => scene}) do
+  alias StoryTeller.Json
+
+  def parse(raw_scene) do
+    raw_scene
+    |> Json.extract_json_block()
+    |> Jason.decode!()
+    |> cast()
+  end
+
+  def cast(%{"scene" => scene}) do
     %StoryTeller.Scene{
       description: scene["description"],
       location: scene["location"],
