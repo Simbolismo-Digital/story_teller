@@ -71,7 +71,8 @@ defmodule StoryTeller.MixProject do
   # See the documentation for `Mix` for more info on aliases.
   defp aliases do
     [
-      setup: ["deps.get", "ecto.setup", "assets.setup", "assets.build"],
+      setup: ["deps.get", "scripts.setup", "ecto.setup", "assets.setup", "assets.build"],
+      "scripts.setup": [&scripts_setup/1],
       "ecto.setup": ["ecto.create", "ecto.migrate", "run priv/repo/seeds.exs"],
       "ecto.reset": ["ecto.drop", "ecto.setup"],
       test: ["ecto.create --quiet", "ecto.migrate --quiet", "test"],
@@ -83,5 +84,20 @@ defmodule StoryTeller.MixProject do
         "phx.digest"
       ]
     ]
+  end
+
+  defp scripts_setup(_) do
+    src_dir = "scripts"
+    dst_dir = Path.join(src_dir, "x")
+
+    File.rm_rf!(dst_dir)
+    File.mkdir_p!(dst_dir)
+
+    Path.wildcard(Path.join(src_dir, "*.sh"))
+    |> Enum.each(fn file ->
+      dest = Path.join(dst_dir, Path.basename(file))
+      File.cp!(file, dest)
+      File.chmod!(dest, 0o755)
+    end)
   end
 end

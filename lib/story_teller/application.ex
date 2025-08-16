@@ -7,6 +7,18 @@ defmodule StoryTeller.Application do
 
   @impl true
   def start(_type, _args) do
+    music_enabled? =
+      String.downcase(System.get_env("MUSIC_ENABLED") || "true") in ["1", "true", "yes"]
+
+    music_child =
+      if music_enabled? do
+        {
+          StoryTeller.Music.Player,
+          dir: System.get_env("MUSIC_DIR") || "~/Music/ambient",
+          cmd: System.find_executable("mpv") || System.find_executable("cvlc")
+        }
+      end
+
     children = [
       StoryTellerWeb.Telemetry,
       StoryTeller.Repo,
@@ -19,7 +31,8 @@ defmodule StoryTeller.Application do
       # {StoryTeller.Worker, arg},
       # Start to serve requests, typically the last entry
       StoryTellerWeb.Endpoint,
-      StoryTeller.God
+      StoryTeller.God,
+      music_child
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html
