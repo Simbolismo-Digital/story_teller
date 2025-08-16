@@ -5,12 +5,15 @@ defmodule StoryTeller.Cli.TextFx do
 
   # API: aceita string ou lista + opts (ex.: color: :gold, device: :standard_error)
   def type(text, opts \\ [])
-  def type(text, opts) when is_binary(text), do: type(List.wrap(text), opts)
+  def type(text, opts) when is_binary(text), do: type(List.wrap(text) |> Enum.flat_map(& String.split(&1, "\n")), opts)
 
   def type(paragraphs, opts) when is_list(paragraphs) do
     device = Keyword.get(opts, :device, :standard_error)
+    wait = Keyword.get(opts, :wait, 0)
     prefix = ansi_prefix(opts)
     suffix = ansi_suffix(opts)
+
+    Process.sleep(wait)
 
     Enum.each(paragraphs, fn para -> do_type(para, device, prefix, suffix) end)
     :ok
@@ -62,6 +65,8 @@ defmodule StoryTeller.Cli.TextFx do
     case Keyword.get(opts, :color) do
       nil       -> ""
       :yellow   -> IO.ANSI.yellow()
+      :white    -> IO.ANSI.white()
+      :green    -> IO.ANSI.green()
       :gold     -> ansi_gold()
       {:rgb, r, g, b} when is_integer(r) and is_integer(g) and is_integer(b) ->
         ansi_rgb(r, g, b)
