@@ -3,6 +3,10 @@ defmodule StoryTeller.God do
 
   alias StoryTeller.Cli.TextFx
 
+  import StoryTeller.God.Brain
+
+  @clean_state %{players: []}
+
   ## Public API
 
   def start_link(_opts \\ []) do
@@ -16,19 +20,21 @@ defmodule StoryTeller.God do
   ## GenServer callbacks
 
   @impl true
-  def init(_arg), do: {:ok, nil, {:continue, :prompt}}
+  def init(_arg), do: {:ok, @clean_state, {:continue, :prompt}}
 
   @impl true
   def handle_continue(:prompt, state) do
-    introduction()
+    # introduction()
     {:noreply, state}
   end
 
   @impl true
   def handle_cast({:talk, prompt}, state) do
-    reply = respond(prompt)
-    TextFx.type(reply, color: :gold, wait: 200)
-    {:noreply, state}
+    {:noreply,
+     plan(state)
+     |> execute(prompt)
+     |> respond(prompt, state)
+     |> manifest()}
   end
 
   ## Private
@@ -53,14 +59,23 @@ defmodule StoryTeller.God do
       alternando lentamente numa dança de cores.
 
       🌐 A esfera se conecta com você.
-      """, color: :white, wait: :timer.seconds(2))
+      """,
+      color: :white,
+      wait: :timer.seconds(2)
+    )
 
-    TextFx.type("""
-    ✨ 🙏 Eu sou Deus. Você está no 🌌 Centro da Criação.
-    🗣️ Diga-me seu nome e seu desejo, e.g. God.talk("I am Aerin.")
-    """, color: :gold)
+    TextFx.type(
+      """
+      ✨ 🙏 Eu sou Deus. Você está no 🌌 Centro da Criação.
+      🗣️ Diga-me seu nome e seu desejo, e.g. God.talk("Eu sou Drakaw.")
+      """,
+      color: :gold
+    )
   end
 
-  defp respond(""), do: "Fale, viajante. Qual é o seu nome?"
-  defp respond(prompt), do: "Eu sou Deus. Você disse: #{prompt}"
+  defp manifest({state, reply}) do
+    TextFx.type(reply, color: :gold, wait: 200)
+
+    state
+  end
 end

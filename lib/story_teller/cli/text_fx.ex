@@ -5,7 +5,9 @@ defmodule StoryTeller.Cli.TextFx do
 
   # API: aceita string ou lista + opts (ex.: color: :gold, device: :standard_error)
   def type(text, opts \\ [])
-  def type(text, opts) when is_binary(text), do: type(List.wrap(text) |> Enum.flat_map(& String.split(&1, "\n")), opts)
+
+  def type(text, opts) when is_binary(text),
+    do: type(List.wrap(text) |> Enum.flat_map(&String.split(&1, "\n")), opts)
 
   def type(paragraphs, opts) when is_list(paragraphs) do
     device = Keyword.get(opts, :device, :standard_error)
@@ -23,8 +25,10 @@ defmodule StoryTeller.Cli.TextFx do
     IO.write(device, prefix)
 
     text
-    |> String.replace("\n", "")                # remove indent após \n
-    |> String.replace(~r/\s+/, " ")            # normaliza espaços
+    # remove indent após \n
+    |> String.replace("\n", "")
+    # normaliza espaços
+    |> String.replace(~r/\s+/, " ")
     |> then(&(&1 <> "\n"))
     |> String.normalize(:nfc)
     |> String.graphemes()
@@ -51,8 +55,8 @@ defmodule StoryTeller.Cli.TextFx do
     punct_extra =
       cond do
         g in [".", "!", "?", "…"] -> 120
-        g in [",", ";", ":"]      -> 60
-        true                      -> 0
+        g in [",", ";", ":"] -> 60
+        true -> 0
       end
 
     (max(base + jitter + punct_extra, 0) * @modifier)
@@ -63,15 +67,29 @@ defmodule StoryTeller.Cli.TextFx do
 
   defp ansi_prefix(opts) do
     case Keyword.get(opts, :color) do
-      nil       -> ""
-      :yellow   -> IO.ANSI.yellow()
-      :white    -> IO.ANSI.white()
-      :green    -> IO.ANSI.green()
-      :gold     -> ansi_gold()
+      nil ->
+        ""
+
+      :yellow ->
+        IO.ANSI.yellow()
+
+      :white ->
+        IO.ANSI.white()
+
+      :green ->
+        IO.ANSI.green()
+
+      :gold ->
+        ansi_gold()
+
       {:rgb, r, g, b} when is_integer(r) and is_integer(g) and is_integer(b) ->
         ansi_rgb(r, g, b)
-      other when is_binary(other) -> other
-      _ -> ""
+
+      other when is_binary(other) ->
+        other
+
+      _ ->
+        ""
     end
   end
 

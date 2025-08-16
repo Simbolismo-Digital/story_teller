@@ -34,7 +34,11 @@ defmodule StoryTeller.Application do
   end
 
   def application_children(false = _iex), do: []
-  def application_children(true = _iex), do: [StoryTeller.God] ++ List.wrap(Application.get_env(:story_teller, StoryTeller.Music)[:player])
+
+  def application_children(true = _iex),
+    do:
+      [StoryTeller.God] ++
+        List.wrap(Application.get_env(:story_teller, StoryTeller.Music)[:player])
 
   # Tell Phoenix to update the endpoint configuration
   # whenever the application is updated.
