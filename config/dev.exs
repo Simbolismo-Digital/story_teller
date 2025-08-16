@@ -29,6 +29,20 @@ config :story_teller, StoryTellerWeb.Endpoint,
     tailwind: {Tailwind, :install_and_run, [:story_teller, ~w(--watch)]}
   ]
 
+music_cmd = System.find_executable("mpv") || System.find_executable("cvlc")
+
+config :story_teller, StoryTeller.Music,
+  player:
+    if(
+      is_binary(music_cmd) and
+        String.downcase(System.get_env("MUSIC_ENABLED") || "true") in ["1", "true", "yes"],
+      do: {
+        StoryTeller.Music.Player,
+        dir: System.get_env("MUSIC_DIR") || "~/Music/ambient", cmd: music_cmd
+      },
+      else: nil
+    )
+
 # ## SSL Support
 #
 # In order to use HTTPS in development, a self-signed

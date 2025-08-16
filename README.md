@@ -70,6 +70,7 @@ O ar da floresta antiga vibra com uma energia primordial...
 
 | Data         | Categoria                 | Descrição                                                                                                                                                 |
 | ------------ | ------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `16/08/2025` | 📘 **Adição de MusicPlayer** | Genserver supervisionado junto com o processo God somente quando executando `iex -S` suportando player `mpv` e `cvlc` testado no linux               |
 | `16/08/2025` | 📘 **Introdução do processo God** | Cena inicial com efeitos de terminal.               |
 | `05/08/2025` | 📘 **Melhoria de README** | Documentadas novas tasks `mix play` e `mix package.zip`. Adicionado exemplo direto de uso para execução de história interativa no terminal.               |
 | `05/08/2025` | 🧪 **Mix Task: play**     | Criada task `mix play` com suporte a número de turnos como argumento. Gera e exporta a história diretamente para `story_teller.md`.                       |

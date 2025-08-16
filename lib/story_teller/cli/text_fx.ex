@@ -10,9 +10,10 @@ defmodule StoryTeller.Cli.TextFx do
 
   defp do_type(text) do
     text
-    |> String.replace("\n", "") # remove indent após \n
+    # remove indent após \n
+    |> String.replace("\n", "")
     |> String.replace(~r/\s+/, " ")
-    |> then(& &1 <> "\n")
+    |> then(&(&1 <> "\n"))
     |> String.normalize(:nfc)
     |> String.graphemes()
     |> Enum.each(fn g ->
@@ -30,16 +31,19 @@ defmodule StoryTeller.Cli.TextFx do
 
   # pausa básica + jitter + extra se for pontuação
   defp delay_ms(g) do
-    base   = 25                       # ~40 cps em média
-    jitter = (:rand.uniform(15) - 8)  # -8..+7 ms
+    # ~40 cps em média
+    base = 25
+    # -8..+7 ms
+    jitter = :rand.uniform(15) - 8
+
     punct_extra =
       cond do
         g in [".", "!", "?", "…"] -> 120
-        g in [",", ";", ":"]      -> 60
+        g in [",", ";", ":"] -> 60
         true -> 0
       end
 
-     max(base + jitter + punct_extra, 0) * @modifier
-     |> trunc()
+    (max(base + jitter + punct_extra, 0) * @modifier)
+    |> trunc()
   end
 end

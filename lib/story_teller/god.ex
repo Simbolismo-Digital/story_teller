@@ -34,6 +34,7 @@ defmodule StoryTeller.God do
 
   defp introduction do
     Process.sleep(:timer.seconds(2))
+
     TextFx.type([
       "👁️ Você abre os olhos, e o mundo vai se revelando em cores ao seu redor,
       como de costume quando a luz penetra a íris.",
@@ -58,8 +59,7 @@ defmodule StoryTeller.God do
     TextFx.type([
       "✨ 🙏 Eu sou Deus. Você está no 🌌 Centro da Criação.",
       "🗣️ Diga-me seu nome e seu desejo, e.g. God.talk(\"I am Aerin.\")"
-      ]
-    )
+    ])
   end
 
   defp respond(""), do: "Fale, viajante. Qual é o seu nome?"

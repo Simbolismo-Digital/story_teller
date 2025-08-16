@@ -4,7 +4,7 @@ defmodule StoryTeller.Music.Player do
   require Logger
 
   @default_dir Path.expand("~/Music/ambient")
-  @default_cmd (System.find_executable("mpv") || System.find_executable("cvlc"))
+  @default_cmd System.find_executable("mpv") || System.find_executable("cvlc")
 
   ## Public API
 
@@ -12,7 +12,7 @@ defmodule StoryTeller.Music.Player do
     GenServer.start_link(__MODULE__, opts, name: __MODULE__)
   end
 
-  def stop,     do: GenServer.call(__MODULE__, :stop)
+  def stop, do: GenServer.call(__MODULE__, :stop)
   def playing?, do: GenServer.call(__MODULE__, :playing?)
   def play(opts \\ []), do: GenServer.call(__MODULE__, {:play, opts})
 
@@ -22,8 +22,9 @@ defmodule StoryTeller.Music.Player do
   def init(opts) do
     Process.flag(:trap_exit, true)
 
-    cmd = Keyword.get(opts, :cmd, @default_cmd) ||
-            raise "No audio player found in PATH (tried mpv, cvlc)."
+    cmd =
+      Keyword.get(opts, :cmd, @default_cmd) ||
+        raise "No audio player found in PATH (tried mpv, cvlc)."
 
     dir = Keyword.get(opts, :dir, @default_dir) |> Path.expand()
     autostart = Keyword.get(opts, :autostart, true)
@@ -87,9 +88,9 @@ defmodule StoryTeller.Music.Player do
 
   defp args_for(cmd, dir) do
     case Path.basename(cmd) do
-      "mpv"  -> ["--no-video", "--shuffle", "--loop-playlist=inf", "--quiet", dir]
+      "mpv" -> ["--no-video", "--shuffle", "--loop-playlist=inf", "--quiet", dir]
       "cvlc" -> ["--intf", "dummy", "--loop", "--random", dir]
-      _      -> ["--no-video", "--shuffle", "--loop-playlist=inf", dir]
+      _ -> ["--no-video", "--shuffle", "--loop-playlist=inf", dir]
     end
   end
 
@@ -101,11 +102,13 @@ defmodule StoryTeller.Music.Player do
       :exit_status,
       :use_stdio,
       :stderr_to_stdout,
-      {:args, [cmd | ["--no-video", "--loop", "--shuffle", "--quiet", "/home/davi/Music/ambient"]]}
+      {:args,
+       [cmd | ["--no-video", "--loop", "--shuffle", "--quiet", "/home/davi/Music/ambient"]]}
     ])
   end
 
   defp safe_close(nil), do: :ok
+
   defp safe_close(port) do
     try do
       Port.close(port)
@@ -115,6 +118,7 @@ defmodule StoryTeller.Music.Player do
   end
 
   defp is_port_alive?(nil), do: false
+
   defp is_port_alive?(port) do
     case :erlang.port_info(port) do
       :undefined -> false
