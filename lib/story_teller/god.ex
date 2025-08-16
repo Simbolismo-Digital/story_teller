@@ -10,7 +10,7 @@ defmodule StoryTeller.God do
   end
 
   def talk(prompt) when is_binary(prompt) do
-    GenServer.call(__MODULE__, {:talk, prompt})
+    GenServer.cast(__MODULE__, {:talk, prompt})
   end
 
   ## GenServer callbacks
@@ -25,9 +25,11 @@ defmodule StoryTeller.God do
   end
 
   @impl true
-  def handle_call({:talk, prompt}, _from, state) do
+  def handle_cast({:talk, prompt}, state) do
     reply = respond(prompt)
-    {:reply, reply, state}
+    Process.sleep(200)
+    TextFx.type(reply, color: :gold)
+    {:noreply, state}
   end
 
   ## Private
