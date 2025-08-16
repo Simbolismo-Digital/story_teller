@@ -70,6 +70,7 @@ O ar da floresta antiga vibra com uma energia primordial...
 
 | Data         | Categoria                 | Descrição                                                                                                                                                 |
 | ------------ | ------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `16/08/2025` | 📘 **Introdução do processo God** | Cena inicial com efeitos de terminal.               |
 | `05/08/2025` | 📘 **Melhoria de README** | Documentadas novas tasks `mix play` e `mix package.zip`. Adicionado exemplo direto de uso para execução de história interativa no terminal.               |
 | `05/08/2025` | 🧪 **Mix Task: play**     | Criada task `mix play` com suporte a número de turnos como argumento. Gera e exporta a história diretamente para `story_teller.md`.                       |
 | `05/08/2025` | 📦 **Mix Task: package.zip**      | Criada task `mix package.zip` que empacota o projeto, excluindo `deps`, `_build`, `.git`, `cover/`, `doc/` e o próprio `.zip`. Ideal para distribuição.   |

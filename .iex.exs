@@ -1,0 +1,1 @@
+alias StoryTeller.God

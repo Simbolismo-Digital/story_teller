@@ -18,7 +18,8 @@ defmodule StoryTeller.Application do
       # Start a worker by calling: StoryTeller.Worker.start_link(arg)
       # {StoryTeller.Worker, arg},
       # Start to serve requests, typically the last entry
-      StoryTellerWeb.Endpoint
+      StoryTellerWeb.Endpoint,
+      StoryTeller.God
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html
