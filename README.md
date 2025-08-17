@@ -14,6 +14,18 @@ Sistema interativo de geração de histórias, personagens e cenas utilizando El
     
     [X] Player (table) (17/08/2025)
 
+## Próximos passos sugeridos
+
+* Consolidar Supervisor + Memory (ETS) dedicado (corrige intermitências).
+
+* Introduzir Planner (perceive/recall/deliberate/select/act/reflect) com telemetria.
+
+* Estruturar memória jsonb + GIN + compressor/summarizer.
+
+* CI (format/credo/dialyzer/tests) + Dockerfile release.
+
+* Demo GIF e diagrama no README.
+
 ## 🚀 Instalação
 
 1. Crie um arquivo `.env` com sua chave da API Gemini:
