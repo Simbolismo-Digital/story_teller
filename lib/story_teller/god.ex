@@ -31,7 +31,7 @@ defmodule StoryTeller.God do
   @impl true
   def handle_cast({:talk, prompt}, state) do
     {:noreply,
-     plan(state)
+     plan(state, prompt)
      |> execute(prompt)
      |> respond(prompt, state)
      |> manifest()}

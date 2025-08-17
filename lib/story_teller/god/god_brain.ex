@@ -1,17 +1,19 @@
 defmodule StoryTeller.God.Brain do
-  def plan(%{players: []}), do: :set_players
-  def plan(_), do: :default
-
-  def execute(:set_players, _prompt) do
-    {:set_players, nil}
+  def plan(state, prompt) do
+    StoryTeller.God.Intent.detect(state, prompt)
   end
 
-  def execute(plan, _prompt) do
-    {plan, nil}
+  def execute(%{"intent" => "create_players"} = intent, prompt) do
+    StoryTeller.God.CreateEntity.create(intent, prompt, %StoryTeller.Player{}) |> dbg()
+    {intent, prompt}
   end
 
-  def respond({:set_players, _}, _prompt, state) do
-    {%{state | players: [1]}, "Now you're good to go"}
+  def execute(intent, _prompt) do
+    {intent, nil}
+  end
+
+  def respond({%{"intent" => "create_players"}, player}, _prompt, state) do
+    {%{state | players: [player]}, "Parabéns, #{player}!"}
   end
 
   def respond(_plan, "", state) do
