@@ -27,10 +27,6 @@ defmodule StoryTeller.Player.Agent do
 
   def handle_call(:get, _from, state), do: {:reply, state, state}
 
-  def handle_cast({:update, fun}, state) do
-    {:noreply, upsert!(state, fun.(state))}
-  end
-
   def handle_call({:act_on, target_name, action}, _from, actor) do
     ts = NaiveDateTime.utc_now()
 
@@ -93,6 +89,10 @@ defmodule StoryTeller.Player.Agent do
   def handle_call({:remember, event}, _from, state) do
     state1 = remember(state, event)
     {:reply, {:ok, state1}, state1}
+  end
+
+  def handle_cast({:update, fun}, state) do
+    {:noreply, upsert!(state, fun.(state))}
   end
 
   ## Private

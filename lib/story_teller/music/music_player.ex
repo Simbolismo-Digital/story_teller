@@ -102,8 +102,7 @@ defmodule StoryTeller.Music.Player do
       :exit_status,
       :use_stdio,
       :stderr_to_stdout,
-      {:args,
-       [cmd | ["--no-video", "--loop", "--shuffle", "--quiet", "/home/davi/Music/ambient"]]}
+      {:args, [cmd | args]}
     ])
   end
 
