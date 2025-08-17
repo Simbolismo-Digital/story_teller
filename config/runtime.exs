@@ -24,6 +24,20 @@ if Code.ensure_loaded?(DotenvParser) && File.exists?(".env") do
   DotenvParser.load_file(".env")
 end
 
+music_cmd = System.find_executable("mpv") || System.find_executable("cvlc")
+
+config :story_teller, StoryTeller.Music,
+  player:
+    if(
+      is_binary(music_cmd) and
+        String.downcase(System.get_env("MUSIC_ENABLED") || "true") in ["1", "true", "yes"],
+      do: {
+        StoryTeller.Music.Player,
+        dir: System.get_env("MUSIC_DIR") || "~/Music/ambient", cmd: music_cmd
+      },
+      else: nil
+    )
+
 config :story_teller, :gemini, api_key: System.fetch_env!("GEMINI_API_KEY")
 
 if config_env() == :prod do
