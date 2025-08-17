@@ -73,8 +73,8 @@ defmodule StoryTeller.Player.Agent do
           {:ok, result, changes} = PlayerAction.act(actor1, target1, action)
           target2 = upsert!(target1, changes)
           TextFx.type(result, wait: 200)
-          TextFx.type("#{target2.name}: #{changes["action"]}", color: :green)
-          # if target2.mode == :llm, do: action(target2.name, actor.name, target2.action)
+          TextFx.type("#{target2.name}: #{target2.action}", color: :green)
+          if target2.mode == :llm, do: action(target2.name, actor.name, target2.action)
         rescue
           e ->
             require Logger

@@ -5,6 +5,8 @@ defmodule StoryTeller.Player.Action do
   @table :player_action
   @story_key :story
 
+  @max_story 20
+
   def act(source, target, action) do
     story = load_story()
 
@@ -27,6 +29,8 @@ defmodule StoryTeller.Player.Action do
     """
     Descreva em detalhes ac cena resultante da ação entre os personagens.
 
+    A fonte da cena precisa ter papel ativo. A action deve ser a reação do alvo.
+
     Ao final da cena retorne um mapa json com {action: "Reação do alvo."}
     Adicione ao mapa outras chaves originais do alvo se alguma deles mudou durante a ação.
 
@@ -43,7 +47,8 @@ defmodule StoryTeller.Player.Action do
   end
 
   defp save_story(story) do
-    :ets.insert(@table, {@story_key, story})
+    trimmed = Enum.take(story, -@max_story)
+    :ets.insert(@table, {@story_key, trimmed})
   end
 
   defp load_story do
