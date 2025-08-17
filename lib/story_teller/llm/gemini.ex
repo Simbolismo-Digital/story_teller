@@ -12,7 +12,8 @@ defmodule StoryTeller.Llm.Gemini do
   alias StoryTeller.Llm.GeminiLimiter
 
   def chat(context, prompt, story \\ []) do
-    dbg(prompt)
+    # dbg(context)
+    # dbg(prompt)
     {:ok, tokens} = GeminiLimiter.estimate_tokens(context, prompt)
 
     GeminiLimiter.run(tokens, fn ->

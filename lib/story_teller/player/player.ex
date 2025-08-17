@@ -20,6 +20,9 @@ defmodule StoryTeller.Player do
     field :backstory, :string
     field :action, :string
     field :actions, {:array, :string}
+    field :memory, {:array, :map}, default: []
+    field :mode, Ecto.Enum, values: [:llm, :manual], default: :llm
+
     timestamps()
   end
 
@@ -27,7 +30,8 @@ defmodule StoryTeller.Player do
     attrs = normalize_equipment(attrs)
 
     player
-    |> cast(attrs, ~w(name race class equipment backstory action actions updated_at)a)
+    |> cast(attrs, ~w(name race class equipment backstory action actions mode updated_at)a)
+    |> validate_inclusion(:mode, [:llm, :manual])
     |> validate_required(~w(name race class)a)
   end
 

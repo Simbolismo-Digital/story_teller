@@ -24,8 +24,8 @@ defmodule StoryTeller.God do
   def init(_arg), do: {:ok, @clean_state, {:continue, :prompt}}
 
   @impl true
-  def handle_continue(:prompt, state) do
-    # introduction()
+  def handle_continue(:prompt, _state) do
+    introduction()
 
     {:noreply, resume()}
   end

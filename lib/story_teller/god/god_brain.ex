@@ -4,7 +4,8 @@ defmodule StoryTeller.God.Brain do
   end
 
   def execute(%{"intent" => "create_players"} = intent, prompt) do
-    players = StoryTeller.God.CreateEntity.create(intent, prompt, %StoryTeller.Player{}) |> dbg()
+    players = StoryTeller.God.CreateEntity.create(intent, prompt, %StoryTeller.Player{})
+    # |> dbg()
     {intent, players}
   end
 

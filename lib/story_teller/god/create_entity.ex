@@ -5,7 +5,7 @@ defmodule StoryTeller.God.CreateEntity do
     {:ok, entities, _story} = StoryTeller.Llm.Gemini.chat(prompt, context(intent, struct))
 
     entities
-    |> dbg()
+    # |> dbg()
     |> StoryTeller.Json.extract_json_block()
     |> Jason.decode!()
     |> Enum.map(&persist_and_spawn!(&1, struct))

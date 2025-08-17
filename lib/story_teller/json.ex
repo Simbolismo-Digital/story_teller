@@ -13,22 +13,28 @@ defmodule StoryTeller.Json do
     cond do
       Regex.match?(~r/```json\s*(\[.*?\]|\{.*?\})\s*```/ms, text) ->
         [_, json] = Regex.run(~r/```json\s*(\[.*?\]|\{.*?\})\s*```/ms, text)
-        Logger.info("✅ JSON block (fenced) extracted successfully.")
+        Logger.debug("✅ JSON block (fenced) extracted successfully.")
         json
 
       Regex.match?(~r/(\[\s*\{.*?\}\s*\])/s, text) ->
         [_, json] = Regex.run(~r/(\[\s*\{.*?\}\s*\])/s, text)
-        Logger.info("✅ JSON array extracted successfully.")
+        Logger.debug("✅ JSON array extracted successfully.")
         json
 
       Regex.match?(~r/(\{(?:.|\n)*\})/, text) ->
         [_, json] = Regex.run(~r/(\{(?:.|\n)*\})/, text)
-        Logger.info("✅ JSON object extracted successfully.")
+        Logger.debug("✅ JSON object extracted successfully.")
         json
 
       true ->
         Logger.warning("⚠️ No JSON block found.")
         {:error, text}
     end
+  end
+
+  def trim_after_json_fence(text) when is_binary(text) do
+    text
+    |> String.replace(~r/```json.*\z/s, "")
+    |> String.trim_trailing()
   end
 end

@@ -24,6 +24,12 @@ if Code.ensure_loaded?(DotenvParser) && File.exists?(".env") do
   DotenvParser.load_file(".env")
 end
 
+config :logger,
+  level:
+    System.get_env("LOGGER_LEVEL", "debug")
+    |> String.downcase()
+    |> String.to_atom()
+
 music_cmd = System.find_executable("mpv") || System.find_executable("cvlc")
 
 config :story_teller, StoryTeller.Music,
