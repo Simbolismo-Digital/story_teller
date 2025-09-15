@@ -17,8 +17,8 @@ defmodule StoryTeller.Llm.GeminiLimiter do
     rpd: 1_000
   }
 
-  @tokens_per_word 4
-  @token_estimate_factor 1.02
+  @tokens_per_word 8
+  @token_estimate_factor 1.3
   @name __MODULE__
 
   # API pública

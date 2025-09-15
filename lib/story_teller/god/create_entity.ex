@@ -36,6 +36,7 @@ defmodule StoryTeller.God.CreateEntity do
     Retorne numa lista de mapas json.
     Não deixe campos nulos.
     Não coloque \n ou caractéres que formatem linhas.
+    Não use `:` para atoms elixir.
     Para o seguinte prompt:
     """
   end
