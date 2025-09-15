@@ -8,7 +8,8 @@ SELECT
   obj ->> 'from'   AS "from",
   obj ->> 'to'     AS "to",
   obj ->> 'type'   AS "type",
-  obj ->> 'action' AS action
+  obj ->> 'action' AS action,
+  obj ->> 'description' as description
 FROM players p
 CROSS JOIN LATERAL unnest(p.memory) AS m(elem)   -- elem é jsonb (pode ser objeto ou string)
 CROSS JOIN LATERAL (
@@ -18,6 +19,6 @@ CROSS JOIN LATERAL (
            ELSE elem
          END AS obj
 ) t
-where  obj ->> 'to' = 'Molinor' or obj ->> 'from' = 'Molinor'
-ORDER BY (obj ->> 'at')::timestamptz;
+WHERE obj ->> 'to' = 'Molinor' or obj ->> 'from' = 'Molinor'
+ORDER BY p.name, (obj ->> 'at')::timestamptz;
 ```

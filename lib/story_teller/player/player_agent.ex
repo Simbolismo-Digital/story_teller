@@ -15,7 +15,7 @@ defmodule StoryTeller.Player.Agent do
   def update(name, fun), do: GenServer.cast(via(name), {:update, fun})
 
   def action(actor_name, target_name, action \\ nil) do
-    GenServer.call(via(actor_name), {:act_on, target_name, action})
+    GenServer.call(via(actor_name), {:act_on, target_name, action}, 20_000)
   end
 
   ## Callbacks
@@ -32,57 +32,56 @@ defmodule StoryTeller.Player.Agent do
 
     action = action || actor.action
 
-    event_for_actor = %{
-      type: "outgoing_action",
-      from: actor.name,
-      to: target_name,
-      action: action,
-      at: ts
-    }
+    %Player{} = target1 = get(target_name)
 
-    event_for_target = %{
-      type: "incoming_action",
-      from: actor.name,
-      to: target_name,
-      action: action,
-      at: ts
-    }
+    # 1) dispara LLM com ambos os estados atualizados (assíncrono pra não travar loop)
+    try do
+      {:ok, result, changes} = PlayerAction.act(actor, target1, action)
 
-    # 1) ator lembra e persiste sua ação (campo action)
-    actor1 =
-      actor
-      |> remember(event_for_actor)
-      |> Map.put(:action, action)
+      event_for_actor = %{
+        type: "outgoing_action",
+        from: actor.name,
+        to: target_name,
+        action: action,
+        description: result,
+        at: ts
+      }
 
-    upsert!(actor, actor1)
+      event_for_target = %{
+        type: "incoming_action",
+        from: actor.name,
+        to: target_name,
+        action: action,
+        description: result,
+        at: ts
+      }
 
-    # 2) alvo lembra de forma sincronizada para garantir consistência
-    {:ok, target1} =
-      case GenServer.whereis(via(target_name)) do
-        nil ->
-          {:error, :target_not_found}
+      # 2) ator lembra e persiste sua ação (campo action)
+      actor1 =
+        actor
+        |> remember(event_for_actor)
+        |> Map.put(:action, action)
 
-        _pid ->
-          GenServer.call(via(target_name), {:remember, event_for_target})
-      end
+      upsert!(actor, actor1)
 
-    # 3) dispara LLM com ambos os estados atualizados (assíncrono pra não travar loop)
-    _ =
-      Task.start(fn ->
-        try do
-          {:ok, result, changes} = PlayerAction.act(actor1, target1, action)
-          target2 = upsert!(target1, changes)
-          TextFx.type(result, wait: 200)
-          TextFx.type("#{target2.name}: #{target2.action}", color: :green)
-          if target2.mode == :llm, do: action(target2.name, actor.name, target2.action)
-        rescue
-          e ->
-            require Logger
-            Logger.error("LLM react failed: #{Exception.message(e)}")
-        end
+      # 3) alvo lembra de forma sincronizada para garantir consistência
+      {:ok, target2} = GenServer.call(via(target_name), {:remember, event_for_target})
+
+      target3 = upsert!(target2, changes)
+
+      Task.async(fn ->
+        TextFx.type(result, wait: 200)
+        TextFx.type("#{target_name}: #{target3.action}", color: :green)
+        if target2.mode == :llm, do: action(target_name, actor.name, target3.action)
       end)
 
-    {:reply, :ok, actor1}
+      {:reply, :ok, actor1}
+    rescue
+      e ->
+        require Logger
+        Logger.error("LLM react failed: #{Exception.message(e)}")
+        {:reply, :error, e}
+    end
   end
 
   # usado pelo ator para pedir ao alvo lembrar
@@ -124,6 +123,18 @@ defmodule StoryTeller.Player.Agent do
       on_conflict: {:replace_all_except, [:id, :inserted_at]},
       conflict_target: :name
     )
+  end
+
+  # resultado do Task.async / async_nolink
+  def handle_info({ref, _result}, state) when is_reference(ref) do
+    # evita receber o :DOWN depois
+    Process.demonitor(ref, [:flush])
+    {:noreply, state}
+  end
+
+  # término do task (caso não tenha sido "flushado")
+  def handle_info({:DOWN, _ref, :process, _pid, _reason}, state) do
+    {:noreply, state}
   end
 
   ## Registry helper

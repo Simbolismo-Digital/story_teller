@@ -3,7 +3,8 @@ defmodule StoryTeller.God.Brain do
     StoryTeller.God.Intent.detect(state, prompt)
   end
 
-  def execute(%{"intent" => "create_players"} = intent, prompt) do
+  def execute(%{"intent" => current} = intent, prompt)
+      when current in ["create_players", "select_players"] do
     players = StoryTeller.God.CreateEntity.create(intent, prompt, %StoryTeller.Player{})
     # |> dbg()
     {intent, players}
@@ -13,7 +14,8 @@ defmodule StoryTeller.God.Brain do
     {intent, nil}
   end
 
-  def respond({%{"intent" => "create_players"}, players}, _prompt, state) do
+  def respond({%{"intent" => current}, players}, _prompt, state)
+      when current in ["create_players", "select_players"] do
     {%{state | players: players ++ state.players},
      "Parabéns, #{Enum.map_join(players, ", ", & &1.name)}!"}
   end
@@ -22,7 +24,8 @@ defmodule StoryTeller.God.Brain do
     {state, "Fale, viajante. Qual é o seu nome?"}
   end
 
-  def respond(_plan, prompt, state) do
+  def respond(plan, prompt, state) do
+    dbg(plan)
     {state, "Eu sou Deus. Você disse: #{prompt}"}
   end
 end

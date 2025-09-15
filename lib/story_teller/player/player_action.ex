@@ -19,20 +19,27 @@ defmodule StoryTeller.Player.Action do
 
     save_story(story)
 
-    {:ok, Json.trim_after_json_fence(result),
-     result
+    json = result
      |> Json.extract_json_block()
-     |> Jason.decode!()}
+     |> Jason.decode!()
+
+    {:ok, json["description"] || Json.trim_after_json_fence(result), json}
   end
 
   def context(source, target, action) do
     """
-    Descreva em detalhes ac cena resultante da ação entre os personagens.
+    Descreva em detalhes a cena resultante da ação entre os personagens.
 
     A fonte da cena precisa ter papel ativo. A action deve ser a reação do alvo.
 
-    Ao final da cena retorne um mapa json com {action: "Reação do alvo."}
+    Ao final da cena retorne um mapa json com {action: "Reação do target."}
     Adicione ao mapa outras chaves originais do alvo se alguma deles mudou durante a ação.
+
+    O resultado deve ser estritamente neste formato JSON:
+    {
+      "description": "Descrição do resultado da ação de `source`",
+      "action": "Reação que `target` toma, como fala ou movimentação."
+    }
 
     Fonte: #{inspect(source)}
     Alvo: #{inspect(target)}

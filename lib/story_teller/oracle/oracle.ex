@@ -26,6 +26,7 @@ defmodule StoryTeller.Oracle do
     Você reflete todas as memórias de todos os jogadores.
     Retorne uma descrição dos fatos ocorridos e os eventos que desencadeiam.
     Retorne um json com karmas, que podem ser tanto negativos quanto positivos.
+    Todos os campos são obrigatórios.
     {name: "Person1", karma: "suas aventuras levaram a encontrar seu arqui-inimigo", intent: "criar_players", subjects: ["Person2"]}
 
     Memórias: #{inspect(list_memories())}

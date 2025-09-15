@@ -1,0 +1,118 @@
+{
+"SELECT\n--  p.id as memory_id,\n  p.name,\n--  obj ->> 'at'     AS at,\n--  obj ->> 'from'   AS \"from\",\n--  obj ->> 'to'     AS \"to\",\n--  obj ->> 'type'   AS \"type\",\n  obj ->> 'description' as description,\n  obj ->> 'action' AS action\nFROM players p\nCROSS JOIN LATERAL unnest(p.memory) AS m(elem)   -- elem é jsonb (pode ser objeto ou string)\nCROSS JOIN LATERAL (\n  SELECT CASE\n           WHEN jsonb_typeof(elem) = 'string'\n             THEN ((elem #>> '{}')::jsonb)  -- tira as aspas do jsonb string e converte pra jsonb objeto\n           ELSE elem\n         END AS obj\n) t\nORDER BY p.name, (obj ->> 'at')::timestamptz": [
+	{
+		"name" : "Chiara",
+		"description" : "O toque delicado de Chiara na bochecha de Drakaw, a luz etérea que emanava de sua magia envolvendo os dois, intensificou a conexão que sentiam. O ar cintilou com o presságio de algo mais profundo, um momento suspenso entre a admiração e um desejo nascente.",
+		"action" : "Chiara ergue uma mão para tocar o rosto de Drakaw, traçando suavemente o contorno de sua bochecha, em um gesto de carinho e profunda conexão, enquanto a magia ao redor se intensifica."
+	},
+	{
+		"name" : "Chiara",
+		"description" : "A reação de Drakaw ao carinho de Chiara, com a cabeça inclinada e um rubor sutil subindo pelo pescoço, foi recebida com um brilho nos olhos de Chiara. O sorriso tímido de Drakaw aprofundou a sensação de intimidade, e a magia ao redor deles pareceu responder, pulsando com uma energia mais calorosa e suave.",
+		"action" : "Drakaw inclinou a cabeça levemente para o toque de Chiara, um leve rubor subindo por seu pescoço. Seus olhos, antes focados nas acrobacias, agora encontravam os de Chiara com uma intensidade recém-descoberta, e um sorriso suave brincou em seus lábios."
+	},
+	{
+		"name" : "Chiara",
+		"description" : "O sorriso de Chiara e a ternura em seus olhos, combinados com o gesto prolongado de sua mão no rosto de Drakaw, criaram uma atmosfera de profunda intimidade. Ao retirar a mão lentamente, ela deixou uma corrente de calor e a sensação de um laço invisível se fortalecendo entre eles, uma promessa tácita que ressoava no ar.",
+		"action" : "Chiara sorriu de volta, seus olhos transmitindo uma ternura genuína. Ela manteve a mão em seu rosto por um instante a mais, sentindo a textura de sua pele sob seus dedos, antes de retirá-la lentamente. O gesto parecia selar a promessa não dita que pairava entre eles."
+	},
+	{
+		"name" : "Chiara",
+		"description" : "O suspiro suave de Drakaw e o gesto tátil em seu próprio rosto, após o toque de Chiara, ecoaram a profundidade do momento. A hesitação em suas palavras, a inclinação de seus lábios que sugeriam uma fala não dita, tudo isso transmitiu uma vulnerabilidade e um desejo intenso que Chiara captou em seu olhar.",
+		"action" : "Drakaw suspirou suavemente, os olhos ainda fixos nos de Chiara. Ele levou a mão livre ao local onde os dedos dela haviam estado, um gesto quase inconsciente de apreciar o contato. Seus lábios se moveram em uma leve inclinação, como se estivesse prestes a dizer algo, mas as palavras pareciam presas na garganta, substituídas por um olhar que falava de admiração e desejo."
+	},
+	{
+		"name" : "Chiara",
+		"description" : "O passo à frente de Chiara e o toque de sua mão sobre o coração de Drakaw intensificaram a conexão mútua. O calor de sua palma contra a pele dele, o ritmo acelerado de seu coração ecoando a promessa silenciosa em seus olhos, tudo isso solidificou a admiração e o desejo que estavam florescendo entre eles.",
+		"action" : "Chiara deu um passo sutil à frente, sua mão livre movendo-se para descansar levemente sobre o peito de Drakaw, sentindo o batimento de seu coração sob o tecido. Seus olhos, espelhando a admiração de Drakaw, piscaram lentamente, uma aceitação silenciosa do que estava se formando entre eles."
+	},
+	{
+		"name" : "Chiara",
+		"description" : "O suspiro profundo de Drakaw e a inclinação de sua cabeça em resposta ao toque de Chiara, seguidos pelo brilho em seus olhos ao reabri-los, transmitiram uma entrega sincera e um anseio que ressoaram com a própria Chiara. O momento íntimo parecia se aprofundar, com a magia ao redor deles reagindo à crescente emoção.",
+		"action" : "Drakaw deixou escapar um suspiro mais profundo desta vez, um som rouco carregado de emoção. Ele inclinou a cabeça levemente para o toque de Chiara, fechando os olhos por um breve instante, como se saboreasse o momento. Ao abri-los novamente, um brilho de esperança e entrega dançava em seu olhar."
+	},
+	{
+		"name" : "Chiara",
+		"description" : "A aproximação de Chiara, a delicadeza com que seus lábios roçaram os de Drakaw, selou a intimidade que vinha crescendo entre eles. O leve tremor em seu corpo, a magia que emanava dela, tudo isso intensificou a atmosfera carregada de emoção e desejo. A cena parecia suspensa no tempo, prenunciando o aprofundamento da conexão.",
+		"action" : "Chiara, sentindo a entrega de Drakaw, lentamente aproximou seu rosto do dele. Seus lábios pairaram a uma distância mínima dos dele, um convite silencioso. Um leve tremor percorreu seu corpo, um misto de antecipação e a força sutil de sua magia envolvendo o espaço entre eles."
+	},
+	{
+		"name" : "Chiara",
+		"description" : "O beijo de Drakaw, que começou hesitante e se aprofundou com anseio, foi uma resposta direta à aproximação de Chiara. A ternura em seu toque ao acariciar o rosto dela, a fusão de seus lábios, transformou a troca de olhares e suspiros em um momento de profunda paixão. A magia ao redor deles pulsava em harmonia com a intensidade da cena.",
+		"action" : "Drakaw fechou a pequena distância entre seus lábios, o toque inicial sendo suave e hesitante, logo se aprofundando em um beijo cheio de anseio. Sua mão livre se ergueu para acariciar o rosto de Chiara, traçando a linha de sua mandíbula com uma ternura crescente."
+	},
+	{
+		"name" : "Chiara",
+		"description" : "O beijo fervoroso de Chiara, aprofundado pelo abraço em volta do pescoço de Drakaw, foi uma resposta apaixonada ao anseio dele. O brilho sutil que emanava de sua pele, a intensificação da magia ao redor, criaram um casulo etéreo que os envolvia, um testemunho físico da profunda conexão que agora compartilhavam.",
+		"action" : "Chiara retribuiu o beijo com fervor, seus braços envolvendo o pescoço de Drakaw, atraindo-o para mais perto. Um suave brilho emanou de sua pele, um reflexo da magia que se intensificava com a emoção, envolvendo os dois em um casulo de luz estelar."
+	},
+	{
+		"name" : "Chiara",
+		"description" : "O aprofundamento do beijo e o abraço envolvente de Drakaw demonstraram a intensidade de seus sentimentos, respondendo ao fervor de Chiara. O murmúrio rouco contra os lábios dela, carregado de emoção, transmitiu a profundidade de sua ternura, e a magia que os cercava pareceu cintilar com mais intensidade, ecoando a paixão do momento.",
+		"action" : "Drakaw aprofundou o beijo, suas mãos subindo para envolver a cintura de Chiara, puxando-a ainda mais para si. Ele murmurou algo inaudível contra seus lábios, um som rouco que transbordava de emoção e ternura."
+	},
+	{
+		"name" : "Chiara",
+		"description" : "O afastamento sutil de Chiara, o rubor em seu rosto e o brilho em seus olhos eram uma resposta à intensidade do momento compartilhado. O carinho em sua mão na bochecha de Drakaw, a promessa silenciosa em seu olhar, tudo isso confirmava a profundidade da conexão que havia se solidificado entre eles, um prenúncio de futuras intimidades.",
+		"action" : "Chiara afastou-se ligeiramente, o rosto corado e os olhos brilhando com uma mistura de satisfação e desejo. Ela colocou uma mão suavemente na bochecha de Drakaw, acariciando-o com o polegar enquanto olhava em seus olhos. Um pequeno sorriso brincou em seus lábios, mas seus olhos falavam mais alto, transmitindo uma promessa de mais momentos como aquele."
+	},
+	{
+		"name" : "Chiara",
+		"description" : "A reação de Drakaw ao toque de Chiara, com os olhos fechados em deleite e o sorriso terno ao reabri-los, foi um eco da intimidade que se fortalecia. A forma como ele cobriu a mão dela com a sua, inclinado-se para o gesto, demonstrou a profundidade de sua gratidão e afeto, em resposta à promessa silenciosa de Chiara.",
+		"action" : "Drakaw fechou os olhos por um instante, saboreando o toque de Chiara. Ao abri-los, um sorriso suave espalhou-se por seus lábios. Ele levou uma mão para cobrir a mão dela, que repousava em sua bochecha, e inclinou-se para o toque, um gesto de profunda gratidão e afeto."
+	},
+	{
+		"name" : "Drakaw",
+		"description" : "O toque delicado de Chiara na bochecha de Drakaw, a luz etérea que emanava de sua magia envolvendo os dois, intensificou a conexão que sentiam. O ar cintilou com o presságio de algo mais profundo, um momento suspenso entre a admiração e um desejo nascente.",
+		"action" : "Chiara ergue uma mão para tocar o rosto de Drakaw, traçando suavemente o contorno de sua bochecha, em um gesto de carinho e profunda conexão, enquanto a magia ao redor se intensifica."
+	},
+	{
+		"name" : "Drakaw",
+		"description" : "A reação de Drakaw ao carinho de Chiara, com a cabeça inclinada e um rubor sutil subindo pelo pescoço, foi recebida com um brilho nos olhos de Chiara. O sorriso tímido de Drakaw aprofundou a sensação de intimidade, e a magia ao redor deles pareceu responder, pulsando com uma energia mais calorosa e suave.",
+		"action" : "Drakaw inclinou a cabeça levemente para o toque de Chiara, um leve rubor subindo por seu pescoço. Seus olhos, antes focados nas acrobacias, agora encontravam os de Chiara com uma intensidade recém-descoberta, e um sorriso suave brincou em seus lábios."
+	},
+	{
+		"name" : "Drakaw",
+		"description" : "O sorriso de Chiara e a ternura em seus olhos, combinados com o gesto prolongado de sua mão no rosto de Drakaw, criaram uma atmosfera de profunda intimidade. Ao retirar a mão lentamente, ela deixou uma corrente de calor e a sensação de um laço invisível se fortalecendo entre eles, uma promessa tácita que ressoava no ar.",
+		"action" : "Chiara sorriu de volta, seus olhos transmitindo uma ternura genuína. Ela manteve a mão em seu rosto por um instante a mais, sentindo a textura de sua pele sob seus dedos, antes de retirá-la lentamente. O gesto parecia selar a promessa não dita que pairava entre eles."
+	},
+	{
+		"name" : "Drakaw",
+		"description" : "O suspiro suave de Drakaw e o gesto tátil em seu próprio rosto, após o toque de Chiara, ecoaram a profundidade do momento. A hesitação em suas palavras, a inclinação de seus lábios que sugeriam uma fala não dita, tudo isso transmitiu uma vulnerabilidade e um desejo intenso que Chiara captou em seu olhar.",
+		"action" : "Drakaw suspirou suavemente, os olhos ainda fixos nos de Chiara. Ele levou a mão livre ao local onde os dedos dela haviam estado, um gesto quase inconsciente de apreciar o contato. Seus lábios se moveram em uma leve inclinação, como se estivesse prestes a dizer algo, mas as palavras pareciam presas na garganta, substituídas por um olhar que falava de admiração e desejo."
+	},
+	{
+		"name" : "Drakaw",
+		"description" : "O passo à frente de Chiara e o toque de sua mão sobre o coração de Drakaw intensificaram a conexão mútua. O calor de sua palma contra a pele dele, o ritmo acelerado de seu coração ecoando a promessa silenciosa em seus olhos, tudo isso solidificou a admiração e o desejo que estavam florescendo entre eles.",
+		"action" : "Chiara deu um passo sutil à frente, sua mão livre movendo-se para descansar levemente sobre o peito de Drakaw, sentindo o batimento de seu coração sob o tecido. Seus olhos, espelhando a admiração de Drakaw, piscaram lentamente, uma aceitação silenciosa do que estava se formando entre eles."
+	},
+	{
+		"name" : "Drakaw",
+		"description" : "O suspiro profundo de Drakaw e a inclinação de sua cabeça em resposta ao toque de Chiara, seguidos pelo brilho em seus olhos ao reabri-los, transmitiram uma entrega sincera e um anseio que ressoaram com a própria Chiara. O momento íntimo parecia se aprofundar, com a magia ao redor deles reagindo à crescente emoção.",
+		"action" : "Drakaw deixou escapar um suspiro mais profundo desta vez, um som rouco carregado de emoção. Ele inclinou a cabeça levemente para o toque de Chiara, fechando os olhos por um breve instante, como se saboreasse o momento. Ao abri-los novamente, um brilho de esperança e entrega dançava em seu olhar."
+	},
+	{
+		"name" : "Drakaw",
+		"description" : "A aproximação de Chiara, a delicadeza com que seus lábios roçaram os de Drakaw, selou a intimidade que vinha crescendo entre eles. O leve tremor em seu corpo, a magia que emanava dela, tudo isso intensificou a atmosfera carregada de emoção e desejo. A cena parecia suspensa no tempo, prenunciando o aprofundamento da conexão.",
+		"action" : "Chiara, sentindo a entrega de Drakaw, lentamente aproximou seu rosto do dele. Seus lábios pairaram a uma distância mínima dos dele, um convite silencioso. Um leve tremor percorreu seu corpo, um misto de antecipação e a força sutil de sua magia envolvendo o espaço entre eles."
+	},
+	{
+		"name" : "Drakaw",
+		"description" : "O beijo de Drakaw, que começou hesitante e se aprofundou com anseio, foi uma resposta direta à aproximação de Chiara. A ternura em seu toque ao acariciar o rosto dela, a fusão de seus lábios, transformou a troca de olhares e suspiros em um momento de profunda paixão. A magia ao redor deles pulsava em harmonia com a intensidade da cena.",
+		"action" : "Drakaw fechou a pequena distância entre seus lábios, o toque inicial sendo suave e hesitante, logo se aprofundando em um beijo cheio de anseio. Sua mão livre se ergueu para acariciar o rosto de Chiara, traçando a linha de sua mandíbula com uma ternura crescente."
+	},
+	{
+		"name" : "Drakaw",
+		"description" : "O beijo fervoroso de Chiara, aprofundado pelo abraço em volta do pescoço de Drakaw, foi uma resposta apaixonada ao anseio dele. O brilho sutil que emanava de sua pele, a intensificação da magia ao redor, criaram um casulo etéreo que os envolvia, um testemunho físico da profunda conexão que agora compartilhavam.",
+		"action" : "Chiara retribuiu o beijo com fervor, seus braços envolvendo o pescoço de Drakaw, atraindo-o para mais perto. Um suave brilho emanou de sua pele, um reflexo da magia que se intensificava com a emoção, envolvendo os dois em um casulo de luz estelar."
+	},
+	{
+		"name" : "Drakaw",
+		"description" : "O aprofundamento do beijo e o abraço envolvente de Drakaw demonstraram a intensidade de seus sentimentos, respondendo ao fervor de Chiara. O murmúrio rouco contra os lábios dela, carregado de emoção, transmitiu a profundidade de sua ternura, e a magia que os cercava pareceu cintilar com mais intensidade, ecoando a paixão do momento.",
+		"action" : "Drakaw aprofundou o beijo, suas mãos subindo para envolver a cintura de Chiara, puxando-a ainda mais para si. Ele murmurou algo inaudível contra seus lábios, um som rouco que transbordava de emoção e ternura."
+	},
+	{
+		"name" : "Drakaw",
+		"description" : "O afastamento sutil de Chiara, o rubor em seu rosto e o brilho em seus olhos eram uma resposta à intensidade do momento compartilhado. O carinho em sua mão na bochecha de Drakaw, a promessa silenciosa em seu olhar, tudo isso confirmava a profundidade da conexão que havia se solidificado entre eles, um prenúncio de futuras intimidades.",
+		"action" : "Chiara afastou-se ligeiramente, o rosto corado e os olhos brilhando com uma mistura de satisfação e desejo. Ela colocou uma mão suavemente na bochecha de Drakaw, acariciando-o com o polegar enquanto olhava em seus olhos. Um pequeno sorriso brincou em seus lábios, mas seus olhos falavam mais alto, transmitindo uma promessa de mais momentos como aquele."
+	}
+]}

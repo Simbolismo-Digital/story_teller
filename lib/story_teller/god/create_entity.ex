@@ -16,7 +16,16 @@ defmodule StoryTeller.God.CreateEntity do
       module.changeset(attrs)
       |> Repo.insert!(on_conflict: :nothing, conflict_target: :name)
 
-    {:ok, _pid} = module.start_link(player)
+    case module.start_link(player) do
+      {:ok, _pid} ->
+        :ok
+
+      {:error, {:already_started, _pid}} ->
+        :ok
+
+      other ->
+        raise "Failed to start #{inspect(module)}: #{inspect(other)}"
+    end
 
     player
   end
