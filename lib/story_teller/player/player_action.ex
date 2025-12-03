@@ -19,9 +19,10 @@ defmodule StoryTeller.Player.Action do
 
     save_story(story)
 
-    json = result
-     |> Json.extract_json_block()
-     |> Jason.decode!()
+    json =
+      result
+      |> Json.extract_json_block()
+      |> Jason.decode!()
 
     {:ok, json["description"] || Json.trim_after_json_fence(result), json}
   end

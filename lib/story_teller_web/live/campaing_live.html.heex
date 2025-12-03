@@ -1,0 +1,58 @@
+<div class="flex h-full">
+  <!-- Scene window -->
+  <div class="flex-1 bg-gray-800 text-white p-4 overflow-auto">
+    <h2 class="text-xl font-bold mb-2">Scene</h2>
+    <div id="scene-output">
+      <%= raw(@scene) %>
+    </div>
+  </div>
+
+  <!-- Sidebar -->
+  <div class="w-64 bg-gray-700 text-white p-4 flex flex-col gap-2 overflow-auto">
+    <h2 class="text-lg font-bold mb-2">Characters</h2>
+    <%= for char <- @characters do %>
+      <button
+        phx-click="select_character"
+        phx-value-name={char.name}
+        class={"flex items-center justify-between p-2 rounded #{if @current_actor == char.name, do: "bg-gray-500", else: "hover:bg-gray-600"}"}
+      >
+        <span><%= char.name %></span>
+        <span><%= if char.acted?, do: "🎭", else: "⌛" %></span>
+      </button>
+    <% end %>
+  </div>
+</div>
+
+<!-- Action input -->
+<%= if @current_actor do %>
+  <div class="bg-gray-900 text-white p-4 flex flex-col gap-2">
+    <p>Enter action for <strong><%= @current_actor %></strong>:</p>
+    <form phx-submit="send_action" class="flex gap-2 w-full">
+      <input
+        id={"action-input-#{@current_actor}"}
+        type="text"
+        name="action"
+        class="flex-1 p-2 rounded bg-gray-800 text-white"
+        placeholder="Action..."
+        phx-hook="FocusInput"
+        autocomplete="off"
+      />
+      <button type="submit" class="bg-blue-600 px-4 rounded text-white">Send</button>
+    </form>
+  </div>
+<% end %>
+<!-- Chat box reflects current actions -->
+<div class="bg-gray-900 text-white p-6 h-[30vh] rounded-lg flex flex-col gap-1 overflow-auto">
+  <h3 class="font-semibold mb-2">Current Actions:</h3>
+  <ul class="flex-1 flex flex-col justify-start gap-1">
+    <%= for char <- @characters do %>
+      <li>
+        <%= if char.acted? do %>
+          🎭 <%= char.name %>: <%= char.action %>
+        <% else %>
+          ⌛ <%= char.name %> is waiting
+        <% end %>
+      </li>
+    <% end %>
+  </ul>
+</div>

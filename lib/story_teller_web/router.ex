@@ -18,6 +18,7 @@ defmodule StoryTellerWeb.Router do
     pipe_through :browser
 
     get "/", PageController, :home
+    live "/campaing", CampaingLive
   end
 
   # Other scopes may use custom stacks.
