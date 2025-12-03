@@ -3,3 +3,65 @@
 @import "tailwindcss/utilities";
 
 /* This file is for your main application CSS */
+
+
+*:disabled {
+  background-color: #4b5563 !important; /* gray-600 */
+  color: #d1d5db !important;            /* gray-300 */
+  cursor: not-allowed !important;
+  opacity: 0.7 !important;
+  border-color: #4b5563 !important;
+}
+
+[data-tip] {
+  position: relative;
+  cursor: help;
+}
+
+/* tooltip bubble */
+[data-tip]::after {
+  content: attr(data-tip);
+  position: absolute;
+  bottom: 105%;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 6px 10px;
+  font-size: 12px;
+  line-height: 1.2;
+  white-space: nowrap;
+  background: #353535;
+  color: #b1b1b1;
+  border-radius: 6px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .15s ease-out;
+  z-index: 50;
+}
+
+/* tooltip arrow */
+[data-tip]::before {
+  content: "";
+  position: absolute;
+  bottom: 95%;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 6px;
+  border-style: solid;
+  border-color: #353535 transparent transparent transparent;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .15s ease-out;
+  z-index: 50;
+}
+
+/* show on hover/focus */
+[data-tip]:hover::after,
+[data-tip]:hover::before {
+  opacity: 1;
+}
+
+/* Allow tooltips on disabled buttons */
+button[disabled][data-tip] {
+  pointer-events: auto;
+}

@@ -349,13 +349,18 @@ defmodule StoryTellerWeb.CoreComponents do
 
   def input(%{type: "textarea"} = assigns) do
     ~H"""
-    <div>
+    <div
+      class={"relative #{height_class(assigns[:rest][:class])} w-full"}
+      data-tip={@rest[:"data-tip"]}
+    >
       <.label for={@id}>{@label}</.label>
       <textarea
         id={@id}
         name={@name}
         class={[
-          "mt-2 block w-full rounded-lg text-zinc-900 focus:ring-0 sm:text-sm sm:leading-6 min-h-[6rem]",
+          "w-full",
+          @rest[:class] ||
+            "mt-2 block text-zinc-900 sm:text-sm sm:leading-6 h-full rounded-lg focus:ring-0 min-h-[6rem]",
           @errors == [] && "border-zinc-300 focus:border-zinc-400",
           @errors != [] && "border-rose-400 focus:border-rose-400"
         ]}
@@ -672,5 +677,12 @@ defmodule StoryTellerWeb.CoreComponents do
   """
   def translate_errors(errors, field) when is_list(errors) do
     for {^field, {msg, opts}} <- errors, do: translate_error({msg, opts})
+  end
+
+  defp height_class(classes) when is_binary(classes) do
+    classes
+    |> String.split()
+    |> Enum.filter(&String.starts_with?(&1, "h-"))
+    |> Enum.join(" ") || ""
   end
 end
