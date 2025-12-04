@@ -1,4 +1,8 @@
+import YoutubePlayerHook from "./youtube_player_hook";
+
 let Hooks = {}
+
+Hooks.YoutubePlayer = YoutubePlayerHook;
 
 // Any
 Hooks.AutoFocus = {

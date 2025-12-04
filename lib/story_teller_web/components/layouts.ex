@@ -9,6 +9,7 @@ defmodule StoryTellerWeb.Layouts do
   `use StoryTellerWeb, :live_view`.
   """
   use StoryTellerWeb, :html
+  import StoryTellerWeb.Multimidia.YoutubePlayerComponent
 
   embed_templates "layouts/*"
 end
